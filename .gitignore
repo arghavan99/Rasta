@@ -1,0 +1,16 @@
+*
+!*/
+
+# Then add everything needed
+
+!/apps/**
+!/docs/**
+!/.git/**
+!/.github/**
+!.gitignore
+!/Rasta_Web/**
+!/locale/**git
+!manage.py
+!requirements.txt
+!/static/files/**
+!/templates/**
