@@ -1,3 +1,15 @@
 from django.contrib import admin
+from apps.intro.models import *
+from apps.contact_us.models import *
+
 
 # Register your models here.
+
+@admin.register(HomepageData)
+class HomePageAdmin(admin.ModelAdmin):
+    fields = ['intro', 'video_url', 'logo']
+
+
+@admin.register(UpcomingEvent)
+class UpcomingEventAdmin(admin.ModelAdmin):
+    fields = ['poster', 'intro', 'sign_up_link']
