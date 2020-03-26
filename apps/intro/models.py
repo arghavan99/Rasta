@@ -7,7 +7,7 @@ from ckeditor.fields import RichTextField
 class HomepageData(models.Model):
     intro = RichTextField()
     video_url = models.URLField(null=True, blank=True)
-    logo = models.ImageField(null=True, blank=True)
+    # logo = models.ImageField(null=True, blank=True)
 
 
 class UpcomingEvent(models.Model):
