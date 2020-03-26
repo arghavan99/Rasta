@@ -1,6 +1,5 @@
 from django.contrib import admin
 from apps.intro.models import *
-from apps.contact_us.models import *
 
 
 # Register your models here.
