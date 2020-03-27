@@ -8,57 +8,39 @@
     <title>Rasta</title>
     <script type="text/javascript" src="{% static 'semantic/semantic.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'semantic/semantic.rtl.min.css'%}">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 
 
 </head>
 <body dir="rtl" style="height: 100%">
-{#{% block sidebar %}#}
-{#    {% include 'base/sidebar.html' %}#}
-{#{% endblock %}#}
-{#<div class="pusher">#}
-{#    {% block body %}#}
-{#        <div id="main">#}
-{##}
-{#            {% block navbar %}#}
-{#                {% include 'base/navbar.html' %}#}
-{#            {% endblock %}#}
-{##}
-{#            {% block content %}#}
-{#                <div class="ui container" >#}
-{#                    {% block container %}#}
-{##}
-{#                    {% endblock %}#}
-{#                </div>#}
-{#            {% endblock %}#}
-{##}
-{#            {% block footer %}#}
-{#                {% include 'base/footer.html' %}#}
-{#            {% endblock %}#}
-{#        </div>#}
-{#    {% endblock %}#}
-{##}
-{#</div>#}
-<div class="ui inverted segment">
-    <button class="myb">Standard</button>
-  <button class="ui inverted button">Standard</button>
-  <button class="ui inverted primary button">Primary</button>
-  <button class="ui inverted secondary button">Secondary</button>
-  <button class="ui inverted red button">Red</button>
-  <button class="ui inverted orange button">Orange</button>
-  <button class="ui inverted yellow button">Yellow</button>
-  <button class="ui inverted olive button">Olive</button>
-  <button class="ui inverted green button">Green</button>
-  <button class="ui inverted teal button">Teal</button>
-  <button class="ui inverted blue button">Blue</button>
-  <button class="ui inverted violet button">Violet</button>
-  <button class="ui inverted purple button">Purple</button>
-  <button class="ui inverted pink button">Pink</button>
-  <button class="ui inverted brown button">Brown</button>
-  <button class="ui inverted grey button">Grey</button>
-  <button class="ui inverted black button">Black</button>
+{% block sidebar %}
+    {% include 'base/sidebar.html' %}
+{% endblock %}
+<div class="pusher">
+    {% block body %}
+        <div id="main">
+
+            {% block navbar %}
+                {% include 'base/navbar.html' %}
+            {% endblock %}
+
+            {% block content %}
+                <div class="ui container" >
+                    {% block container %}
+
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+            {% block footer %}
+                {% include 'base/footer.html' %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+
 </div>
+
 
 
 
