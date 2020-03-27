@@ -1,3 +1,9 @@
-.myb{
-    background-color: #0e566c;
-}
+ body{
+     background-attachment: fixed;
+     background-repeat: no-repeat;
+       background-size: cover;
+ }
+
+ html{
+     scroll-behavior: smooth;
+ }
