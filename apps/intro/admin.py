@@ -12,3 +12,5 @@ class HomePageAdmin(admin.ModelAdmin):
 @admin.register(UpcomingEvent)
 class UpcomingEventAdmin(admin.ModelAdmin):
     fields = ['poster', 'intro', 'sign_up_link']
+
+

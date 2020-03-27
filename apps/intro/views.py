@@ -4,6 +4,4 @@ from django.shortcuts import render
 
 
 def homepage(req):
-    html = "<html><body>It is now.</body></html>"
-    from django.http import HttpResponse
-    return HttpResponse(html)
+    return render(req, 'intro/index.html')
