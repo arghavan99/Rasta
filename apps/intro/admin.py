@@ -6,7 +6,7 @@ from apps.intro.models import *
 
 @admin.register(HomepageData)
 class HomePageAdmin(admin.ModelAdmin):
-    fields = ['intro', 'video_url', 'logo']
+    fields = ['intro', 'video_url']
 
 
 @admin.register(UpcomingEvent)
