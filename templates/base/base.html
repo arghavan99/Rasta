@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fa">
 {% load static %}
@@ -13,7 +14,34 @@
 
 </head>
 <body dir="rtl" style="height: 100%">
+{#{% block sidebar %}#}
+{#    {% include 'base/sidebar.html' %}#}
+{#{% endblock %}#}
+{#<div class="pusher">#}
+{#    {% block body %}#}
+{#        <div id="main">#}
+{##}
+{#            {% block navbar %}#}
+{#                {% include 'base/navbar.html' %}#}
+{#            {% endblock %}#}
+{##}
+{#            {% block content %}#}
+{#                <div class="ui container" >#}
+{#                    {% block container %}#}
+{##}
+{#                    {% endblock %}#}
+{#                </div>#}
+{#            {% endblock %}#}
+{##}
+{#            {% block footer %}#}
+{#                {% include 'base/footer.html' %}#}
+{#            {% endblock %}#}
+{#        </div>#}
+{#    {% endblock %}#}
+{##}
+{#</div>#}
 <div class="ui inverted segment">
+    <button class="myb">Standard</button>
   <button class="ui inverted button">Standard</button>
   <button class="ui inverted primary button">Primary</button>
   <button class="ui inverted secondary button">Secondary</button>
