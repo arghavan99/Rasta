@@ -1,3 +1,17 @@
+@media only screen and (min-width: 768px) {
+    .mobile-only {
+        display: none !important;
+        visibility: hidden !important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .mobile-hidden {
+        display: none !important;
+        visibility: hidden !important;
+    }
+}
+
 .r-nav {
     padding: 20px 0 !important;
     transition: 1s !important;
@@ -35,3 +49,19 @@
     color: #ffffff !important;
     border-bottom-color: #ffffff !important;
 }
+
+@media only screen and (max-width: 600px) {
+      .ui.fixed.menu {
+        display: none !important;
+      }
+      .secondary.pointing.menu .item,
+      .secondary.pointing.menu .menu {
+        display: none;
+      }
+      .secondary.pointing.menu .toc.item {
+        display: block;
+      }
+      .masthead.segment {
+        min-height: 350px;
+      }
+    }
