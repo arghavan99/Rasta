@@ -1,0 +1,31 @@
+{% load static %}
+
+
+
+<div class="topnav" id="myTopnav">
+  <a href="#home">صفحه اصلی</a>
+    <a href="#blog">بلاگ</a>
+  <a href="#events" >رویدادها</a>
+  <a href="#contact">ارتباط با ما</a>
+
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
+</script>
+{% block content %}
+{% endblock content %}
+
+

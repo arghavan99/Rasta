@@ -1,25 +1,31 @@
- body{
-     background-attachment: fixed;
-     background-repeat: no-repeat;
-     background-size: cover;
- }
+body {
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
- html{
-     scroll-behavior: smooth;
- }
+html {
+    scroll-behavior: smooth;
+}
+
+.social {
+    transition: ease-in-out 200ms;
+}
 
 .social:hover {
 
-    transform:  scale(1.5);
+    transform: scale(1.5);
 
 }
+
 .social {
-      transition: ease-in-out 200ms;
-}
-.footer_logo {
-      transition: ease-in-out 200ms;
+    transition: ease-in-out 200ms;
 }
 
-.footer_logo:hover{
-    transform: rotate(30deg) ;
+.footer_logo {
+    transition: ease-in-out 200ms;
+}
+
+.footer_logo:hover {
+    transform: rotate(30deg);
 }

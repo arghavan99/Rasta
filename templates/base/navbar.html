@@ -1,0 +1,19 @@
+{% load static %}
+<nav class="r-nav ui large fixed secondary pointing menu" style="border: none; display: flex;">
+    <a class="link item">
+        <img src="{% static 'images/nav-logo.png' %}" alt="" style="width: 50px;">
+    </a>
+    <a class="{% if active == 'home' %}'active'{% else %}''{% endif %} link item">
+        خانه
+    </a>
+    <a class="active link item">
+        رویدادها
+    </a>
+    <a class="{% if active == 'blog' %}'active'{% else %}''{% endif %} link item">
+        بلاگ
+    </a>
+    <a class="{% if active == 'contact' %}'active'{% else %}''{% endif %} link item">
+        تماس با ما
+    </a>
+</nav>
+
