@@ -1,3 +1,11 @@
+ :root {
+  --primary-dark:#001d47;
+  --secondary-dark: #002b80;
+  --primary-light:#82CAFF;
+  --secondary-light:#c4e6ff;
+}
+
+
 body {
     background-attachment: fixed;
     background-repeat: no-repeat;
