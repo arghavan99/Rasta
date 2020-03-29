@@ -67,7 +67,7 @@
   top: 10px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .openbtn {display: block;}
   .sidebar a {display: block;}
   .logo { display: block}

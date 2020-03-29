@@ -25,3 +25,9 @@ html {
 .footer_logo {
     transition: ease-in-out 200ms;
 }
+
+.mybackground {
+    background-color: rgba(130,202,255,0.3) !important;
+    border-radius: 30px!important;
+    margin: auto;
+}
