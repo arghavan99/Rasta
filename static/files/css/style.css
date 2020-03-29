@@ -33,7 +33,3 @@ html {
 .footer_logo {
     transition: ease-in-out 200ms;
 }
-
-.footer_logo:hover {
-    transform: rotate(30deg);
-}
