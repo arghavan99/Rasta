@@ -43,6 +43,8 @@ INSTALLED_APPS = [
 
     'ckeditor',
     'ckeditor_uploader',
+
+    'captcha',
 ]
 
 MIDDLEWARE = [
