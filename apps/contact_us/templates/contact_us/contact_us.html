@@ -5,7 +5,15 @@
     <title>Title</title>
 </head>
 <body>
-    contact_us
+
+{% for mem in members %}
+    {{ mem.name }}
+    <br>
+    {{ mem.role }}
+    <br>
+    {{ mem.education }}
+{% endfor %}
+
 </body>
 </html>
 
