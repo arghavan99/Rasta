@@ -20,3 +20,4 @@ class UserFeedback(models.Model):
     text = models.TextField(max_length=200, null=False, blank=False)
     email = models.EmailField(null=False, blank=False)
     type = models.CharField(max_length=200, null=False, blank=False, choices=type_choices)
+    submit_time = models.DateTimeField(auto_now_add=True)
