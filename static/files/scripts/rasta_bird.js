@@ -1,4 +1,10 @@
-$('.bird')
+$(document).ready(function() {
+    $('#bird')
   .transition('set looping')
-  .transition('bounce', '2000ms')
+  .transition('tada', '2500MS')
+
+//  .transition('tada', '2500MS')
+//  .transition('bounce', '2000ms')
 ;
+
+});
