@@ -1,0 +1,19 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="center aligned" style="margin-top: 100px">
+{#    <div class="ui center aligned segment" style="width:90vm;height: 90vh;border-radius: 20px; background-color: rgba(130,202,255,0.3) !important;">#}
+        <div class="ui placeholder segment" style="border-radius: 20px; background-color: rgba(130,202,255,0.3) !important ;height: 80vh;margin: auto">
+  <div class="ui icon header">
+      <img  src="{% static 'images/logo_darkblue.png' %}"  style="width: 80px;">
+      <br>
+
+    پیام شما با موفقیت ثبت شد.
+  </div>
+
+  <a class="ui primary button" href="{% url 'intro:homepage' %}">بازگشت به خانه</a>
+{#</div>#}
+
+
+    </div></div>
+{% endblock %}

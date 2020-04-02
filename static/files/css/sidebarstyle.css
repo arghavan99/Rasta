@@ -49,7 +49,7 @@
   top: 10px;
   opacity: 50%;
   border-radius: 10px;
-  z-index: 99;
+  z-index: 1;
 }
 
 .openbtn:hover {
