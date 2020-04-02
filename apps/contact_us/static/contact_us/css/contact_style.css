@@ -1,0 +1,27 @@
+.bubble {
+    border-radius: 20px !important;
+    background-color: rgba(130, 202, 255, 0.3) !important;
+    padding: 5% !important;
+}
+
+.detail {
+    max-width: 100%;
+    margin-top: 1vh;
+    line-height: 150%;
+    text-align: center!important;
+}
+.member-name {
+    color: var(--primary-dark);
+    font-weight: bold;
+    font-size: large;
+}
+
+.member-role {
+    color: var(--secondary-dark);
+    font-size: medium;
+}
+
+.member-edu {
+    color: var(--secondary-dark);
+    font-size: small;
+}

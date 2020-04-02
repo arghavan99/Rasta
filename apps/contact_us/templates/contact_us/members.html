@@ -1,0 +1,31 @@
+{% load static %}
+
+<div class="ui bubble segment" dir="rtl">
+
+    <h2 class="ui center aligned dividing header">
+        اعضای هسته
+    </h2>
+
+    <div class="ui center aligned stackable grid">
+
+
+        {% for member in members %}
+
+            <div class="ui four wide column">
+                <div class="ui centered small circular fade reveal image">
+                    <img class="visible content" alt="" src="{{ member.photo_visible.url }}">
+                    <img class="hidden content" alt="" src="{{ member.photo_hidden.url }}">
+                </div>
+                <div class="ui member-name detail">
+                    {{ member.name }}
+                </div>
+                <div class="ui member-role detail">
+                    {{ member.role }}
+                </div>
+                <div class="ui center aligned member-edu detail">
+                    {{ member.education }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
