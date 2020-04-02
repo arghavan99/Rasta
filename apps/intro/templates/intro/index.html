@@ -1,6 +1,10 @@
 {% extends 'base/base.html' %}
 {% load static %}
 
+{% block extra_header %}
+        <script type="text/javascript" src="{% static 'scripts/rasta_bird.js' %}"></script>
+{% endblock %}
+
 {% block  content %}
 <div class="ui stackable aligned segment"
      style="background-color: rgba(0, 0, 0, 0);
@@ -11,7 +15,7 @@
     <div class="ui grid" style="direction:LTR">
         <div class="two wide column">
         </div>
-        <div class="four wide column">
+        <div class="four wide column" id="bird">
             <img src="{% static 'images/logo.png' %}"
                  style="height:70vh;margin-top:20vh;">
         </div>
@@ -34,4 +38,6 @@
 </div>
 
 {% endblock %}
+
+
 
