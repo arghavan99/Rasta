@@ -9,13 +9,15 @@ class RastaMember(models.Model):
     name = models.CharField(max_length=100, blank=False, null=False)
     education = models.CharField(max_length=200, blank=False, null=False)
     role = models.CharField(max_length=100, blank=True, null=True)
-    photo = models.ImageField(null=False, blank=False)
+    photo_visible = models.ImageField(null=False, blank=False)
+    photo_hidden = models.ImageField(null=False, blank=False)
 
 
 class UserFeedback(models.Model):
     type_choices = (('student', _('student')),
                     ('teacher', _('teacher')),
-                    ('parent', _('parent')))
+                    ('parent', _('parent')),
+                    ('other', _('other')) )
     name = models.CharField(max_length=100)
     text = models.TextField(max_length=200, null=False, blank=False)
     email = models.EmailField(null=False, blank=False)
