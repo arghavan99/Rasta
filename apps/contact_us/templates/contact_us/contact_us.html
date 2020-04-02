@@ -1,19 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base/base.html' %}
+{%  load static %}
+{% block extra_header %}
+        <link rel="stylesheet" href="{% static 'contact_us/css/contact_style.css' %}">
+        <script type="text/javascript" src="{% static 'contact_us/scripts/contact_js.js' %}"></script>
 
-{% for mem in members %}
-    {{ mem.name }}
-    <br>
-    {{ mem.role }}
-    <br>
-    {{ mem.education }}
-{% endfor %}
+{% endblock %}
 
-</body>
-</html>
+{% block container %}
+
+    {% block members %}
+                {% include 'contact_us/members.html' %}
+            {% endblock %}
+
+
+    {% block form %}
+                {% include 'contact_us/form.html' %}
+            {% endblock %}
+
+
+{% endblock %}
 
