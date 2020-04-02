@@ -11,6 +11,7 @@ class HomepageData(models.Model):
 
 
 class UpcomingEvent(models.Model):
-    poster = models.ImageField()
+    poster = models.ImageField(null=False, blank=False)
     intro = RichTextField()
-    sign_up_link = models.URLField(null=True, blank=True)
+    button_link = models.URLField(null=False, blank=False)
+    button_name = models.CharField(null=False, blank=False, max_length=50)
