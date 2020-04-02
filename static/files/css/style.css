@@ -81,3 +81,13 @@ html {
     border-radius: 30px!important;
     margin: auto;
 }
+* {
+    font-family: Samim !important;
+}
+
+input[type="text"],input[type="email"],input[type=""], textarea,select {
+
+  background-color : rgba(255,255,255,0.7)  !important;
+    border-radius: 10px !important;
+
+}
