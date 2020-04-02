@@ -20,7 +20,7 @@
 
 
 </head>
-<body dir="rtl" style="height: 100%; background-image: url({% static 'images/cloud.jpg' %})" >
+<body dir="rtl" style="height: 100%; background-image: url({% static 'images/background.jpeg' %})" >
 
 
 
@@ -30,10 +30,11 @@
 <div class="pusher">
     {% block body %}
         <div id="main">
-
+            <div class="container">
             {% block navbar %}
                 {% include 'base/navbar.html' %}
             {% endblock %}
+            </div>
 
             {% block content %}
                 <div class="ui container" >

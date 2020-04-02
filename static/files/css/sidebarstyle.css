@@ -57,11 +57,6 @@
 
 }
 
-#main {
-  transition: margin-left .5s;
-  padding: 16px;
-}
-
 .logo{
   display: none;
   position: absolute;

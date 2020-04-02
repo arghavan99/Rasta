@@ -1,3 +1,37 @@
-{% extends 'base/lightbg.html' %}
+{% extends 'base/base.html' %}
 {% load static %}
+
+{% block  content %}
+<div class="ui stackable aligned segment"
+     style="background-color: rgba(0, 0, 0, 0);
+     height:100vh;
+     border-radius:0;
+     margin-top :0!important;
+     margin-bottom: 0 !important;">
+    <div class="ui grid" style="direction:LTR">
+        <div class="two wide column">
+        </div>
+        <div class="four wide column">
+            <img src="{% static 'images/logo.png' %}"
+                 style="height:70vh;margin-top:20vh;">
+        </div>
+        <div class="four wide column"></div>
+        <div class="three wide column" style="padding-top:40vh;">
+            <p style="font-size:50px"> رستا</p>
+            <p style="font-size:40px"> جمع علمی-ترویجی</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="ui stackable center aligned segment"
+     style="background-color:var(--secondary-light);
+     height:100vh;
+     border-radius:0;
+     margin-top :0!important;
+     margin-bottom: 0 !important;">
+    <p>salam</p>
+</div>
+
+{% endblock %}
 
