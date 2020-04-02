@@ -14,10 +14,10 @@ class RastaMember(models.Model):
 
 
 class UserFeedback(models.Model):
-    type_choices = (('student', _('student')),
-                    ('teacher', _('teacher')),
-                    ('parent', _('parent')),
-                    ('other', _('other')) )
+    type_choices = (('student', 'دانش آموز'),
+                    ('teacher', 'آموزگار'),
+                    ('parent', 'پدر یا مادر'),
+                    ('other', 'دیگر') )
     name = models.CharField(max_length=100)
     text = models.TextField(max_length=200, null=False, blank=False)
     email = models.EmailField(null=False, blank=False)
