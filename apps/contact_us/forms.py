@@ -9,4 +9,4 @@ class ContactUsForm(forms.ModelForm):
         model = UserFeedback
         fields = ['name', 'text', 'email', 'type']
 
-    captcha = ReCaptchaField()
+    # captcha = ReCaptchaField()

@@ -36,18 +36,28 @@
                 <label>متن پیام</label>
                 {{ form.text }}
             </div>
-              <div class="field required">
-            {{ form.captcha }}
-        </div>
-        {% if form.captcha.errors %}
-            <div class="ui message error" style="font-weight:bolder;color:#ED1A3A;">
-                {{ form.captcha.errors }}
-            </div>
-        {% endif %}
+              <div class="bibot-captcha" data-sitekey="{{ bibot }}" data-callback="bibot_callback"></div>
+              <!--<div class="field required">-->
+            <!--{{ form.captcha }}-->
+        <!--</div>-->
+        <!--{% if form.captcha.errors %}-->
+            <!--<div class="ui message error" style="font-weight:bolder;color:#ED1A3A;">-->
+                <!--{{ form.captcha.errors }}-->
+            <!--</div>-->
+        <!--{% endif %}-->
+              {% if messages %}
+    <ul class="back_messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 
         <button type="submit" class="ui primary button" style="font-weight: bolder">ثبت کن !</button>
 
           </form>
+      <script src="https://bibot.ir/bibot.min.js"></script>
+
 
 
   </div>
