@@ -3,6 +3,7 @@
 
 {% block extra_header %}
         <script type="text/javascript" src="{% static 'scripts/rasta_bird.js' %}"></script>
+        <script src="{% static 'scripts/scrollreveal.js' %}"></script>
 {% endblock %}
 
 {% block  content %}
@@ -21,8 +22,8 @@
         </div>
         <div class="four wide column"></div>
         <div class="three wide column" style="padding-top:40vh;">
-            <p style="font-size:50px"> رستا</p>
-            <p style="font-size:40px"> جمع علمی-ترویجی</p>
+            <p class="reveal_fade" style="font-size:50px"> رستا</p>
+            <p class="reveal_fade" style="font-size:40px"> جمع علمی-ترویجی</p>
         </div>
     </div>
 
@@ -41,9 +42,9 @@
          <div class="row">
              <div class="ui center aligned" style="margin-left: auto;margin-right: auto;">
                  <div style=" text-align: center;">
-                    <img src="{% static 'images/label.png' %}" style="height:15vh">
+                    <img class="reveal_fade" src="{% static 'images/label.png' %}" style="height:15vh">
                      <div style="text-align: center;">
-                         <h2>معرفی</h2>
+                         <h2 class="reveal_fade">معرفی</h2>
                      </div>
                  </div>
              </div>
@@ -60,7 +61,7 @@
 
             </div>
             <div class="one wide column"> </div>
-            <div class="six wide column" dir="rtl" style=" text-align: justify; text-justify: inter-word;">
+            <div class="six wide column reveal_fade" dir="rtl" style=" text-align: justify; text-justify: inter-word;">
                     {{ intro|safe }}
             </div>
          </div>
@@ -83,4 +84,9 @@
 {% endblock %}
 
 
+{% block footer_scripts %}
+    <script>
+            ScrollReveal().reveal('.reveal_fade', {delay: 500});
 
+    </script>
+{% endblock %}
