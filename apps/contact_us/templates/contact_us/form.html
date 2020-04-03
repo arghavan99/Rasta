@@ -24,13 +24,8 @@
             </div>
               {% if form.email.errors %}
             <div class="ui message error" style="font-weight:bolder;color:#ED1A3A;">
-                <strong>{{ form.email.errors }}</strong>
+                <strong>پارامترهای ورودی صحیح نمیباشد.</strong>
             </div>
-            <ol class="ui message error" style="font-weight:bolder;color:#ED1A3A;">
-                {% for error in form.email.errors %}
-                    <li>{{ error|escape }}</li>
-                {% endfor %}
-            </ol>
         {% endif %}
           <div class="field required">
                 <label>متن پیام</label>
@@ -53,7 +48,7 @@
     </ul>
 {% endif %}
 
-        <button type="submit" class="ui primary button" style="font-weight: bolder">ثبت کن !</button>
+        <button type="submit" class="ui primary button" style="font-weight: bolder;margin-top: 20px">ثبت کن !</button>
 
           </form>
       <script src="https://bibot.ir/bibot.min.js"></script>

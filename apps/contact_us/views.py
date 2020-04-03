@@ -49,4 +49,5 @@ def get_members(request):
         form = ContactUsForm(request.POST)
         if form.is_valid():
             form.save()
+            return render(request, 'contact_us/successful.html')
         # todo redirect to another page
