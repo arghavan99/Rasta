@@ -51,7 +51,6 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-    font-family:Samim,sans-serif;
 }
 
 html {
@@ -82,7 +81,7 @@ html {
     margin: auto;
 }
 * {
-    font-family: Samim !important;
+    font-family: iransansdn , samim !important;
 }
 
 input[type="text"],input[type="email"],input[type=""], textarea,select {
@@ -90,4 +89,14 @@ input[type="text"],input[type="email"],input[type=""], textarea,select {
   background-color : rgba(255,255,255,0.7)  !important;
     border-radius: 10px !important;
 
+}
+select {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;       /* Remove default arrow */
+
+}
+
+select.items {
+   background-color : rgba(255,255,255,0.7)  !important;
 }
