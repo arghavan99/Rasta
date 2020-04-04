@@ -16,5 +16,5 @@ def menu(request):
         if item[1] == request.path:
             item.append('active')
         else:
-            item.append('not_active')
+            item.append('')
     return context
