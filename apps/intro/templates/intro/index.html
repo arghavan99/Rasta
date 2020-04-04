@@ -8,11 +8,18 @@
 
 {% block  content %}
 <div class="ui stackable aligned segment"
-     style="background-color: rgba(0, 0, 0, 0);
-     height:100vh;
-     border-radius:0;
+     style="
+     background-image: url({% static 'images/background.jpeg' %});
+     background-attachment: fixed;
+     background-repeat: no-repeat;
+     background-size: cover;
      margin-top :0!important;
-     margin-bottom: 0 !important;">
+     margin-bottom: -50px !important;
+     padding-bottom:0px !important;
+     padding-top: 0px !important;
+    border-bottom-left-radius:10%;
+    border-bottom-right-radius:10%;
+    z-index: 100">
     <div class="ui grid" style="direction:LTR">
         <div class="two wide column">
         </div>
@@ -34,9 +41,13 @@
      style="background-color:var(--primary-light);
      border-radius:0;
      margin-top :0!important;
-     margin-bottom: 0 !important;
-     padding-bottom: 70px !important;
-     padding-top: 70px !important;">
+     margin-bottom: -50px !important;
+     padding-bottom: 100px !important;
+     padding-top: 100px !important;
+    border-bottom-left-radius:10%;
+    border-bottom-right-radius:10%;
+    z-index: 80">
+
     <!--todo  padding ro be jahaye dg ham ezafe konim-->
      <div class="ui middle aligned stackable grid container" style="direction:LTR; padding:0!important">
          <div class="row" dir="rtl">
@@ -63,8 +74,6 @@
          </div>
     </div>
 
-
-
 </div>
 
 
@@ -72,15 +81,17 @@
 <div class="ui stackable center aligned segment"
      style="
      background-image: url({% static 'images/pattern.jpg' %});
+
      background-attachment: fixed;
      background-repeat: no-repeat;
      background-size: cover;
      <!--background-color:var(&#45;&#45;secondary-light);-->
      border-radius:0;
      margin-top :0!important;
-     margin-bottom: 0 !important;
-     padding-bottom: 70px !important;
-     padding-top: 70px !important;">
+     margin-bottom: !important;
+     padding-bottom:100px !important;
+     padding-top: 100px !important;
+    z-index: 50">
 
     <div class="ui middle aligned stackable grid container" style="direction:rtl">
         <div class="row">
@@ -93,16 +104,10 @@
          <div class="row">
             <div class="one wide column"></div>
             <div class="ui center aligned seven wide column reveal_fade">
-                 <img class="ui large rounded image" src="{% static 'images/currentEvent.jpg' %} ">
+                 <img class="ui large rounded image" src="{{ upcoming_event.poster.url }} ">
             </div>
             <div class="one wide column"> </div>
             <div class="six wide column" dir="rtl" style=" text-align: justify; text-justify: inter-word;">
-                 <div class="row reveal_fade" >
-                     <h2>
-                         {{ upcoming_event.title |safe }}
-                     </h2>
-                </div>
-
                 <div class="row reveal_fade" >
                      <p>
                          {{ upcoming_event.intro | safe }}
@@ -120,6 +125,9 @@
     </div>
 
 </div>
+
+
+
 
 {% endblock %}
 
