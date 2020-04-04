@@ -78,24 +78,33 @@
      <!--background-color:var(&#45;&#45;secondary-light);-->
      border-radius:0;
      margin-top :0!important;
-     margin-bottom: 0 !important;">
+     margin-bottom: 0 !important;
+     padding-bottom: 70px !important;
+     padding-top: 70px !important;">
 
     <div class="ui middle aligned stackable grid container" style="direction:rtl">
+        <div class="row">
+            <h1 class="reveal_fade" style="color:var(--header)">
+                    <i class="calendar alternate outline icon"></i>
+                    رویداد پیش رو
+            </h1>
+        </div>
+
          <div class="row">
             <div class="one wide column"></div>
-            <div class="ui center aligned seven wide column" >
+            <div class="ui center aligned seven wide column reveal_fade">
                  <img class="ui large rounded image" src="{% static 'images/currentEvent.jpg' %} ">
             </div>
             <div class="one wide column"> </div>
             <div class="six wide column" dir="rtl" style=" text-align: justify; text-justify: inter-word;">
-                <div class="row">
+                <div class="row reveal_fade" >
                      <p>
                          {{ upcoming_event.intro | safe }}
                      </p>
                 </div>
                 <br>
                 <div class="row">
-                    <div style=" text-align: center; ">
+                    <div style=" text-align: center" class="reveal_fade">
                         <button class="ui  black  button" onclick="window.location.href = '{{upcoming_event.button_link}}'">{{upcoming_event.button_name}}</button>
                     </div>
                 </div>
