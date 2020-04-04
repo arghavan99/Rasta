@@ -89,24 +89,14 @@
             <div class="one wide column"> </div>
             <div class="six wide column" dir="rtl" style=" text-align: justify; text-justify: inter-word;">
                 <div class="row">
-                    <h1 style="padding-bottom: 10px">برگزاری اردو مسابقه ریاضی گردی </h1>
-                </div>
-                <div class="row">
                      <p>
-                         توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح
-                         توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح
-                         توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح
-                         توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح
-                         توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح
-                         توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح
-                         توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح
-                         جهت ثبت نام کیلک کنید
+                         {{ upcoming_event.intro | safe }}
                      </p>
                 </div>
                 <br>
                 <div class="row">
                     <div style=" text-align: center; ">
-                        <button class="ui  black  button" onclick="window.location.href = '#'">ثبت نام</button>
+                        <button class="ui  black  button" onclick="window.location.href = '{{upcoming_event.button_link}}'">{{upcoming_event.button_name}}</button>
                     </div>
                 </div>
 
