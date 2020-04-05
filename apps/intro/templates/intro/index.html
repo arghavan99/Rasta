@@ -11,22 +11,31 @@
      style="background-color: rgba(0, 0, 0, 0);
      height:100vh;
      border-radius:0;
+     padding-top:25vh;
      margin-top :0!important;
      margin-bottom: 0 !important;">
-    <div class="ui grid" style="direction:LTR">
-        <div class="two wide column">
-        </div>
-        <div class="four wide column" style=" height: 100vh; width: 160px; white-space: nowrap;" id="bird">
-         <span class="helper" style=" display: inline-block; height: 100%; vertical-align: middle;"></span>
-            <img src="{% static 'images/nav-logo.png' %}"
+<div class="ui middle aligned stackable grid container two column" style="direction:ltr">
+
+            <div class="ui center aligned column reveal_fade" >
+                <img id="bird" src="{% static 'images/nav-logo.png' %}"
                                       style="vertical-align: middle;width:30vw;">
-        </div>
-        <div class="three wide column"></div>
-        <div class="three wide column" style="padding-top:40vh;">
-            <p class="reveal_fade" style="font-size:50px"> رستا</p>
-            <p class="reveal_fade" style="font-size:40px"> جمع علمی-ترویجی</p>
-        </div>
-    </div>
+            </div>
+
+            <div class="column" style=" text-justify: inter-word;">
+                <div class="mobile-only" style=" text-align: center;">
+                 <div class="row reveal_fade" >
+                     <p class="reveal_fade" style="font-size:50px"> رستا</p>
+                     <p class="reveal_fade" style="font-size:40px"> جمع علمی-ترویجی</p>
+                </div>
+                </div>
+                <div class="mobile-hidden" style=" text-align: justify;">
+                 <div class="row reveal_fade" >
+                     <p class="reveal_fade" style="font-size:50px"> رستا</p>
+                     <p class="reveal_fade" style="font-size:40px"> جمع علمی-ترویجی</p>
+                </div>
+                </div>
+            </div>
+</div>
 
 </div>
 
@@ -85,7 +94,7 @@
     <div class="ui middle aligned stackable grid container" style="direction:rtl">
         <div class="row">
             <h1 class="reveal_fade" style="color:var(--header)">
-                    <i class="calendar alternate outline icon"></i>
+                    <i class="ui calendar alternate outline icon"></i>
                     رویداد پیش رو
             </h1>
         </div>
