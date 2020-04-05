@@ -46,12 +46,13 @@
 .r-nav a.active {
     color: var(--primary-dark) !important;
     border-bottom-color: var(--primary-dark) !important;
-    font-weight: bolder;
+    font-weight: bolder !important;
 }
 
 .r-nav.active-nav a.active {
     color: var(--primary-white) !important;
     border-bottom-color: var(--primary-white) !important;
+    font-weight: bolder !important;
 }
 
 @media only screen and (max-width: 767px) {
