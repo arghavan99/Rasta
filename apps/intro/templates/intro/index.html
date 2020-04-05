@@ -69,7 +69,7 @@
 </div>
 
 
-
+{% if upcoming_event %}
 <div class="ui stackable center aligned segment"
      style="
      background-image: url({% static 'images/pattern.jpg' %});
@@ -120,6 +120,7 @@
     </div>
 
 </div>
+{% endif %}
 
 {% endblock %}
 
