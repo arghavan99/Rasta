@@ -6,14 +6,15 @@ def menu(request):
     context = {
             'navbar': [
                 ['صفحه اصلی', '/'],
-                ['رویدادها', 'events/'],
-                ['بلاگ', 'blog/'],
-                ['تماس با ما', 'contact_us/']
+                ['رویدادها', '/events'],
+                ['بلاگ', '/blog'],
+                ['تماس با ما', '/contact_us']
             ]
     }
 
+    path = '/' + request.path.split('/')[1]
     for item in context['navbar']:
-        if item[1] == request.path:
+        if item[1] == path:
             item.append('active')
         else:
             item.append('')
