@@ -42,11 +42,6 @@
   z-index: 50;
 }
 
-.openbtn:hover {
-  background-color: #444;
-
-}
-
 .logo{
   display: none;
   position: absolute;
