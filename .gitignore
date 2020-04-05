@@ -14,3 +14,5 @@
 !requirements.txt
 !/static/files/**
 !/templates/**
+
+*.pyc
