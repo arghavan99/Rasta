@@ -7,18 +7,24 @@
 <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" >×</a>
 
-  <a class="{% if active == 'home' %}'active'{% else %}''{% endif %} link item" style="border-bottom: #0e8c8c solid 2px;border-top: #0e8c8c solid 2px" >
-        خانه
-    </a>
-     <a class="active link item"style="border-bottom: #0e8c8c solid 2px">
-        رویدادها
-    </a>
-    <a class="{% if active == 'blog' %}'active'{% else %}''{% endif %} link item" style="border-bottom: #0e8c8c solid 2px">
-        بلاگ
-    </a>
-    <a class="{% if active == 'contact' %}'active'{% else %}''{% endif %} link item" style="border-bottom: #0e8c8c solid 2px">
-        تماس با ما
-    </a>
+    {% for name , link , is_active in navbar %}
+        <a class=" {{ is_active }} link item" style="border-bottom: #0e8c8c solid 2px;border-top: #0e8c8c solid 2px">
+        {{ name }}
+        </a>
+    {% endfor %}
+
+  <!--<a class="{% if active == 'home' %}'active'{% else %}''{% endif %} link item" style="border-bottom: #0e8c8c solid 2px;border-top: #0e8c8c solid 2px" >-->
+        <!--خانه-->
+    <!--</a>-->
+     <!--<a class="active link item"style="border-bottom: #0e8c8c solid 2px">-->
+        <!--رویدادها-->
+    <!--</a>-->
+    <!--<a class="{% if active == 'blog' %}'active'{% else %}''{% endif %} link item" style="border-bottom: #0e8c8c solid 2px">-->
+        <!--بلاگ-->
+    <!--</a>-->
+    <!--<a class="{% if active == 'contact' %}'active'{% else %}''{% endif %} link item" style="border-bottom: #0e8c8c solid 2px">-->
+        <!--تماس با ما-->
+    <!--</a>-->
 </div>
 
 
