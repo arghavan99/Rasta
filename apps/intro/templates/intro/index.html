@@ -30,8 +30,8 @@
                 </div>
                 <div class="mobile-hidden" style=" text-align: justify;">
                  <div class="row reveal_fade" >
-                     <p class="reveal_fade" style="font-size:50px"> رستا</p>
-                     <p class="reveal_fade" style="font-size:40px"> جمع علمی-ترویجی</p>
+                     <p class="reveal_fade" style="font-weight:bolder;font-size:50px"> رستا</p>
+                     <p class="reveal_fade" style="font-weight:bolder;font-size:40px"> جمع علمی-ترویجی</p>
                 </div>
                 </div>
             </div>
@@ -107,20 +107,20 @@
             <div class="one wide column"> </div>
             <div class="six wide column" dir="rtl" style=" text-align: justify; text-justify: inter-word;">
                  <div class="row reveal_fade" >
-                     <h2>
+                     <h2 style="color: var(--header)">
                          {{ upcoming_event.title |safe }}
                      </h2>
                 </div>
 
                 <div class="row reveal_fade" >
-                     <p>
+                     <p style="color: var(--header)">
                          {{ upcoming_event.intro | safe }}
                      </p>
                 </div>
                 <br>
                 <div class="row">
                     <div style=" text-align: center" class="reveal_fade">
-                        <button class="ui  black  button" onclick="window.location.href = '{{upcoming_event.button_link}}'">{{upcoming_event.button_name}}</button>
+                        <button class="ui button" style="background-color: var(--header) ;color: white" onclick="window.location.href = '{{upcoming_event.button_link}}'">{{upcoming_event.button_name}}</button>
                     </div>
                 </div>
 
