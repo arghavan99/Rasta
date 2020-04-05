@@ -40,10 +40,12 @@
 
 
 :root {
+    --header: #292a2a;
   --primary-dark:#001d47;
   --secondary-dark: #002b80;
   --primary-light:#82CAFF;
   --secondary-light:#c4e6ff;
+    --bubble: rgba(55,187,160,0.3);
 }
 
 
@@ -76,7 +78,7 @@ html {
 }
 
 .mybackground {
-    background-color: rgba(130,202,255,0.3) !important;
+    background-color: var(--bubble) !important;
     border-radius: 30px!important;
     margin: auto;
 }

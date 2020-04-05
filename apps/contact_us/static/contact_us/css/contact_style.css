@@ -1,6 +1,6 @@
 .bubble {
     border-radius: 20px !important;
-    background-color: rgba(130, 202, 255, 0.3) !important;
+    background-color: var(--bubble) !important;
     padding: 5% !important;
 }
 
@@ -24,4 +24,8 @@
 .member-edu {
     color: var(--secondary-dark);
     font-size: small;
+}
+
+#contact_form label{
+    color: var(--header)
 }
