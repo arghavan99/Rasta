@@ -1,12 +1,13 @@
 {% load static %}
 <nav class="ui large mobile-hidden r-nav fixed secondary pointing menu" style="">
-    <a class="link mobile-hidden item">
+
+    <a href="" class="link mobile-hidden item">
         <img src="{% static 'images/nav-logo.png' %}" alt="" style="width: 50px;">
     </a>
 
     {% for name , link , is_active in navbar %}
         <a href="{{ link }}" class=" {{ is_active }} link item">
-        {{ name }}
+            {{ name }}
         </a>
     {% endfor %}
 

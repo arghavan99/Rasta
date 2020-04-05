@@ -11,13 +11,13 @@
     text-align: center!important;
 }
 .member-name {
-    color: var(--primary-dark);
+    color: var(--header);
     font-weight: bold;
     font-size: large;
 }
 
 .member-role {
-    color: var(--secondary-dark);
+    color: var(--header);
     font-size: medium;
 }
 
