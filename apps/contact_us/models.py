@@ -4,8 +4,6 @@ from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
 
-# Create your models here.
-
 
 class RastaMember(models.Model):
     name = models.CharField(max_length=100, blank=False, null=False)
@@ -25,10 +23,12 @@ class RastaMember(models.Model):
         im2.save(output2, format='png', quality=100)
         output1.seek(0)
         output2.seek(0)
-        self.photo_visible = InMemoryUploadedFile(output1, 'ImageField', "%s.jpg" % self.photo_visible.name.split('.')[0], 'image/jpeg',
-                                        sys.getsizeof(output1), None)
-        self.photo_hidden = InMemoryUploadedFile(output2, 'ImageField', "%s.jpg" % self.photo_hidden.name.split('.')[0], 'image/jpeg',
-                                        sys.getsizeof(output2), None)
+        self.photo_visible = InMemoryUploadedFile(output1, 'ImageField',
+                                                  "%s.jpg" % self.photo_visible.name.split('.')[0], 'image/jpeg',
+                                                  sys.getsizeof(output1), None)
+        self.photo_hidden = InMemoryUploadedFile(output2, 'ImageField', "%s.jpg" % self.photo_hidden.name.split('.')[0],
+                                                 'image/jpeg',
+                                                 sys.getsizeof(output2), None)
         super(RastaMember, self).save()
 
     def __str__(self):
@@ -39,7 +39,7 @@ class UserFeedback(models.Model):
     type_choices = (('student', 'دانش آموز'),
                     ('teacher', 'آموزگار'),
                     ('parent', 'پدر یا مادر'),
-                    ('other', 'دیگر') )
+                    ('other', 'دیگر'))
     name = models.CharField(max_length=100)
     text = models.TextField(max_length=200, null=False, blank=False)
     email = models.EmailField(null=False, blank=False)

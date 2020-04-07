@@ -1,15 +1,11 @@
-from django.urls import reverse
-from django.utils.translation import ugettext as _
-
-
 def menu(request):
     context = {
-            'navbar': [
-                ['صفحه اصلی', '/'],
-                ['رویدادها', '/events'],
-                ['بلاگ', '/blog'],
-                ['تماس با ما', '/contact_us']
-            ]
+        'navbar': [
+            ['صفحه اصلی', '/'],
+            ['رویدادها', '/events'],
+            ['بلاگ', '/blog'],
+            ['تماس با ما', '/contact_us']
+        ]
     }
 
     path = '/' + request.path.split('/')[1]

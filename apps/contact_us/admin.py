@@ -2,11 +2,9 @@ from django.contrib import admin
 from apps.contact_us.models import *
 
 
-# Register your models here.
-
 @admin.register(RastaMember)
 class MemberAdmin(admin.ModelAdmin):
-    fields = ['name', 'education', 'role', 'photo_visible','photo_hidden']
+    fields = ['name', 'education', 'role', 'photo_visible', 'photo_hidden']
 
 
 @admin.register(UserFeedback)

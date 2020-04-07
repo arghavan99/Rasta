@@ -1,65 +1,61 @@
 {% load static %}
-<div class="ui segment" style=" border-radius: 20px;padding: 5%; background-color:   var(--bubble) !important;" >
+<div class="ui segment" style=" border-radius: 20px;padding: 5%; background-color:   var(--bubble) !important;">
 
     <h2 class="ui dividing center aligned header" style="color: var(--header)">تماس با ما</h2>
-<div class="ui stackable two column grid " >
+    <div class="ui stackable two column grid ">
 
-  <div class="column" id="contact_form">
+        <div class="column" id="contact_form">
 
-          <form method="post" class="ui form error" style="margin:auto;width: 90%">{% csrf_token %}
-{#              todo method is get or post?#}
-              <div class="two fields">
-            <div class="field required">
-                <label>نام و نام خانوادگی</label>
-                {{ form.name }}
-            </div>
-            <div class="field required">
-                <label>کدام دسته از مخاطبین رستا هستید؟</label>
-                {{ form.type }}
-            </div>
+            <form method="post" class="ui form error" style="margin:auto;width: 90%">{% csrf_token %}
+                {# todo method is get or post?#}
+                <div class="two fields">
+                    <div class="field required">
+                        <label>نام و نام خانوادگی</label>
+                        {{ form.name }}
+                    </div>
+                    <div class="field required">
+                        <label>کدام دسته از مخاطبین رستا هستید؟</label>
+                        {{ form.type }}
+                    </div>
+                </div>
+                <div class="field required">
+                    <label>ایمیل</label>
+                    {{ form.email }}
+                </div>
+                {% if form.email.errors %}
+                <div class="ui message error" style="font-weight:bolder;color:#ED1A3A;">
+                    <strong>پارامترهای ورودی صحیح نمیباشد.</strong>
+                </div>
+                {% endif %}
+                <div class="field required">
+                    <label>متن پیام</label>
+                    {{ form.text }}
+                </div>
+                <div class="bibot-captcha" data-sitekey="{{ bibot }}" data-callback="bibot_callback"></div>
+
+                {% if messages %}
+                <ul class="back_messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+
+                <button type="submit" class="ui button"
+                        style="background-color: var(--secondary-dark) ;color: white;font-weight: bolder;margin-top: 20px">
+                    ثبت کن !
+                </button>
+
+            </form>
+            <script src="https://bibot.ir/bibot.min.js"></script>
+
+
         </div>
-              <div class="field required">
-                <label>ایمیل</label>
-                {{ form.email }}
-            </div>
-              {% if form.email.errors %}
-            <div class="ui message error" style="font-weight:bolder;color:#ED1A3A;">
-                <strong>پارامترهای ورودی صحیح نمیباشد.</strong>
-            </div>
-        {% endif %}
-          <div class="field required">
-                <label>متن پیام</label>
-                {{ form.text }}
-            </div>
-              <div class="bibot-captcha" data-sitekey="{{ bibot }}" data-callback="bibot_callback"></div>
-              <!--<div class="field required">-->
-            <!--{{ form.captcha }}-->
-        <!--</div>-->
-        <!--{% if form.captcha.errors %}-->
-            <!--<div class="ui message error" style="font-weight:bolder;color:#ED1A3A;">-->
-                <!--{{ form.captcha.errors }}-->
-            <!--</div>-->
-        <!--{% endif %}-->
-              {% if messages %}
-    <ul class="back_messages">
-        {% for message in messages %}
-            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
-
-        <button type="submit" class="ui button" style="background-color: var(--secondary-dark) ;color: white;font-weight: bolder;margin-top: 20px">ثبت کن !</button>
-
-          </form>
-      <script src="https://bibot.ir/bibot.min.js"></script>
+        <div class="center aligned column" id="contact_element">
+            <img src="{% static 'contact_us/images/element1.png' %}" style="width: 60%">
+        </div>
 
 
-
-  </div>
-  <div class="center aligned column" id="contact_element">
-      <img src="{% static 'contact_us/images/element1.png' %}" style="width: 60%" >
-  </div>
-
-
-</div>
     </div>
+</div>

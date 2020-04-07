@@ -2,8 +2,6 @@ from django.contrib import admin
 from apps.intro.models import *
 
 
-# Register your models here.
-
 @admin.register(HomepageData)
 class HomePageAdmin(admin.ModelAdmin):
     fields = ['intro', 'video_url']
@@ -12,5 +10,3 @@ class HomePageAdmin(admin.ModelAdmin):
 @admin.register(UpcomingEvent)
 class UpcomingEventAdmin(admin.ModelAdmin):
     fields = ['poster', 'intro', 'title', 'button_link', 'button_name', 'show_on_homepage']
-
-

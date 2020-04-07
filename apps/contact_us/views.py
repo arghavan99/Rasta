@@ -1,6 +1,3 @@
-from django.shortcuts import render
-
-# Create your views here.
 from Rasta_Web.settings import bibot_SiteKey, bibot_SiteSecretKey
 from apps.contact_us.models import *
 from apps.contact_us.forms import ContactUsForm
@@ -50,4 +47,3 @@ def get_members(request):
         if form.is_valid():
             form.save()
             return render(request, 'contact_us/successful.html')
-        # todo redirect to another page
