@@ -3,10 +3,11 @@ chardet==3.0.4
 Django==2.2.11
 django-ckeditor==5.9.0
 django-js-asset==1.2.2
-django-recaptcha==2.0.6
 idna==2.9
 Pillow==7.0.0
 pytz==2019.3
 requests==2.23.0
 sqlparse==0.3.1
 urllib3==1.25.8
+
+gunicorn==19.6.0
