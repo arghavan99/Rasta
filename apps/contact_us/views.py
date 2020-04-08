@@ -8,6 +8,7 @@ from django.shortcuts import render
 
 
 def check_bibot_response(request):
+
     if request.POST.get('bibot-response') is not None:
         if request.POST.get('bibot-response') != '':
             r = requests.post('https://api.bibot.ir/api1/siteverify/', data={
@@ -33,6 +34,8 @@ def check_bibot_response(request):
 
 
 def get_members(request):
+    print(bibot_SiteSecretKey)
+    print("helllll")
     form = ContactUsForm()
     members = RastaMember.objects.all().order_by('id')
     context = {'members': members,

@@ -213,4 +213,7 @@ CKEDITOR_CONFIGS = {
 
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error', ] #todo remove this before depeloy
 
-from secret import bibot_SiteKey, bibot_SiteSecretKey
+# from secret import bibot_SiteKey, bibot_SiteSecretKey
+from decouple import config
+bibot_SiteKey = config('BIBOT_SITE_KEY')
+bibot_SiteSecretKey = config('BIBOT_SITE_SECRET_KEY')
