@@ -34,6 +34,9 @@ def check_bibot_response(request):
 
 
 def get_members(request):
+    print('BIBOT')
+    print(bibot_SiteSecretKey)
+    print(bibot_SiteKey)
     form = ContactUsForm()
     members = RastaMember.objects.all().order_by('id')
     context = {'members': members,
