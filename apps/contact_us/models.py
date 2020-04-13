@@ -12,7 +12,7 @@ class RastaMember(models.Model):
     photo_visible = models.ImageField(null=False, blank=False)
     photo_hidden = models.ImageField(null=False, blank=False)
 
-    def save(self):
+    def save(self, *args, **kwargs):
         im1 = Image.open(self.photo_visible)
         im2 = Image.open(self.photo_hidden)
         output1 = BytesIO()
