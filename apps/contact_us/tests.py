@@ -2,9 +2,8 @@ from django.test import TestCase
 from django.core.files import File
 from PIL import Image
 from io import BytesIO
-from apps.contact_us.models import RastaMember, UserFeedback
+from apps.contact_us.models import RastaMember
 from apps.contact_us.forms import ContactUsForm
-from django.urls import reverse
 
 
 class RastaMemberTest(TestCase):
@@ -116,6 +115,6 @@ class ContactUsViewTest(TestCase):
                                                           'text': 'Form Test',
                                                           'email': 'valid.email@gmail.com',
                                                           'type': 'student',
-                                                          'bibot-response': 'kooft'})
+                                                          'bibot-response': ''})
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'contact_us/contact_us.html')
