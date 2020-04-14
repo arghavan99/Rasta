@@ -11,7 +11,8 @@ def get_events(request):
             'name': event.name,
             'poster': event.poster,
             'year': event.date.year,
-            'month': event.date.month
+            'month': event.date.month,
+            'summary': event.summary
         } for event in events]
     print(context)
     return render(request, 'events/events.html', context)
