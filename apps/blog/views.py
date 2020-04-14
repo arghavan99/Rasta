@@ -40,7 +40,6 @@ def get_all_posts(request):
     context = vis_hid_cats(8, categories)
     context['active_cat'] = ''
     context['posts'] = [post_dictionary(post) for post in posts]
-    print(context)
     return render(request, 'blog/blog.html', context)
 
 
