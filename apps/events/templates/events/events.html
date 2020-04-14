@@ -2,6 +2,7 @@
 {% load static %}
 {% block extra_header %}
     <link rel="stylesheet" href="{% static 'events/css/events.css' %}">
+    <script src="{% static 'scripts/scrollreveal.js' %}"></script>
 {% endblock %}
 
 {% block container %}
@@ -9,7 +10,7 @@
 
         <div class="ui centered cards">
             {% for event in events %}
-                <a class="ui card" href="/events/{{ event.id }}">
+                <a class="ui card fade-reveal" href="/events/{{ event.id }}">
                     <div class="small image">
                         <div class="ui  ribbon label">{{ event.month }} {{ event.year }}</div>
                         <img src="{{ event.poster.url }}">
@@ -27,7 +28,11 @@
 
     </div>
 
+{% endblock %}
 
 
-
+{% block footer_scripts %}
+    <script>
+        ScrollReveal().reveal('.fade-reveal', {duration: 800, easing: 'ease-in-out', interval: 200});
+    </script>
 {% endblock %}

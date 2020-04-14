@@ -1,23 +1,28 @@
 {% extends 'base/base.html' %}
-{%  load static %}
+{% load static %}
 {% block extra_header %}
-        <link rel="stylesheet" href="{% static 'contact_us/css/contact_style.css' %}">
-        <script type="text/javascript" src="{% static 'contact_us/scripts/contact_js.js' %}"></script>
-
+    <link rel="stylesheet" href="{% static 'contact_us/css/contact_style.css' %}">
+    <script type="text/javascript" src="{% static 'contact_us/scripts/contact_js.js' %}"></script>
+    <script src="{% static 'scripts/scrollreveal.js' %}"></script>
 {% endblock %}
 
 {% block container %}
     <div style="margin-top: 140px;margin-bottom: 50px">
 
-    {% block members %}
-                {% include 'contact_us/members.html' %}
-            {% endblock %}
+        {% block members %}
+            {% include 'contact_us/members.html' %}
+        {% endblock %}
 
 
-    {% block form %}
-                {% include 'contact_us/form.html' %}
-            {% endblock %}
-</div>
+        {% block form %}
+            {% include 'contact_us/form.html' %}
+        {% endblock %}
+    </div>
 
 {% endblock %}
 
+{% block footer_scripts %}
+    <script>
+        ScrollReveal().reveal('.fade-reveal', {duration: 800, easing: 'ease-in-out', interval: 200});
+    </script>
+{% endblock %}
