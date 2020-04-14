@@ -22,7 +22,7 @@ def post_dictionary(post):
 
 
 def vis_hid_cats(num, categories):
-    if len(categories) < num:
+    if len(categories) <= num + 1:
         context = {
             'vis_cats': [cat_dictionary(cat) for cat in categories],
         }
