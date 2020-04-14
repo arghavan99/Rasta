@@ -1,5 +1,8 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% block extra_header %}
+        <link rel="stylesheet" href="{% static 'blog/css/blogstyle.css' %}">
+{% endblock %}
 {% block content %}
     <div style="height: 70%; width: 100%;background-image: url({% static 'images/5.jpg' %});background-size: cover">
         <div class="ui stackable two column grid middle aligned " style="padding-top: 100px;padding-bottom: 50px">
