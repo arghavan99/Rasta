@@ -23,15 +23,14 @@ def post_dictionary(post):
 
 def vis_hid_cats(num, categories):
     if len(categories) < num:
-        hid_cats = []
-        vis_cats = categories
+        context = {
+            'vis_cats': [cat_dictionary(cat) for cat in categories],
+        }
     else:
-        vis_cats = categories[:num]
-        hid_cats = categories[num:]
-    context = {
-        'vis_cats': [cat_dictionary(cat) for cat in vis_cats],
-        'hid_cats': [cat_dictionary(cat) for cat in hid_cats]
-    }
+        context = {
+            'vis_cats': [cat_dictionary(cat) for cat in categories[:num]],
+            'hid_cats': [cat_dictionary(cat) for cat in categories[num:]]
+        }
     return context
 
 
