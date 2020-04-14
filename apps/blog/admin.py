@@ -9,4 +9,4 @@ class BlogAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    fields = ['title']
+    fields = ['title', 'url']
