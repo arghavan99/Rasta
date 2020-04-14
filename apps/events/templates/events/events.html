@@ -1,10 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base/base.html' %}
+{% load static %}
+{% block extra_header %}
+    <link rel="stylesheet" href="{% static 'events/css/events.css' %}">
+{% endblock %}
 
-</body>
-</html>
+{% block container %}
+    <div class="ui bubble segment" style="margin-top: 140px;margin-bottom: 50px" dir="rtl">
+
+        <div class="ui centered stackable grid">
+{#        <div class="ui centered stackable cards">#}
+            {% for event in events %}
+{#                <div class="ui three wide column">#}
+                    <a href="/events/{{ event.id }}">
+                        <div class="ui stackable card">
+                            <div class="small image">
+                                <img src="{{ event.poster.url }}">
+                                <div class="ui red ribbon label">دانشگاه صنعتی شریف</div>
+                            </div>
+                            <div class="content">
+                                <div class="header">{{ event.name }}</div>
+                                <div class="meta">
+                                    <span class="date">{{ event.month }} {{ event.year }}</span>
+                                </div>
+                                <div class="description">{{ event.summary }}</div>
+                            </div>
+{#                            <div class="extra content">#}
+{#                                <a>#}
+{#                                    <i class="user icon"></i>#}
+{#                                    22 Friends#}
+{#                                </a>#}
+{#                            </div>#}
+                        </div>
+                    </a>
+{#                </div>#}
+            {% endfor %}
+        </div>
+{#        </div>#}
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+.bubble {
+    border-radius: 20px !important;
+    background-color: var(--bubble) !important;
+    padding: 5% !important;
+}
+
+
+.card {
+    margin: 5% 0 !important;
+    border: none !important;
+    flex: 1 !important; /* Shrink and grow according to available height */
+    flex-basis: 0 !important;
+    /*height: 600px !important;*/
+}
+
+.card.meta {
+    margin-top: 10% !important;
+}
+
+.ribbon {
+    margin-right: 5% !important;
+}
