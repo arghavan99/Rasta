@@ -2,6 +2,8 @@
 {% load static %}
 {% block extra_header %}
         <link rel="stylesheet" href="{% static 'blog/css/blogstyle.css' %}">
+            <script type="text/javascript" src="{% static 'blog/scripts/blog_js.js' %}"></script>
+
 {% endblock %}
 {% block content %}
     <div style="height: 70%; width: 100%;background-image: url({% static 'images/5.jpg' %});background-size: cover">
@@ -10,7 +12,7 @@
                 <img src="{% static 'contact_us/images/element1.png' %}">
             </div>
             <div class=" center aligned column">
-                <p style="font-weight: bolder;font-size: 50px">
+                <p style="font-weight: bolder;font-size: 50px;color: var(--header)">
                     با اخبار رستا همراه باشید!
                 </p>
 

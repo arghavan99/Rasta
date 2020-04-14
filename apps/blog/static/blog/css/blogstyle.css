@@ -3,3 +3,9 @@
     background-color: var(--bubble) !important;
     padding: 5% !important;
 }
+.mobile_cat{
+    padding: 10px;
+    border-bottom: solid 1px ;
+    border-color: var(--secondary-dark);
+
+}
