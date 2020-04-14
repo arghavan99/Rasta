@@ -3,7 +3,7 @@
 <div class="ui container">
     <div class="ui items">
         {% for post in posts %}
-        <div class="item " style=" border-radius: 20px;padding: 5%; background-color:white !important;">
+        <div class="item blog_bubble">
             <div class="ui small image">
                 <img src="{{ post.photo.url }}">
             </div>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="extra">
                     {% for cat in post.categories %}
-                    <div class="ui label" style="background-color:var(--primary-light)"> {{ cat.title }}</div>
+                    <div class="ui label" style="background-color:var(--secondary-light)"> {{ cat.title }}</div>
                     {% endfor %}
                 </div>
             </div>
