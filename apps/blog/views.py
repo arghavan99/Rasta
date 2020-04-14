@@ -52,5 +52,4 @@ def get_posts(request, cat_url):
     posts = BlogPost.objects.order_by('publish_date').filter(categories__in=[active_cat])
     # todo eyes 1 , 2, 3
     context['posts'] = [post_dictionary(post) for post in posts]
-    print(context)
     return render(request, 'blog/blog.html', context)
