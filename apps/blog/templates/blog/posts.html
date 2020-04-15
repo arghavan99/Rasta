@@ -1,7 +1,7 @@
 {% load static %}
 
 <div class="ui container">
-    <div class="ui items">
+    <div class="ui items" style="padding-bottom:2%;">
         {% for post in posts %}
         <div class="item blog_bubble">
             <div class="ui small image">
@@ -18,7 +18,11 @@
                 </div>
                 <div class="extra">
                     {% for cat in post.categories %}
-                    <div class="ui label" style="background-color:var(--secondary-light)"> {{ cat.title }}</div>
+                    <a href="/blog/{{ cat.url }}">
+                        <div class="ui label tag_label">
+                            {{ cat.title }}
+                        </div>
+                    </a>
                     {% endfor %}
                 </div>
             </div>
