@@ -4,7 +4,8 @@ from PIL import Image
 from io import BytesIO
 from apps.events.models import Event
 
-class EventModelTest(TestCase):
+
+class EventsTest(TestCase):
     @staticmethod
     def get_image_file(name, ext='png', size=(300, 400), color=(255, 0, 0)):
         file_obj = BytesIO()
@@ -34,7 +35,26 @@ class EventModelTest(TestCase):
         max_length = event._meta.get_field('name').max_length
         self.assertEquals(max_length, 200)
 
+    def test_location_max_length(self):
+        event = Event.objects.get(id=1)
+        max_length = event._meta.get_field('location').max_length
+        self.assertEquals(max_length, 100)
 
+    def test_photo_visible_resize(self):
+        event = Event.objects.get(id=1)
+        poster_size = Image.open(event.poster).size
+        self.assertEqual((300, 400), poster_size)
 
+    def test_view_url_exists(self):
+        response = self.client.get('/events/')
+        self.assertEqual(response.status_code, 200)
 
+    def test_view_uses_correct_template(self):
+        response = self.client.get('/events/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'events/events.html')
 
+    def test_lists_all_events(self):
+        response = self.client.get('/events/')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['events']), 3)

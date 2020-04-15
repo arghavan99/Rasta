@@ -13,7 +13,7 @@ class Event(models.Model):
     location = models.CharField(max_length=100, null=True, blank=True) #todo false
     date = models.DateField(null=True, blank=True) # todo false
 
-    def save(self):
+    def save(self ,*args, **kwargs):
         im1 = Image.open(self.poster)
 
         output1 = BytesIO()
@@ -26,7 +26,7 @@ class Event(models.Model):
                                                   "%s.jpg" % self.poster.name.split('.')[0], 'image/jpeg',
                                                   sys.getsizeof(output1), None)
 
-        super(Event, self).save()
+        super(Event, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
