@@ -17,9 +17,9 @@ class CategoryTest(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        cat1 = Category.objects.create(title='education', url='/education')
-        cat2 = Category.objects.create(title='sport', url='/sport')
-        cat3 = Category.objects.create(title='politics', url='/politics')
+        cat1 = Category.objects.create(title='education', url='education')
+        cat2 = Category.objects.create(title='sport', url='sport')
+        cat3 = Category.objects.create(title='politics', url='politics')
 
         post1 = BlogPost.objects.create(title='first post', photo=cls.get_image_file('photo1'),
                                         summary='summary of first post in blog', text='text of first post in blog',
@@ -63,6 +63,17 @@ class CategoryTest(TestCase):
         post = BlogPost.objects.get(id=1)
         post_date = post.publish_date
         self.assertGreater(jdatetime.date.today(),post_date.date())
+
+    def test_not_null_field(self):
+        try:
+            a = BlogPost.objects.create()
+            a.clean_fields()
+        except:
+            print("BlogPost have some not null fields!")
+
+    def test_cat_url(self):
+        response = self.client.get('/blog/sport/')
+        self.assertEqual(response.status_code, 200)
 
 
 
