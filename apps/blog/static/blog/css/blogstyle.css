@@ -12,6 +12,7 @@
 
 .tag_label{
     background-color:var(--secondary-light) !important;
+    margin-bottom:4px !important;
 }
 
 .tag_label:hover {
