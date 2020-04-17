@@ -1,0 +1,26 @@
+.bubble {
+    border-radius: 20px !important;
+    background-color: var(--bubble) !important;
+    padding: 5% !important;
+}
+
+
+.card {
+    margin: 2% 2% !important;
+    text-align: center !important;
+}
+
+.r-event-header {
+    margin-top: 3% !important;
+    margin-bottom: 5% !important;
+}
+
+.ui.ribbon {
+    color: var(--primary-white);
+    background-color: var(--primary-pink) !important;
+    border-color: var(--secondary-pink) !important;
+}
+
+.ribbon {
+    margin-right: 5% !important;
+}

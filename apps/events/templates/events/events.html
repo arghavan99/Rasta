@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block extra_header %}
+    <link rel="stylesheet" href="{% static 'events/css/events.css' %}">
+    <script src="{% static 'scripts/scrollreveal.js' %}"></script>
+{% endblock %}
+
+{% block container %}
+    <div class="ui bubble segment" style="margin-top: 140px;margin-bottom: 50px" dir="rtl">
+
+        <div class="ui centered cards">
+            {% for event in events %}
+                <a class="ui card fade-reveal" href="/events/{{ event.id }}">
+                    <div class="small image">
+                        <div class="ui  ribbon label">{{ event.month }} {{ event.year }}</div>
+                        <img src="{{ event.poster.url }}">
+                    </div>
+                    <div class="content">
+                        <div class="r-event header">{{ event.name }}</div>
+                        <div class="description">{{ event.summary }}</div>
+                    </div>
+                    <div class="extra content">
+                        {{ event.location }}
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+{% block footer_scripts %}
+    <script>
+        ScrollReveal().reveal('.fade-reveal', {duration: 800, easing: 'ease-in-out', interval: 200});
+    </script>
+{% endblock %}
