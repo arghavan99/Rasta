@@ -1,3 +1,4 @@
+from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from apps.blog.models import *
 
@@ -34,8 +35,17 @@ def vis_hid_cats(num, categories):
     return context
 
 
+def sort_cats(categories):
+    cats = [[cat, len(BlogPost.objects.filter(categories__in=[cat]))] for cat in categories]
+    print(cats)
+    cats = sorted(cats, key=lambda x: x[1], reverse=True)
+    res = [c[0] for c in cats]
+    return res
+
+
 def get_all_posts(request):
     categories = Category.objects.all()
+    categories = sort_cats(categories)
     posts = BlogPost.objects.order_by('publish_date')
     context = vis_hid_cats(8, categories)
     context['active_cat'] = ''
@@ -44,9 +54,12 @@ def get_all_posts(request):
 
 
 def get_posts(request, cat_url):
-    active_cat = Category.objects.filter(url=cat_url)[0]
-    # todo 404 if active_cat does not exist
+    try:
+        active_cat = Category.objects.get(url=cat_url)
+    except Category.DoesNotExist:
+        return HttpResponseNotFound('<h1>Category not found!</h1>')
     categories = Category.objects.exclude(id=active_cat.id)
+    categories = sort_cats(categories)
     context = vis_hid_cats(7, categories)
     context['active_cat'] = cat_dictionary(active_cat)
     posts = BlogPost.objects.order_by('publish_date').filter(categories__in=[active_cat])

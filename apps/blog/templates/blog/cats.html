@@ -1,21 +1,20 @@
 <div class="ui secondary pointing menu align-right mobile-hidden" style="background-color: rgba(255,255,255,0.7)">
 <div class="ui container">
     {% if active_cat %}
-        <a class=" item" style="padding:20px;border: 0 ;width: 10%" href="/blog/">همه</a>
-        <a class="active item" style="padding:20px;border: 0 ;width: 10%;"
-           href="/blog/{{ active_cat.url }}">{{ active_cat.title }}</a>
+        <a class=" item cat_item" href="/blog/">همه</a>
+        <a class="active item cat_item" href="/blog/{{ active_cat.url }}">{{ active_cat.title }}</a>
         {% for c in vis_cats %}
-            <a class="item" style="padding:20px;border: 0 ;width: 10%" href="/blog/{{ c.url }}">{{ c.title }}</a>
+            <a class="item cat_item" href="/blog/{{ c.url }}">{{ c.title }}</a>
         {% endfor %}
 
     {% else %}
-        <a class="active item" style="padding:20px;border: 0 ;width: 10%" href="/blog/">همه</a>
+        <a class="active item cat_item"  href="/blog/">همه</a>
         {% for c in vis_cats %}
-            <a class="item" style="padding:20px;border: 0 ;width: 10%" href="/blog/{{ c.url }}">{{ c.title }}</a>
+            <a class="item cat_item"  href="/blog/{{ c.url }}">{{ c.title }}</a>
         {% endfor %}
     {% endif %}
     {% if hid_cats %}
-        <div class="ui dropdown item" style="padding:20px;border: 0 ;width: 10%">
+        <div class="ui dropdown item cat_item">
             بیشتر
             <i class="dropdown icon"></i>
             <div class="menu" style="background-color: rgba(255,255,255,0.7)!important;">

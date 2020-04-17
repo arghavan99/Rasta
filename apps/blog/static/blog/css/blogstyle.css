@@ -18,3 +18,10 @@
 .tag_label:hover {
     background-color: var(--tertiary-light) !important;
 }
+
+
+.cat_item{
+    padding:20px !important;
+    border: 0 !important;
+    width: 10% !important;
+}
