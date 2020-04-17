@@ -10,11 +10,13 @@ def get_events(request):
             'id': event.id,
             'name': event.name,
             'poster': event.poster,
-            'year': event.date.year,
-            'month': event.date.month,
+            'year': event.get_persian_year(),
+            'month': event.get_persian_month(),
             'summary': event.summary,
             'location': event.location
         } for event in events]
+
+    print(events[0].date)
 
     return render(request, 'events/events.html', context)
 

@@ -23,5 +23,6 @@ class BlogPost(models.Model):
     def __str__(self):
         return self.title
 
-
-
+    def get_persian_date(self):
+        translate_table = str.maketrans('1234567890', '۱۲۳۴۵۶۷۸۹۰')
+        return str(self.publish_date).translate(translate_table)
