@@ -46,7 +46,7 @@ def sort_cats(categories):
 def get_all_posts(request):
     categories = Category.objects.all()
     categories = sort_cats(categories)
-    posts = BlogPost.objects.order_by('publish_date')
+    posts = BlogPost.objects.order_by('-publish_date')
     context = vis_hid_cats(8, categories)
     context['active_cat'] = ''
     context['posts'] = [post_dictionary(post) for post in posts]
@@ -62,7 +62,7 @@ def get_posts(request, cat_url):
     categories = sort_cats(categories)
     context = vis_hid_cats(7, categories)
     context['active_cat'] = cat_dictionary(active_cat)
-    posts = BlogPost.objects.order_by('publish_date').filter(categories__in=[active_cat])
+    posts = BlogPost.objects.order_by('-publish_date').filter(categories__in=[active_cat])
     # todo eyes 1 , 2, 3
     context['posts'] = [post_dictionary(post) for post in posts]
     return render(request, 'blog/blog.html', context)

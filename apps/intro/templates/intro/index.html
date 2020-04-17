@@ -2,18 +2,16 @@
 {% load static %}
 
 {% block extra_header %}
+<link rel="stylesheet" href="{% static 'intro/css/homepage_style.css' %}">
 <script type="text/javascript" src="{% static 'scripts/rasta_bird.js' %}"></script>
 <script src="{% static 'scripts/scrollreveal.js' %}"></script>
 {% endblock %}
 
 {% block  content %}
-<div class="ui stackable aligned segment"
+<div class="ui stackable aligned segment homepage_section"
      style="background-color: rgba(0, 0, 0, 0);
      height:100vh;
-     border-radius:0;
-     padding-top:25vh;
-     margin-top :0!important;
-     margin-bottom: 0 !important;">
+     padding-top:25vh !important;">
     <div class="ui middle aligned stackable grid container two column" style="direction:ltr">
 
         <div class="ui center aligned column reveal_fade">
@@ -42,13 +40,8 @@
 </div>
 
 
-<div class="ui stackable center aligned segment"
-     style="background-color:var(--primary-light);
-     border-radius:0;
-     margin-top :0!important;
-     margin-bottom: 0 !important;
-     padding-bottom: 70px !important;
-     padding-top: 70px !important;">
+<div class="ui stackable center aligned segment homepage_section"
+     style="background-color:var(--primary-light);">
     <div class="ui middle aligned stackable grid container" style="direction:LTR; padding:0!important">
         <div class="row" dir="rtl">
             <h1 class="reveal_fade" style="color:var(--header)">
@@ -61,6 +54,7 @@
             <div class="ui center aligned seven wide column reveal_fade">
                 <style>
                     .h_iframe-aparat_embed_frame{position:relative;}.h_iframe-aparat_embed_frame .ratio{display:block;width:100%;height:auto;}.h_iframe-aparat_embed_frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;}
+
                 </style>
                 <div class="h_iframe-aparat_embed_frame">
                     <span style="display: block;padding-top: 57%"></span>
@@ -82,17 +76,12 @@
 
 
 {% if upcoming_event %}
-<div class="ui stackable center aligned segment"
+<div class="ui stackable center aligned segment homepage_section"
      style="
      background-image: url({% static 'images/pattern.jpg' %});
      background-attachment: fixed;
      background-repeat: no-repeat;
-     background-size: cover;
-     border-radius:0;
-     margin-top :0!important;
-     margin-bottom: 0 !important;
-     padding-bottom: 70px !important;
-     padding-top: 70px !important;">
+     background-size: cover;">
 
     <div class="ui middle aligned stackable grid container" style="direction:rtl">
         <div class="row">
@@ -143,5 +132,6 @@
 {% block footer_scripts %}
 <script>
     ScrollReveal().reveal('.reveal_fade', {delay: 500});
+
 </script>
 {% endblock %}
