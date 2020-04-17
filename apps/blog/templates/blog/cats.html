@@ -1,0 +1,56 @@
+<div class="ui secondary pointing menu align-right mobile-hidden" style="background-color: rgba(255,255,255,0.7)">
+<div class="ui container">
+    {% if active_cat %}
+        <a class=" item cat_item" href="/blog/">همه</a>
+        <a class="active item cat_item" href="/blog/{{ active_cat.url }}">{{ active_cat.title }}</a>
+        {% for c in vis_cats %}
+            <a class="item cat_item" href="/blog/{{ c.url }}">{{ c.title }}</a>
+        {% endfor %}
+
+    {% else %}
+        <a class="active item cat_item"  href="/blog/">همه</a>
+        {% for c in vis_cats %}
+            <a class="item cat_item"  href="/blog/{{ c.url }}">{{ c.title }}</a>
+        {% endfor %}
+    {% endif %}
+    {% if hid_cats %}
+        <div class="ui dropdown item cat_item">
+            بیشتر
+            <i class="dropdown icon"></i>
+            <div class="menu" style="background-color: rgba(255,255,255,0.7)!important;">
+
+                {% for c in hid_cats %}
+                    <a class="item" href="/blog/{{ c.url }}">{{ c.title }}</a>
+                {% endfor %}
+
+            </div>
+        </div>
+    {% endif %}
+</div>
+</div>
+
+<div class="ui styled accordion mobile-only" style="border-radius:0;background-color: rgba(255,255,255,0.7)!important;">
+    <div class="active title" style="color: var(--header)">
+        {% if active_cat %}
+            {{ active_cat.title }}
+        {% else %}
+            همه
+        {% endif %}
+        <i class="dropdown icon"></i>
+    </div>
+    <div class="content" style="padding: 0">
+        <div style="display:flex;flex-direction: row; color: var(--header)">
+            {% if active_cat %}
+                <div class="mobile_cat"><a style="color: var(--header)" class="item" href="/blog/">همه</a></div>
+            {% endif %}
+            {% for c in vis_cats %}
+                <div class="mobile_cat"><a style="color: var(--header)" class="item"
+                                           href="/blog/{{ c.url }}">{{ c.title }}</a></div>
+            {% endfor %}
+            {% for c in hid_cats %}
+                <div class="mobile_cat"><a style="color: var(--header)" class="item"
+                                           href="/blog/{{ c.url }}">{{ c.title }}</a></div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+.blog_bubble {
+    border-radius: 20px !important;
+    padding: 5% !important;
+    background-color: rgba(255,255,255,0.7) !important;
+}
+
+.mobile_cat{
+    padding: 10px;
+    border-bottom: solid 1px ;
+    border-color: var(--secondary-dark);
+}
+
+.tag_label{
+    background-color:var(--secondary-light) !important;
+    margin-bottom:4px !important;
+}
+
+.tag_label:hover {
+    background-color: var(--tertiary-light) !important;
+}
+
+
+.cat_item{
+    padding:20px !important;
+    border: 0 !important;
+    width: 10% !important;
+}

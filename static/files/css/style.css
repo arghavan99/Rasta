@@ -36,6 +36,7 @@
   --secondary-dark: #1c5951;
   --primary-light:#b4ede2;
   --secondary-light:#37bba0;
+  --tertiary-light:#4ed9bc;
   --primary-white: #ffffff;
   --secondary-white: #d9d9d9;
   --bubble: rgba(55,187,160,0.3);
@@ -99,3 +100,4 @@ select {
 select.items {
    background-color : rgba(255,255,255,0.7)  !important;
 }
+
