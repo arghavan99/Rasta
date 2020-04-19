@@ -41,7 +41,7 @@
 
 
 <div class="ui stackable center aligned segment homepage_section"
-     style="background-color:var(--primary-light);">
+     style="background-color:#7be0cd;">
     <div class="ui middle aligned stackable grid container" style="direction:LTR; padding:0!important">
         <div class="row" dir="rtl">
             <h1 class="reveal_fade" style="color:var(--header)">
@@ -54,6 +54,7 @@
             <div class="ui center aligned seven wide column reveal_fade">
                 <style>
                     .h_iframe-aparat_embed_frame{position:relative;}.h_iframe-aparat_embed_frame .ratio{display:block;width:100%;height:auto;}.h_iframe-aparat_embed_frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;}
+
 
                 </style>
                 <div class="h_iframe-aparat_embed_frame">
@@ -126,12 +127,59 @@
 </div>
 {% endif %}
 
+
+<div class="ui stackable center aligned segment homepage_section"
+     {% if upcoming_event %} style="background-color:var(--primary-light);"
+     {% else %} style="
+     background-image: url({% static 'images/pattern.jpg' %});
+     background-attachment: fixed;
+     background-repeat: no-repeat;
+     background-size: cover;" {% endif %}>
+    <div class="ui middle aligned stackable grid container" style="direction:LTR; padding:0!important">
+        <div class="row" dir="rtl">
+            <h1 class="reveal_fade" style="color:var(--header)">
+                <i class="users large icon"></i>
+                آخرین رویدادهای ما
+            </h1>
+        </div>
+        <div class="row">
+
+        </div>
+    </div>
+</div>
+
+
+<div class="ui stackable center aligned segment homepage_section"
+     {% if upcoming_event %} style="
+     background-image: url({% static 'images/pattern.jpg' %});
+     background-attachment: fixed;
+     background-repeat: no-repeat;
+     background-size: cover;"
+     {% else %}
+     style="background-color:var(--primary-light);"{% endif %}>
+
+    <div class="ui middle aligned stackable grid container" style="direction:LTR; padding:0!important">
+        <div class="row" dir="rtl">
+            <h1 class="reveal_fade" style="color:var(--header)">
+                <i class="bookmark large icon"></i>
+                آخرین پست‌های بلاگ
+            </h1>
+        </div>
+        <div class="row">
+
+        </div>
+    </div>
+</div>
+
+
+
 {% endblock %}
 
 
 {% block footer_scripts %}
 <script>
     ScrollReveal().reveal('.reveal_fade', {delay: 500});
+
 
 </script>
 {% endblock %}

@@ -37,7 +37,6 @@ def vis_hid_cats(num, categories):
 
 def sort_cats(categories):
     cats = [[cat, len(BlogPost.objects.filter(categories__in=[cat]))] for cat in categories]
-    print(cats)
     cats = sorted(cats, key=lambda x: x[1], reverse=True)
     res = [c[0] for c in cats]
     return res
@@ -57,7 +56,9 @@ def get_posts(request, cat_url):
     try:
         active_cat = Category.objects.get(url=cat_url)
     except Category.DoesNotExist:
-        return HttpResponseNotFound('<h1>Category not found!</h1>')
+        response = render(request, 'base/404.html')
+        response.status_code = 404
+        return response
     categories = Category.objects.exclude(id=active_cat.id)
     categories = sort_cats(categories)
     context = vis_hid_cats(7, categories)

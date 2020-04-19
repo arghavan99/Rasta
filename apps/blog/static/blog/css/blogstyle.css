@@ -16,7 +16,7 @@
 }
 
 .tag_label:hover {
-    background-color: var(--tertiary-light) !important;
+    background-color: var(--primary-light) !important;
 }
 
 
