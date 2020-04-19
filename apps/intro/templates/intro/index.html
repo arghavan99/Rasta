@@ -2,174 +2,200 @@
 {% load static %}
 
 {% block extra_header %}
-<link rel="stylesheet" href="{% static 'intro/css/homepage_style.css' %}">
-<script type="text/javascript" src="{% static 'scripts/rasta_bird.js' %}"></script>
-<script src="{% static 'scripts/scrollreveal.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'intro/css/homepage_style.css' %}">
+    <script type="text/javascript" src="{% static 'scripts/rasta_bird.js' %}"></script>
+    <script src="{% static 'scripts/scrollreveal.js' %}"></script>
 {% endblock %}
 
 {% block  content %}
-<div class="ui stackable aligned segment homepage_section"
-     style="background-color: rgba(0, 0, 0, 0);
+    <div class="ui stackable aligned segment homepage_section"
+         style="background-color: rgba(0, 0, 0, 0);
      height:100vh;
      padding-top:25vh !important;">
-    <div class="ui middle aligned stackable grid container two column" style="direction:ltr">
+        <div class="ui middle aligned stackable grid container two column" style="direction:ltr">
 
-        <div class="ui center aligned column reveal_fade">
-            <img id="bird" src="{% static 'images/nav-logo.png' %}"
-                 style="vertical-align: middle;width:30vw;">
-        </div>
-
-        <div class="column" style=" text-justify: inter-word;">
-            <div class="mobile-only" style=" text-align: center;">
-                <div class="row reveal_fade">
-                    <p class="reveal_fade" style="font-weight:bolder;font-size:60px;color: var(--header)"> رستا</p>
-                    <p class="reveal_fade" style="font-size:40px;font-weight: bold;color: var(--header)"> جمع
-                        علمی-ترویجی</p>
-                </div>
+            <div class="ui center aligned column reveal_fade">
+                <img id="bird" src="{% static 'images/nav-logo.png' %}"
+                     style="vertical-align: middle;width:30vw;">
             </div>
-            <div class="mobile-hidden" style=" text-align: justify;">
-                <div class="row reveal_fade">
-                    <p class="reveal_fade" style="font-weight:bolder;font-size:100px;color: var(--header)"> رستا</p>
-                    <p class="reveal_fade" style="font-weight:bolder;font-size:40px;color: var(--header)"> جمع
-                        علمی-ترویجی</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
-</div>
-
-
-<div class="ui stackable center aligned segment homepage_section"
-     style="background-color:#7be0cd;">
-    <div class="ui middle aligned stackable grid container" style="direction:LTR; padding:0!important">
-        <div class="row" dir="rtl">
-            <h1 class="reveal_fade" style="color:var(--header)">
-                <i class="users large icon"></i>
-                ما کیستیم؟
-            </h1>
-        </div>
-        <div class="row">
-            <div class="one wide column"></div>
-            <div class="ui center aligned seven wide column reveal_fade">
-                <style>
-                    .h_iframe-aparat_embed_frame{position:relative;}.h_iframe-aparat_embed_frame .ratio{display:block;width:100%;height:auto;}.h_iframe-aparat_embed_frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;}
-
-
-                </style>
-                <div class="h_iframe-aparat_embed_frame">
-                    <span style="display: block;padding-top: 57%"></span>
-                    <iframe src="{{ aparat_url }}" allowFullScreen="true" webkitallowfullscreen="true"
-                            mozallowfullscreen="true">
-                    </iframe>
-                </div>
-
-            </div>
-            <div class="one wide column"></div>
-            <div class="six wide column reveal_fade" dir="rtl" style=" text-align: justify; text-justify: inter-word;">
-                {{ intro|safe }}
-            </div>
-        </div>
-    </div>
-
-
-</div>
-
-
-{% if upcoming_event %}
-<div class="ui stackable center aligned segment homepage_section"
-     style="
-     background-image: url({% static 'images/pattern.jpg' %});
-     background-attachment: fixed;
-     background-repeat: no-repeat;
-     background-size: cover;">
-
-    <div class="ui middle aligned stackable grid container" style="direction:rtl">
-        <div class="row">
-            <h1 class="reveal_fade" style="color:var(--header)">
-                <i class="ui calendar alternate outline icon"></i>
-                رویداد پیش رو
-            </h1>
-        </div>
-
-        <div class="row">
-            <div class="one wide column"></div>
-            <div class="ui center aligned seven wide column reveal_fade">
-                <img class="ui centered large rounded image" src="{{ upcoming_event.poster.url }} ">
-            </div>
-            <div class="one wide column"></div>
-            <div class="six wide column" dir="rtl" style=" text-align: justify; text-justify: inter-word;">
-                <div class="row reveal_fade">
-                    <h2 style="color: var(--header)">
-                        {{ upcoming_event.title |safe }}
-                    </h2>
-                </div>
-
-                <div class="row reveal_fade">
-                    <p style="color: var(--header)">
-                        {{ upcoming_event.intro | safe }}
-                    </p>
-                </div>
-                <br>
-                <div class="row">
-                    <div style=" text-align: center" class="reveal_fade">
-                        <button class="ui button" style="background-color: var(--secondary-dark) ;color: white"
-                                onclick="window.location.href = '{{upcoming_event.button_link}}'">
-                            {{upcoming_event.button_name}}
-                        </button>
+            <div class="column" style=" text-justify: inter-word;">
+                <div class="mobile-only" style=" text-align: center;">
+                    <div class="row reveal_fade">
+                        <p class="reveal_fade" style="font-weight:bolder;font-size:60px;color: var(--header)"> رستا</p>
+                        <p class="reveal_fade" style="font-size:40px;font-weight: bold;color: var(--header)"> جمع
+                            علمی-ترویجی</p>
                     </div>
                 </div>
+                <div class="mobile-hidden" style=" text-align: justify;">
+                    <div class="row reveal_fade">
+                        <p class="reveal_fade" style="font-weight:bolder;font-size:100px;color: var(--header)"> رستا</p>
+                        <p class="reveal_fade" style="font-weight:bolder;font-size:40px;color: var(--header)"> جمع
+                            علمی-ترویجی</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="ui stackable center aligned segment homepage_section"
+         style="background-color:#7be0cd;">
+        <div class="ui middle aligned stackable grid container" style="direction:LTR; padding:0!important">
+            <div class="row" dir="rtl">
+                <h1 class="reveal_fade" style="color:var(--header)">
+                    <i class="users large icon"></i>
+                    ما کیستیم؟
+                </h1>
+            </div>
+            <div class="row">
+                <div class="one wide column"></div>
+                <div class="ui center aligned seven wide column reveal_fade">
+                    <style>
+                        .h_iframe-aparat_embed_frame {
+                            position: relative;
+                        }
+
+                        .h_iframe-aparat_embed_frame .ratio {
+                            display: block;
+                            width: 100%;
+                            height: auto;
+                        }
+
+                        .h_iframe-aparat_embed_frame iframe {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                        }
+
+
+                    </style>
+                    <div class="h_iframe-aparat_embed_frame">
+                        <span style="display: block;padding-top: 57%"></span>
+                        <iframe src="{{ aparat_url }}" allowFullScreen="true" webkitallowfullscreen="true"
+                                mozallowfullscreen="true">
+                        </iframe>
+                    </div>
+
+                </div>
+                <div class="one wide column"></div>
+                <div class="six wide column reveal_fade" dir="rtl"
+                     style=" text-align: justify; text-justify: inter-word;">
+                    {{ intro|safe }}
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    {% if upcoming_event %}
+        <div class="ui stackable center aligned segment homepage_section"
+             style="
+                     background-image: url({% static 'images/pattern.jpg' %});
+                     background-attachment: fixed;
+                     background-repeat: no-repeat;
+                     background-size: cover;">
+
+            <div class="ui middle aligned stackable grid container" style="direction:rtl">
+                <div class="row">
+                    <h1 class="reveal_fade" style="color:var(--header)">
+                        <i class="ui calendar alternate outline icon"></i>
+                        رویداد پیش رو
+                    </h1>
+                </div>
+
+                <div class="row">
+                    <div class="one wide column"></div>
+                    <div class="ui center aligned seven wide column reveal_fade">
+                        <img class="ui centered large rounded image" src="{{ upcoming_event.poster.url }} ">
+                    </div>
+                    <div class="one wide column"></div>
+                    <div class="six wide column" dir="rtl" style=" text-align: justify; text-justify: inter-word;">
+                        <div class="row reveal_fade">
+                            <h2 style="color: var(--header)">
+                                {{ upcoming_event.title |safe }}
+                            </h2>
+                        </div>
+
+                        <div class="row reveal_fade">
+                            <p style="color: var(--header)">
+                                {{ upcoming_event.intro | safe }}
+                            </p>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div style=" text-align: center" class="reveal_fade">
+                                <button class="ui button" style="background-color: var(--secondary-dark) ;color: white"
+                                        onclick="window.location.href = '{{ upcoming_event.button_link }}'">
+                                    {{ upcoming_event.button_name }}
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    {% endif %}
+
+
+    <div class="ui stackable center aligned segment homepage_section"
+            {% if upcoming_event %} style="background-color:var(--primary-light);"
+            {% else %} style="
+                    background-image: url({% static 'images/pattern.jpg' %});
+                    background-attachment: fixed;
+                    background-repeat: no-repeat;
+                    background-size: cover;" {% endif %}>
+        <div class="ui middle aligned stackable grid container" style="direction:LTR; padding:0!important">
+            <div class="row" dir="rtl">
+                <h1 class="reveal_fade" style="color:var(--header)">
+                    <i class="users large icon"></i>
+                    آخرین رویدادهای ما
+                </h1>
+            </div>
+            <div class="row">
 
             </div>
         </div>
     </div>
 
-</div>
-{% endif %}
+
+    <div class="ui stackable segment homepage_section "
+            {% if upcoming_event %} style="
+                    background-image: url({% static 'images/pattern.jpg' %});
+                    background-attachment: fixed;
+                    background-repeat: no-repeat;
+                    background-size: cover;"
+            {% else %}
+         style="background-color:var(--primary-light);"{% endif %}>
 
 
-<div class="ui stackable center aligned segment homepage_section"
-     {% if upcoming_event %} style="background-color:var(--primary-light);"
-     {% else %} style="
-     background-image: url({% static 'images/pattern.jpg' %});
-     background-attachment: fixed;
-     background-repeat: no-repeat;
-     background-size: cover;" {% endif %}>
-    <div class="ui middle aligned stackable grid container" style="direction:LTR; padding:0!important">
         <div class="row" dir="rtl">
-            <h1 class="reveal_fade" style="color:var(--header)">
-                <i class="users large icon"></i>
-                آخرین رویدادهای ما
-            </h1>
-        </div>
-        <div class="row">
-
-        </div>
-    </div>
-</div>
-
-
-<div class="ui stackable center aligned segment homepage_section"
-     {% if upcoming_event %} style="
-     background-image: url({% static 'images/pattern.jpg' %});
-     background-attachment: fixed;
-     background-repeat: no-repeat;
-     background-size: cover;"
-     {% else %}
-     style="background-color:var(--primary-light);"{% endif %}>
-
-    <div class="ui middle aligned stackable grid container" style="direction:LTR; padding:0!important">
-        <div class="row" dir="rtl">
-            <h1 class="reveal_fade" style="color:var(--header)">
+            <h1 class="reveal_fade" style="color:var(--header); margin-bottom: 50px;right: 0">
                 <i class="bookmark large icon"></i>
                 آخرین پست‌های بلاگ
+
             </h1>
         </div>
-        <div class="row">
+        {% include 'intro/blog_card.html' %}
 
+        <div class="ui container center aligned">
+            <a class="ui button" href="/blog/"
+               style="margin-left: auto;margin-right: auto;background-color: var(--secondary-dark) ;color: white;font-weight: bolder;margin-top: 20px">
+                مشاهده تمام پست‌ها
+            </a>
         </div>
     </div>
-</div>
+
+
+
+
 
 
 
@@ -177,9 +203,9 @@
 
 
 {% block footer_scripts %}
-<script>
-    ScrollReveal().reveal('.reveal_fade', {delay: 500});
+    <script>
+        ScrollReveal().reveal('.reveal_fade', {delay: 500});
 
 
-</script>
+    </script>
 {% endblock %}

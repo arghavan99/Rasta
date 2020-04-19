@@ -1,21 +1,24 @@
-<div class="ui stackable three column grid ">
+<div class="ui center aligned stackable grid">
+
     {% for post in posts %}
-        <div class="card1" href="#" style="width: 90%">
-            <h3>{{ post.title }}</h3>
-            <p class="small">{{ post.summary }}
-            <br>
-{#                 todo url of post#}
-                <a >ادامه مطلب ... </a>
+        <div class="ui four wide column fade-reveal">
+            <div class="card1 reveal_fade center aligned" href="#" style="width: 90%;">
+                <h3>{{ post.title }}</h3>
+                <p class="small" style=" text-align: right"><br>{{ post.summary }}
+                    <br>
+                    {#                 todo url of post#}
+                    <a>ادامه مطلب ... </a>
 
-            </p>
+                </p>
 
-            <div class="go-corner" >
-                <div class="go-arrow">
-                    ↵
+                <div class="go-corner">
+                    <div class="go-arrow">
+                        ↵
+                    </div>
+
                 </div>
-
             </div>
         </div>
+
     {% endfor %}
 </div>
-

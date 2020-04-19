@@ -13,6 +13,7 @@
   line-height: 24px;
   font-weight: 700;
   margin-bottom: 4px;
+   margin-top: 4px;
 }
 .card1 p {
   font-size: 17px;
@@ -45,6 +46,7 @@
   display: block;
   position: relative;
   max-width: 262px;
+  height: 250px;
   background-color: #f2f8f9;
   border-radius: 4px;
   padding: 32px 24px;
