@@ -90,7 +90,7 @@
         </div>
 
 
-    </div>
+</div>
 
 
     {% if upcoming_event %}
@@ -145,25 +145,46 @@
     {% endif %}
 
 
-    <div class="ui stackable center aligned segment homepage_section"
-            {% if upcoming_event %} style="background-color:var(--primary-light);"
-            {% else %} style="
-                    background-image: url({% static 'images/pattern.jpg' %});
-                    background-attachment: fixed;
-                    background-repeat: no-repeat;
-                    background-size: cover;" {% endif %}>
-        <div class="ui middle aligned stackable grid container" style="direction:LTR; padding:0!important">
-            <div class="row" dir="rtl">
-                <h1 class="reveal_fade" style="color:var(--header)">
-                    <i class="users large icon"></i>
-                    آخرین رویدادهای ما
-                </h1>
-            </div>
-            <div class="row">
-
-            </div>
+<div class="ui stackable center aligned segment homepage_section"
+     {% if upcoming_event %} style="background-color:var(--primary-light);"
+     {% else %} style="
+     background-image: url({% static 'images/pattern.jpg' %});
+     background-attachment: fixed;
+     background-repeat: no-repeat;
+     background-size: cover;" {% endif %}>
+    <div class="ui middle aligned stackable grid container" style="direction:LTR; padding:0!important">
+        <div class="row" dir="rtl">
+            <h1 class="reveal_fade" style="color:var(--header)">
+                <i class="calendar check icon"></i>
+                آخرین رویدادهای ما
+            </h1>
         </div>
+
+    <div class="row">
+<div class=" wrapper">
+  <div class="cols">
+      {% for event in events %}
+			<div class="col">
+				<div class="contain">
+					<div class="front" style="background-image: url('{{ event.poster.url }}')">
+						<div class="inner">
+							<p>{{ event.name }}</p>
+                            <span>{{ event.month }} {{ event.year }}</span>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+						  <p>{{ event.summary }}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+      {% endfor %}
+		</div>
+ </div>
     </div>
+    </div>
+</div>
 
 
     <div class="ui stackable segment homepage_section "
@@ -192,6 +213,7 @@
             </a>
         </div>
     </div>
+</div>
 
 
 
