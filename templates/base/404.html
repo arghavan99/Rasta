@@ -27,10 +27,10 @@
 <body dir="rtl" style="height: 100%; background-image: url({% static 'images/pattern.jpg' %})" >
 <div class="ui container center aligned" style="padding-top: 100px">
     <img src="{% static 'images/404_el.png' %}" style="width: 60%" class="">
-    <div><P style="font-size: 20px;font-weight: bolder"> صفحه مورد نظر یافت نشد :((</P></div>
-    <button class="ui button" href="{% url 'intro:homepage' %}" style="background-color: var(--secondary-dark) ;color: white;font-weight: bolder;margin-top: 20px">
+    <div><P style="font-size: 20px;font-weight: bolder;color: var(--primary-dark)"> صفحه مورد نظر یافت نشد :((</P></div>
+    <a class="ui button" href="{% url 'intro:homepage' %}" style="background-color: var(--secondary-dark) ;color: white;font-weight: bolder;margin-top: 20px">
                     برگرد به صفحه اصلی !
-                </button>
+                </a>
 </div>
 
 
