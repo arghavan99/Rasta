@@ -16,7 +16,7 @@ class BlogPost(models.Model):
     photo = models.ImageField(upload_to='blog/', null=True, blank=True)
     title = models.CharField(max_length=100, null=False, blank=False)
     publish_date = jmodels.jDateTimeField()
-    summary = models.TextField(max_length=300, null=False, blank=False)
+    summary = models.TextField(max_length=100, null=False, blank=False)
     text = RichTextField(null=False, blank=False)
     categories = models.ManyToManyField(Category, related_name='blog_posts')
 

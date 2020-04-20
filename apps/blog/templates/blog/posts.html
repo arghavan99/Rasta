@@ -5,7 +5,11 @@
         {% for post in posts %}
         <div class="item blog_bubble">
             <div class="ui small image">
+                {% if post.photo %}
                 <img src="{{ post.photo.url }}">
+                {% else %}
+                <img src="{% static 'blog/images/default.png' %}">
+                {% endif %}
             </div>
             <div class="middle aligned content">
                 <a class="header"> {{ post.title }} </a> <!--todo href for selected post-->

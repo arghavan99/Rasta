@@ -9,8 +9,8 @@ def homepage(req):
     get_last_events()
     upcoming_event = UpcomingEvent.objects.filter(show_on_homepage=True)
     if len(upcoming_event) > 0:
-        # context = {'upcoming_event': upcoming_event.last()}
-        context = {}
+        context = {'upcoming_event': upcoming_event.last()}
+        # context = {}
     else:
         context = {}
     homepage_data = HomepageData.objects.last()
