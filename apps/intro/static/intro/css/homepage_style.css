@@ -121,6 +121,10 @@
   color: black;
 }
 
+.flip-card-back .middle {
+  height: 100%;
+}
+
 .flip-card-front:after{
     content:'';
     position:absolute;
@@ -136,13 +140,13 @@
   background-color: black;
   color: white;
   transform: rotateY(180deg) translateZ(60px);
-
+  display: table;
 }
 
 .flip-card-back p{
-  margin-top: 20px;
-  margin-left: 5px;
-  margin-right:5px ;
+
+  margin-left: 15px;
+  margin-right:15px;
 }
 
 .text-block {
@@ -150,6 +154,15 @@
   color: white;
   top: 50%;
   left: 50%;
+  width: 300px;
   transform: translate(-50%, -50%) translateZ(60px);
   -webkit-backface-visibility: hidden;
 }
+
+.center-vertically{
+   display:table-cell;
+  vertical-align:middle;
+  text-align:center;
+
+}
+
