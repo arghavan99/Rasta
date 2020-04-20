@@ -145,14 +145,13 @@
     {% endif %}
 
 
-<div class="ui stackable center aligned segment homepage_section"
+<div class="ui bubble segment homepage_section "
      {% if upcoming_event %} style="background-color:var(--primary-light);"
      {% else %} style="
      background-image: url({% static 'images/pattern.jpg' %});
      background-attachment: fixed;
      background-repeat: no-repeat;
      background-size: cover;" {% endif %}>
-    <div class="ui middle aligned stackable grid container" style="direction:LTR; padding:0!important">
         <div class="row" dir="rtl">
             <h1 class="reveal_fade" style="color:var(--header)">
                 <i class="calendar check icon"></i>
@@ -160,30 +159,34 @@
             </h1>
         </div>
 
-    <div class="row">
-<div class=" wrapper">
-  <div class="cols">
+
+<div class="ui" style="margin-top: 70px;margin-bottom: 50px" dir="rtl">
+
+        <div class="ui centered cards">
       {% for event in events %}
-			<div class="col">
-				<div class="contain">
-					<div class="front" style="background-image: url('{{ event.poster.url }}')">
-						<div class="inner">
-							<p>{{ event.name }}</p>
-                            <span>{{ event.month }} {{ event.year }}</span>
-						</div>
-					</div>
-					<div class="back">
-						<div class="inner">
-						  <p>{{ event.summary }}</p>
-						</div>
-					</div>
-				</div>
-			</div>
+
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="{{ event.poster.url }}" style="width:300px;height:400px; border-radius: 10px">
+                    <div class="text-block">
+                        <h4>{{event.name}}</h4>
+                        <p>{{ event.month }} {{ event.year }}</p>
+                    </div>
+                </div>
+                <div class="flip-card-back">
+                  <p>{{event.summary}}</p>
+                    <a> ادامه مطالب </a>
+                </div>
+              </div>
+            </div>
+
       {% endfor %}
-		</div>
- </div>
+        </div>
+
+
     </div>
-    </div>
+
 </div>
 
 
