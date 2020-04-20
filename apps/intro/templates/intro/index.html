@@ -165,7 +165,7 @@
             <div class="ui centered cards">
                 {% for event in events %}
 
-                    <div class="flip-card">
+                    <div class="flip-card step-reveal">
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <img src="{{ event.poster.url }}" style="width:300px;height:400px; border-radius: 10px">
@@ -177,7 +177,7 @@
                             <div class=" flip-card-back" >
                                 <div class="center-vertically">
                                 <p>{{ event.summary }}</p>
-                                <a> ادامه مطالب </a>
+                                <a href="/events/ {{ event.id }}"> ادامه مطالب ... </a>
                                 </div>
                             </div>
                         </div>
@@ -187,7 +187,7 @@
             </div>
         </div>
         <div class="ui container center aligned">
-            <a class="ui button" href="/events"
+            <a class="ui button step-reveal" href="/events"
                style="margin-left: auto;margin-right: auto;background-color: var(--secondary-dark) ;color: white;font-weight: bolder;margin-top: 20px">
                 مشاهده تمام رویدادها
             </a>
@@ -236,7 +236,6 @@
 {% block footer_scripts %}
     <script>
         ScrollReveal().reveal('.reveal_fade', {delay: 500});
-
-
+        ScrollReveal().reveal('.step-reveal', {delay:200, duration: 400, easing: 'ease-in-out', interval: 200});
     </script>
 {% endblock %}
