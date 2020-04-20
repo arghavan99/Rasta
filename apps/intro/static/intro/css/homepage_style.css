@@ -129,13 +129,14 @@
     background:rgba(0,0,0,0.6);
     opacity:1;
     border-radius: 10px;
-    z-index: 1;
+
 }
 
 .flip-card-back {
   background-color: black;
   color: white;
   transform: rotateY(180deg);
+
 }
 
 .flip-card-back p{
@@ -150,5 +151,5 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2;
+
 }
