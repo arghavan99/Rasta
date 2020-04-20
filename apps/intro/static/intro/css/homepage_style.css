@@ -129,13 +129,13 @@
     background:rgba(0,0,0,0.6);
     opacity:1;
     border-radius: 10px;
-
+    -webkit-backface-visibility: hidden;
 }
 
 .flip-card-back {
   background-color: black;
   color: white;
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(60px);
 
 }
 
@@ -150,6 +150,6 @@
   color: white;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-
+  transform: translate(-50%, -50%) translateZ(60px);
+  -webkit-backface-visibility: hidden;
 }

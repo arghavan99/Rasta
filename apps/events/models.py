@@ -13,7 +13,6 @@ class Event(models.Model):
     summary = models.TextField(null=False, blank=False)
     description = RichTextField(null=False, blank=False)
     location = models.CharField(max_length=100, null=True, blank=True)  # todo false
-    # date = models.DateField(null=True, blank=True)  # todo false
     date = jmodels.jDateTimeField(null=True, blank=True)
 
     def save(self, *args, **kwargs):
