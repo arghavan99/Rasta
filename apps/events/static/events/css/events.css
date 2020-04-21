@@ -16,9 +16,9 @@
 }
 
 .ui.ribbon {
-    color: var(--primary-white);
-    background-color: var(--primary-pink) !important;
-    border-color: var(--secondary-pink) !important;
+    color: #ffffff!important;  /*var(--primary-white);*/
+    background-color: #e02c68 !important;  /*var(--primary-pink);*/
+    border-color: #9c264e !important;  /*var(--secondary-pink);*/
 }
 
 .ribbon {
