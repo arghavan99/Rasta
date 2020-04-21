@@ -40,7 +40,7 @@ def get_members(request):
                'form': form,
                'bibot': bibot_SiteKey}
     if request.method == 'GET':
-        return render(request, 'base/404.html', context)
+        return render(request, 'contact_us/contact_us.html', context)
     else:
         if not check_bibot_response(request):
             return render(request, 'contact_us/contact_us.html', context)

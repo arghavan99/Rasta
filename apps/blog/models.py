@@ -14,7 +14,7 @@ class Category(models.Model):
 class BlogPost(models.Model):
     objects = jmodels.jManager()
     photo = models.ImageField(upload_to='blog/', null=True, blank=True)
-    title = models.CharField(max_length=100, null=False, blank=False)
+    title = models.CharField(max_length=70, null=False, blank=False)
     publish_date = jmodels.jDateTimeField()
     summary = models.TextField(max_length=100, null=False, blank=False)
     text = RichTextField(null=False, blank=False)
