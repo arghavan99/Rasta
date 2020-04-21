@@ -16,7 +16,6 @@ def get_events(request):
             'location': event.location
         } for event in events]
 
-    print(events[0].date)
 
     return render(request, 'events/events.html', context)
 
