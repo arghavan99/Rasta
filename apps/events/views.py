@@ -4,7 +4,7 @@ from apps.events.models import *
 
 def get_events(request):
     context = {}
-    events = Event.objects.all()
+    events = Event.objects.order_by('-date')
     context['events'] = [
         {
             'id': event.id,
@@ -15,7 +15,6 @@ def get_events(request):
             'summary': event.summary,
             'location': event.location
         } for event in events]
-
 
     return render(request, 'events/events.html', context)
 
