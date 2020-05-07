@@ -18,3 +18,20 @@ def get_events(request):
 
     return render(request, 'events/events.html', context)
 
+
+def get_single_event(request, eve_id):
+    try:
+        event = Event.objects.get(id=eve_id)
+    except Event.DoesNotExist:
+        response = render(request, 'base/404.html')
+        response.status_code = 404
+        return response
+    docs = Document.objects.filter(event=event)
+    context = {
+        'event': event,
+        'year': event.get_persian_year(),
+        'month': event.get_persian_month(),
+        'docs': list(docs),
+    }
+    return render(request, 'events/single_event.html', context)
+

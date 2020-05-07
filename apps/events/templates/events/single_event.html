@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for d in docs %}
+{{ d.caption }}
+<div>
+    <a
+       class=" ui inverted yellow button "
+       data-position="left center" data-inverted=""
+       style="margin-left: 15px; margin-right: 15px;border-radius: 20px"
+       id="{{d.id}}link">
+        <i class="inverted orange download  icon"
+           style="margin-left: 5px;margin-right: 5px"></i> download {{ d.id }}
+    </a>
+
+
+    <form name="downloader" id="{{ d.id }}downloader"
+          action="/download/"
+          method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="original_file_name"
+               value="{{ d.file.name }}"/>
+    </form>
+    {% endfor %}
+</div>
+<script>
+{% for d in docs %}
+
+    document.getElementById("{{d.id}}link").addEventListener("click", function () {
+   document.getElementById("{{ d.id }}downloader").submit();
+    });
+{% endfor %}
+
+</script>
+
+</body>
+</html>
