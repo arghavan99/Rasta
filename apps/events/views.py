@@ -35,3 +35,17 @@ def get_single_event(request, eve_id):
     }
     return render(request, 'events/single_event.html', context)
 
+
+def get_photos(request, eve_id):
+    try:
+        event = Event.objects.get(id=eve_id)
+    except Event.DoesNotExist:
+        response = render(request, 'base/404.html')
+        response.status_code = 404
+        return response
+    photos = EventPhoto.objects.filter(event=event)
+    context = {
+        'event_name' : event.name,
+        'photos': list(photos)
+    }
+    return render(request, 'events/album.html', context)

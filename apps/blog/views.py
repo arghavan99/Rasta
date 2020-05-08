@@ -64,6 +64,20 @@ def get_posts(request, cat_url):
     context = vis_hid_cats(7, categories)
     context['active_cat'] = cat_dictionary(active_cat)
     posts = BlogPost.objects.order_by('-publish_date').filter(categories__in=[active_cat])
-    # todo eyes 1 , 2, 3
     context['posts'] = [post_dictionary(post) for post in posts]
     return render(request, 'blog/blog.html', context)
+
+
+def get_single_post(request, post_id):
+    try:
+        post = BlogPost.objects.get(id=post_id)
+    except BlogPost.DoesNotExist:
+        response = render(request, 'base/404.html')
+        response.status_code = 404
+        return response
+    docs = BlogDocument.objects.filter(post=post)
+    context = {
+        'post': post,
+        'docs': list(docs),
+    }
+    return render(request, 'events/single_post.html', context)

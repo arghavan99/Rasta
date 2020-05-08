@@ -1,6 +1,7 @@
 from django.db import models
 from django_jalali.db import models as jmodels
 from ckeditor.fields import RichTextField
+from Rasta_Web.utils import validate_file_size, validate_image_size
 
 
 class Category(models.Model):
@@ -13,7 +14,7 @@ class Category(models.Model):
 
 class BlogPost(models.Model):
     objects = jmodels.jManager()
-    photo = models.ImageField(upload_to='blog/', null=True, blank=True)
+    photo = models.ImageField(upload_to='blog/', null=True, blank=True, validators=[validate_image_size])
     title = models.CharField(max_length=70, null=False, blank=False)
     publish_date = jmodels.jDateTimeField()
     summary = models.TextField(max_length=100, null=False, blank=False)
@@ -26,3 +27,13 @@ class BlogPost(models.Model):
     def get_persian_date(self):
         translate_table = str.maketrans('1234567890', '۱۲۳۴۵۶۷۸۹۰')
         return str(self.publish_date).translate(translate_table)
+
+
+class BlogDocument(models.Model):
+    caption = models.CharField(max_length=200, null=False, blank=False)
+    file = models.FileField(null=False, blank=False, upload_to='blog_documents/', validators=[validate_file_size])
+    post = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.post) + ' - ' + str(self.file.name)
+

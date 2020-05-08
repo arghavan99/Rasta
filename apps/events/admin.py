@@ -4,7 +4,7 @@ from apps.events.models import *
 
 @admin.register(EventPhoto)
 class EventPhotoAdmin(admin.ModelAdmin):
-    fields = ['photo', 'event']
+    fields = ['photo', 'caption', 'event']
 
 
 @admin.register(Document)

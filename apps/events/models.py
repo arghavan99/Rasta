@@ -4,12 +4,13 @@ from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
+from Rasta_Web.utils import validate_image_size, validate_file_size
 from django_jalali.db import models as jmodels
 
 
 class Event(models.Model):
     name = models.CharField(max_length=200, null=False, blank=False)
-    poster = models.ImageField(upload_to='event_posters/', null=False, blank=False)
+    poster = models.ImageField(upload_to='event_posters/', null=False, blank=False, validators=[validate_image_size])
     summary = models.TextField(null=False, blank=False)
     description = RichTextField(null=False, blank=False)
     location = models.CharField(max_length=100, null=False, blank=False)
@@ -40,7 +41,7 @@ class Event(models.Model):
 
 class Document(models.Model):
     caption = models.CharField(max_length=200, null=False, blank=False)
-    file = models.FileField(null=False, blank=False, upload_to='event_documents/')
+    file = models.FileField(null=False, blank=False, upload_to='event_documents/', validators=[validate_file_size])
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -48,8 +49,9 @@ class Document(models.Model):
 
 
 class EventPhoto(models.Model):
-    photo = models.ImageField(upload_to='event_photos/', null=False, blank=False)
+    photo = models.ImageField(upload_to='event_photos/', null=False, blank=False, validators=[validate_image_size])
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    caption = models.CharField(max_length=300, null=True, blank=True)
 
     def __str__(self):
         return str(self.event) + ' - ' + str(self.photo.name)
