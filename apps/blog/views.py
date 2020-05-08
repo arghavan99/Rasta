@@ -68,7 +68,7 @@ def get_posts(request, cat_url):
     return render(request, 'blog/blog.html', context)
 
 
-def get_single_post(request, post_id):
+def get_single_post(request, post_id, rest):
     try:
         post = BlogPost.objects.get(id=post_id)
     except BlogPost.DoesNotExist:
@@ -80,4 +80,4 @@ def get_single_post(request, post_id):
         'post': post,
         'docs': list(docs),
     }
-    return render(request, 'events/single_post.html', context)
+    return render(request, 'blog/single_post.html', context)

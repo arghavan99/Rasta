@@ -12,13 +12,13 @@
                 {% endif %}
             </div>
             <div class="middle aligned content">
-                <a class="header"> {{ post.title }} </a> <!--todo href for selected post-->
+                <a href="/blog/posts/{{ post.id }}/{{ post.title }}/" class="header"> {{ post.title }} </a>
                 <div class="meta">
                     <span> {{ post.publish_date }} </span>
                 </div>
                 <div class="description">
                     <p> {{ post.summary|safe }}</p>
-                    <a href="#"> ادامه مطلب ...</a><!--todo href for selected post-->
+                    <a href="/blog/posts/{{ post.id }}/{{ post.title }}/"> ادامه مطلب ...</a>
                 </div>
                 <div class="extra">
                     {% for cat in post.categories %}

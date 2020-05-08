@@ -5,6 +5,7 @@ from apps.blog import views
 
 app_name = "blog"
 urlpatterns = [
+    path('posts/<int:post_id>/<str:rest>/', views.get_single_post),
     path('<slug:cat_url>/', views.get_posts),
     url(r'^$', views.get_all_posts),
 ]
