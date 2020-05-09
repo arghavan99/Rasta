@@ -47,7 +47,7 @@ class CategoryTest(TestCase):
     def test_title_blog_max_length(self):
         post = BlogPost.objects.get(id=1)
         max_length = post._meta.get_field('title').max_length
-        self.assertEquals(max_length, 100)
+        self.assertEquals(max_length, 70)
 
     def test_view_url_exists(self):
         response = self.client.get('/blog/')
