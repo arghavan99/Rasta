@@ -1,13 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-{% for p in photos %}
-<img src="{{ p.photo.url }}">
-{{ p.caption }}
-{% endfor %}
-</body>
-</html>
+{% extends 'base/base.html' %}
+{% load static %}
+{% block extra_header %}
+<link rel="stylesheet" href="{% static 'events/css/events.css' %}">
+<script src="{% static 'scripts/scrollreveal.js' %}"></script>
+{% endblock %}
+
+{% block container %}
+<div style="margin-top: 140px;margin-bottom: 50px">
+
+
+    <div class="ui bubble segment" dir="rtl">
+
+        <h2 class="ui center aligned dividing header" style="color: var(--header)">
+        {{ event_name }}
+        </h2>
+
+        <div class="ui center aligned stackable grid">
+        {% block photos %}
+            {% include 'events/photo.html' %}
+        {% endblock %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer_scripts %}
+<script>
+        ScrollReveal().reveal('.fade-reveal', {duration: 800, easing: 'ease-in-out', interval: 200});
+
+</script>
+{% endblock %}
