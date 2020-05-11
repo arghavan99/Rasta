@@ -31,11 +31,14 @@
     background-size: cover; 
 }
 
+
+
 .ui.poster.image {
-    position: fixed !important;
-    max-width: 100% !important;
-    vertical-align: middle !important;
-    bottom: 20%;
+     position: fixed!important;
+
+   bottom: 20%;
+
+
 }
 
 .hline {

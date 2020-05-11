@@ -10,8 +10,8 @@
 
 <div class="ui stackable grid">
 
-    <div class="ui four wide column" style="height: 100vh !important;">
-        <img class="ui poster image" alt="" src="{{ event.poster.url }}">
+    <div class="ui four wide column parent" style="height: 100% !important;margin-top: 140px;margin-bottom: 50px">
+        <img class="ui poster image child" alt="" src="{{ event.poster.url }}">
     </div>
 
     <div class="ui twelve wide column">
@@ -46,36 +46,25 @@
                         <div class="ui dimmer">
                             <div class="content">
                                 <div class="center">
-                                    <div class="ui inverted button">Add Friend</div>
-<!--                                    <a-->
-<!--                                            class=" ui inverted yellow button "-->
-<!--                                            data-position="left center" data-inverted=""-->
-<!--                                            style="margin-left: 15px; margin-right: 15px;border-radius: 20px"-->
-<!--                                            id="{{doc.id}}link">-->
-<!--                                        <i class="inverted orange download  icon"-->
-<!--                                           style="margin-left: 5px;margin-right: 5px"></i> download {{ doc.id }}-->
-<!--                                    </a>-->
-<!--                                    <form name="downloader" id="{{doc.id}}downloader"-->
-<!--                                          action="/download/"-->
-<!--                                          method="POST">-->
-<!--                                        {% csrf_token %}-->
-<!--                                        <input type="hidden" name="original_file_name"-->
-<!--                                               value="{{ doc.file.name }}"/>-->
-<!--                                    </form>-->
+                                    <div class="ui inverted button" id="{{doc.id}}link" >دانلود کن
+                                      <form name="downloader" id="{{doc.id}}downloader"
+                                          action="/download/"
+                                          method="POST">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="original_file_name"
+                                               value="{{ doc.file.name }}"/>
+                                  </form>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <img src="{% static 'images/icons/pdf-icon.png' %}">
                     </div>
                     <div class="content">
-                        <a class="file-name"> {{ doc.file.name }}</a>
+                        <a class="file-name" style="color: var(--header)"> {{ doc.caption}}</a>
                     </div>
-                    <div class="extra content">
-                        <a>
-                            <i class="users icon"></i>
-                            2 Members
-                        </a>
-                    </div>
+
                 </div>
                 {% endfor %}
             </div>
@@ -110,15 +99,15 @@
 </div>
 {% endblock %}
 
-<!--{% block footer_scripts %}-->
-<!--<script>-->
+{% block footer_scripts %}
+<script>
 
-<!--        {% for doc, ext in docs %}-->
-<!--            document.getElementById("{{doc.id}}link").addEventListener("click", function () {-->
-<!--                document.getElementById("{{ doc.id }}downloader").submit();-->
-<!--             });-->
-<!--        {% endfor %}-->
+       {% for doc, ext in docs %}
+          document.getElementById("{{doc.id}}link").addEventListener("click", function () {
+               document.getElementById("{{ doc.id }}downloader").submit();
+             });
+        {% endfor %}
 
 
-<!--</script>-->
-<!--{% endblock %}-->
+</script>
+{% endblock %}
