@@ -26,12 +26,11 @@ def get_single_event(request, eve_id):
         response = render(request, 'base/404.html')
         response.status_code = 404
         return response
-    docs = Document.objects.filter(event=event)
     context = {
         'event': event,
         'year': event.get_persian_year(),
         'month': event.get_persian_month(),
-        'docs': list(docs),
+        'docs': get_docs(event),
     }
     return render(request, 'events/single_event.html', context)
 
@@ -45,7 +44,26 @@ def get_photos(request, eve_id):
         return response
     photos = EventPhoto.objects.filter(event=event)
     context = {
-        'event_name' : event.name,
+        'event_name': event.name,
         'photos': list(photos)
     }
     return render(request, 'events/album.html', context)
+
+
+def get_docs(event):
+    docs = Document.objects.filter(event=event)
+    return [(doc, get_doc_type(doc)) for doc in docs]
+
+
+def get_doc_type(doc):
+    # ext = doc.file.name.split('.')[1]
+    # if ext in ['png', 'jpg', 'jpeg']:
+    #     return 'img'
+    # if ext in ['doc', 'docs']:
+    #     return 'doc'
+    # if ext in ['xlsx', 'xls', 'csv']:
+    #     return 'xlsx'
+    # if ext in ['pdf']:
+    #     return ext
+    # return 'txt'
+    return 'pdf'
