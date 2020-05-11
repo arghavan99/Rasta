@@ -2,5 +2,110 @@
 {% load static %}
 {% block extra_header %}
 <link rel="stylesheet" href="{% static 'blog/css/blogstyle.css' %}">
+<script src="{% static 'scripts/scrollreveal.js' %}"></script>
+<script src="{% static 'blog/scripts/blog_js.js' %}"></script>
+{% endblock %}
 
+{% block content %}
+    <div style="padding:50px;height: 40vh; width: 100%;background-color:  rgba(255,255,255,0.7);background-size: cover; margin-top: 140px">
+    <div class="ui container right aligned">
+        <div class="ui stackable grid">
+
+    <div class="ui four wide column " >
+            <div class="ui small circular image">
+                {% if post.photo %}
+                <img src="{{ post.photo.url }}">
+                {% else %}
+                <img src="{% static 'blog/images/default.png' %}">
+                {% endif %}
+            </div>
+    </div>
+            <div class="ui twelve wide column left aligned" >
+                <div style="margin-top: 30px ">
+                     <h1 class="ui  huge header" style="color: var(--header);">
+                {{ post.title}}
+            </h1>
+
+
+        <h3 class="ui medium header" style="color: var(--secondary-dark)">
+                {{ day }} {{ month }} {{ year }} -{{ time }}
+            </h3>
+                    {% for cat in post.categories %}
+                    <a href="/blog/{{ cat.url }}">
+                        <div class="ui label " style="background-color:var(--primary-pink) !important; color: white">
+                            {{ cat.title }}
+                        </div>
+                    </a>
+                    {% endfor %}
+                     </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    </div>
+
+    <div style="margin-top: 50px">
+    <div class="ui container">
+        <div class="ui segment" style="margin-bottom: 50px; border-radius: 20px !important;background-color: var(--bubble) !important;padding: 5% !important;">
+        <div class="full-description">{{ post.text|safe }}</div>
+        {% if docs|length != 0 %}
+            <hr class="hline">
+            {% endif %}
+
+            <div class="ui special cards">
+                {% for doc in docs %}
+                <div class="card file-card" style="opacity:95%!important;">
+                    <div class="blurring dimmable image">
+                        <div class="ui dimmer">
+                            <div class="content">
+                                <div class="center">
+                                    <div class="ui inverted button" id="{{doc.id}}link" >دانلود کن
+                                      <form name="downloader" id="{{doc.id}}downloader"
+                                          action="/download/"
+                                          method="POST">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="original_file_name"
+                                               value="{{ doc.file.name }}"/>
+                                  </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="{% static 'images/icons/pdf-icon.png' %}">
+                    </div>
+                    <div class="content">
+                        <a class="file-name" style="color: var(--header)"> {{ doc.caption}}</a>
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+
+
+
+    </div></div>
+
+{#        todo add comment here#}
+
+
+
+    </div>
+{% endblock %}
+
+{% block footer_scripts %}
+<script>
+
+       {% for doc in docs %}
+          document.getElementById("{{doc.id}}link").addEventListener("click", function () {
+               document.getElementById("{{ doc.id }}downloader").submit();
+             });
+        {% endfor %}
+
+
+</script>
 {% endblock %}

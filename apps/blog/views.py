@@ -18,6 +18,17 @@ def post_dictionary(post):
         'photo': post.photo,
         'publish_date': post.get_persian_date(),
         'summary': post.summary,
+
+        'categories': [cat_dictionary(cat) for cat in post.categories.all()]
+    }
+def single_post_dictionary(post):
+    return {
+        'id': post.id,
+        'title': post.title,
+        'photo': post.photo,
+        'publish_date': post.get_persian_date(),
+        'summary': post.summary,
+        'text': post.text,
         'categories': [cat_dictionary(cat) for cat in post.categories.all()]
     }
 
@@ -77,7 +88,11 @@ def get_single_post(request, post_id, rest):
         return response
     docs = BlogDocument.objects.filter(post=post)
     context = {
-        'post': post,
+        'post': single_post_dictionary(post),
         'docs': list(docs),
+        'year': post.get_persian_year(),
+        'month': post.get_persian_month(),
+        'day': post.get_persian_day(),
+        'time':post.get_persian_time(),
     }
     return render(request, 'blog/single_post.html', context)

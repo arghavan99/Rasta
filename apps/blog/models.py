@@ -28,6 +28,23 @@ class BlogPost(models.Model):
         translate_table = str.maketrans('1234567890', '۱۲۳۴۵۶۷۸۹۰')
         return str(self.publish_date).translate(translate_table)
 
+    def get_persian_month(self):
+        months = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند']
+        return months[self.publish_date.month - 1]
+
+    def get_persian_year(self):
+        translate_table = str.maketrans('1234567890', '۱۲۳۴۵۶۷۸۹۰')
+        return str(self.publish_date.year).translate(translate_table)
+
+    def get_persian_time(self):
+        translate_table = str.maketrans('1234567890', '۱۲۳۴۵۶۷۸۹۰')
+        return str(self.publish_date.time()).translate(translate_table)
+
+    def get_persian_day(self):
+        translate_table = str.maketrans('1234567890', '۱۲۳۴۵۶۷۸۹۰')
+        return str(self.publish_date.day).translate(translate_table)
+
+
 
 class BlogDocument(models.Model):
     caption = models.CharField(max_length=200, null=False, blank=False)
