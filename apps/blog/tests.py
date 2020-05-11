@@ -4,7 +4,7 @@ from django.core.files import File
 from PIL import Image
 from io import BytesIO
 from apps.blog.models import Category, BlogPost
-
+from apps.blog import views
 
 class CategoryTest(TestCase):
     @staticmethod
@@ -31,7 +31,6 @@ class CategoryTest(TestCase):
 
         post1.categories.add(cat1)
         post1.categories.add(cat3)
-
         post2.categories.add(cat2)
 
     def test_title_max_length(self):
@@ -74,6 +73,19 @@ class CategoryTest(TestCase):
     def test_cat_url(self):
         response = self.client.get('/blog/sport/')
         self.assertEqual(response.status_code, 200)
+
+    def test_singlePost_url(self):
+        response = self.client.get('/blog/posts/1/first post/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_singlePost_template(self):
+        response = self.client.get('/blog/posts/1/first post/')
+        self.assertTemplateUsed(response, 'blog/single_post.html')
+
+    def test_wrong_path_view_uses_correct_template(self):
+        response = views.get_single_post(print(),5 ,"")
+        self.assertEqual(response.status_code, 404)
+
 
 
 
