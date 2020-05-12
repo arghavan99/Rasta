@@ -7,11 +7,11 @@
 {% endblock %}
 
 {% block content %}
-    <div style="padding:50px;height: 40vh; width: 100%;background-color:  rgba(255,255,255,0.7);background-size: cover; margin-top: 140px">
-    <div class="ui container right aligned">
+    <div style="height: 20%; width: 100%;background-color:  rgba(255,255,255,0.7);background-size: cover; margin-top: 140px">
+    <div class="ui container right aligned" style="padding: 50px;">
         <div class="ui stackable grid">
 
-    <div class="ui four wide column " >
+    <div class="ui four wide column center aligned " >
             <div class="ui small circular image">
                 {% if post.photo %}
                 <img src="{{ post.photo.url }}">
@@ -21,7 +21,7 @@
             </div>
     </div>
             <div class="ui twelve wide column left aligned" >
-                <div style="margin-top: 30px ">
+                <div style="margin-top: 20px">
                      <h1 class="ui  huge header" style="color: var(--header);">
                 {{ post.title}}
             </h1>
