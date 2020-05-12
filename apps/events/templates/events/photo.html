@@ -3,14 +3,16 @@
 
 <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
 
-      {% for photo in photos %}
-          <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-            <a href={{ photo.photo.url }}  itemprop="contentUrl" data-size={{ photo.photo.width }}x{{ photo.photo.height }}/2>
-                <img src={{ photo.photo.url }} itemprop="thumbnail" alt="Image description" />
-            </a>
-        <figcaption itemprop="caption description">{{photo.caption}}</figcaption>
-         </figure>
-      {% endfor %}
+    {% for photo in photos %}
+    <figure class="fade-reveal" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <a href={{ photo.photo.url }} itemprop="contentUrl" data-size={{ photo.photo.width }}x{{ photo.photo.height }}/2>
+        <img src={{ photo.photo.url }} itemprop="thumbnail" alt="Image description"/>
+        </a>
+        {% if photo.caption %}
+        <figcaption itemprop="caption description"> <big> {{photo.caption}} </big> </figcaption>
+        {% endif %}
+    </figure>
+    {% endfor %}
 
 
 </div>
@@ -45,9 +47,9 @@
 
                 <div class="pswp__preloader">
                     <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,16 +64,18 @@
             <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
             </button>
 
+
             <div class="pswp__caption">
                 <div class="pswp__caption__center"></div>
             </div>
 
-          </div>
-
         </div>
+
+    </div>
 
 </div>
 <!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe-ui-default.min.js'></script><script src="{% static 'events/scripts/photos.js' %}"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe-ui-default.min.js'></script>
+<script src="{% static 'events/scripts/photos.js' %}"></script>
 

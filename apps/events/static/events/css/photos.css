@@ -11,7 +11,7 @@
 .my-gallery figure {
   display: block;
   float: left;
-  margin: 0 5px 5px 0;
+  margin: 20px 20px 20px 20px;
   height: 250px;
 }
 .my-gallery figcaption {
