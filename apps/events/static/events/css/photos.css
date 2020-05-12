@@ -1,4 +1,5 @@
-.my-gallery {
+@media only screen and (min-width: 400px) {
+  .my-gallery {
   height: 100%;
   float: left;
   padding-top: 10px;
@@ -7,6 +8,7 @@
 .my-gallery img {
   height: 100%;
   width: auto;
+
 }
 .my-gallery figure {
   display: block;
@@ -16,4 +18,27 @@
 }
 .my-gallery figcaption {
   display: none;
+}
+}
+
+@media only screen and (max-width: 400px) {
+  .my-gallery {
+  width: 100%;
+  float: left;
+}
+
+.my-gallery img {
+  width: 100%;
+  height: auto;
+}
+
+.my-gallery figure {
+  display: block;
+  float: left;
+  margin: 20px 20px 20px 20px;
+  width: 250px;
+}
+.my-gallery figcaption {
+  display: none;
+}
 }
