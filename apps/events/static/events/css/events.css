@@ -31,16 +31,6 @@
     background-size: cover; 
 }
 
-
-
-.ui.poster.image {
-     position: fixed!important;
-transition: 1s !important;
-   top: 30%;
-
-
-}
-
 .hline {
     color: rgba(34,36,38,.15);
     height: 0px;
@@ -73,4 +63,12 @@ transition: 1s !important;
     overflow-wrap: break-word !important;
     font-size: small !important;
     font-weight: normal !important;
+}
+
+@media only screen and (min-width: 768px) {
+    .ui.poster.image {
+        position: fixed;
+        top: 30%;
+        transition: 1s;
+    }
 }

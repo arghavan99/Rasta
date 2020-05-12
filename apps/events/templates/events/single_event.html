@@ -8,14 +8,14 @@
 
 {% block container %}
 
-<div class="ui stackable grid">
+<div class="ui stackable grid" style="margin-top: 140px;margin-bottom: 50px">
 
     <div class="ui five wide column parent" style="height: 100% !important;margin-top: 140px;margin-bottom: 50px">
-        <img class="ui poster image child" alt="" src="{{ event.poster.url }}">
+        <img class="ui centered poster image child" alt="" src="{{ event.poster.url }}">
     </div>
 
     <div class="ui eleven wide column">
-        <div class="ui bubble segment" style="margin-top: 140px;margin-bottom: 50px" dir="rtl">
+        <div class="ui bubble segment" dir="rtl">
 
             <h1 class="ui center aligned huge header" style="color: var(--header)">
                 {{ event.name }}
