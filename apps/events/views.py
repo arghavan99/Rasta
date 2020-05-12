@@ -56,14 +56,9 @@ def get_docs(event):
 
 
 def get_doc_type(doc):
-    # ext = doc.file.name.split('.')[1]
-    # if ext in ['png', 'jpg', 'jpeg']:
-    #     return 'img'
-    # if ext in ['doc', 'docs']:
-    #     return 'doc'
-    # if ext in ['xlsx', 'xls', 'csv']:
-    #     return 'xlsx'
-    # if ext in ['pdf']:
-    #     return ext
-    # return 'txt'
-    return 'pdf'
+    ext = doc.file.name.split('.')[-1]
+    if ext in ['zip', 'pdf']:
+        return ext
+    if ext in ['doc', 'docx']:
+        return 'doc'
+    return 'file'

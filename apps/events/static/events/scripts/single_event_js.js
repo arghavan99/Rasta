@@ -4,11 +4,10 @@ $('.special.cards .image').dimmer({
 });
 });
 
-var distance = 100;
 
 $(window).scroll(function () {
     if ($(window).width() >= 768) {
-        if ( $(window).scrollTop() >= distance ) {
+        if ( $(window).scrollTop() >= 100 ) {
             $('.child').css('top', "15%");
         } else {
             $('.child').css('top', "30%");
@@ -16,10 +15,12 @@ $(window).scroll(function () {
     }
 });
 
+
 function toggle () {
-      var parentwidth = $(".parent").width();
-      $('.child').css('max-width', parentwidth+"px");
+    var parentwidth = $(".parent").width();
+    $('.child').css('max-width', parentwidth+"px");
 }
+
 
 $(window).resize(toggle);
 $(window).load(toggle);

@@ -50,14 +50,14 @@
 
     <div style="margin-top: 50px">
     <div class="ui container">
-        <div class="ui segment" style="margin-bottom: 50px; border-radius: 20px !important;background-color: var(--bubble) !important;padding: 5% !important;">
+        <div class="ui segment" style="margin-bottom: 50px; border-radius: 20px !important;background-color: var(--buble) !important;padding: 5% !important;">
         <div class="full-description">{{ post.text|safe }}</div>
         {% if docs|length != 0 %}
             <hr class="hline">
             {% endif %}
 
             <div class="ui special cards">
-                {% for doc in docs %}
+                {% for doc, type in docs %}
                 <div class="card file-card" style="opacity:95%!important;">
                     <div class="blurring dimmable image">
                         <div class="ui dimmer">
@@ -76,7 +76,8 @@
                                 </div>
                             </div>
                         </div>
-                        <img src="{% static 'images/icons/pdf-icon.png' %}">
+                        {% static "" as baseUrl %}
+                        <img src="{{ baseUrl }}/images/icons/{{ type }}.png">
                     </div>
                     <div class="content">
                         <a class="file-name" style="color: var(--header)"> {{ doc.caption}}</a>

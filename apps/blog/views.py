@@ -1,4 +1,3 @@
-from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from apps.blog.models import *
 
@@ -21,6 +20,8 @@ def post_dictionary(post):
 
         'categories': [cat_dictionary(cat) for cat in post.categories.all()]
     }
+
+
 def single_post_dictionary(post):
     return {
         'id': post.id,
@@ -86,13 +87,26 @@ def get_single_post(request, post_id, rest):
         response = render(request, 'base/404.html')
         response.status_code = 404
         return response
-    docs = BlogDocument.objects.filter(post=post)
     context = {
         'post': single_post_dictionary(post),
-        'docs': list(docs),
+        'docs': get_docs(post),
         'year': post.get_persian_year(),
         'month': post.get_persian_month(),
         'day': post.get_persian_day(),
-        'time':post.get_persian_time(),
+        'time': post.get_persian_time(),
     }
     return render(request, 'blog/single_post.html', context)
+
+
+def get_docs(post):
+    docs = BlogDocument.objects.filter(post=post)
+    return [(doc, get_doc_type(doc)) for doc in docs]
+
+
+def get_doc_type(doc):
+    ext = doc.file.name.split('.')[-1]
+    if ext in ['zip', 'pdf']:
+        return ext
+    if ext in ['doc', 'docx']:
+        return 'doc'
+    return 'file'
