@@ -59,7 +59,7 @@ def get_doc_type(doc):
     # ext = doc.file.name.split('.')[1]
     # if ext in ['png', 'jpg', 'jpeg']:
     #     return 'img'
-    # if ext in ['doc', 'docs']:
+    # if ext in ['doc', 'docx']:
     #     return 'doc'
     # if ext in ['xlsx', 'xls', 'csv']:
     #     return 'xlsx'
