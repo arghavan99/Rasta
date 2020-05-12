@@ -1,4 +1,4 @@
-{% extends 'base/base.html' %}
+{% extends 'base/pattern_base.html' %}
 {% load static %}
 {% block extra_header %}
 <link rel="stylesheet" href="{% static 'blog/css/blogstyle.css' %}">
@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-    <div style="height: 20%; width: 100%;background-color:  rgba(55,187,160, 0.8);background-size: cover; margin-top: 140px">
+    <div style="height: 20%; width: 100%;background-color: var(--primary-light);background-size: cover; margin-top: 140px">
     <div class="ui container right aligned" style="padding: 50px;">
         <div class="ui stackable grid">
 
@@ -54,7 +54,7 @@
         <div class="full-description">{{ post.text|safe }}</div>
         {% if docs|length != 0 %}
             <hr class="hline">
-            {% endif %}
+
 
             <div class="ui special cards">
                 {% for doc, type in docs %}
@@ -86,6 +86,7 @@
                 </div>
                 {% endfor %}
             </div>
+        {% endif %}
 
 
 

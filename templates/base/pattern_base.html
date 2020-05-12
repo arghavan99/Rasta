@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+{% load static %}
+{% load i18n %}
+<head>
+    <meta charset="UTF-8">
+    <title>Rasta</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'semantic/semantic.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'scripts/nav.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'semantic/semantic.rtl.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="icon" type="image/png"  href="{% static 'images/nav-logo.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sidebarstyle.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet'>
+
+
+{% block extra_header %}{% endblock %}
+     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+</head>
+<body dir="rtl" style="height: 100%; background-image: url({% static 'images/pattern.jpg' %})" >
+
+
+
+{% block sidebar %}
+    {% include 'base/sidebar.html' %}
+{% endblock %}
+<div class="pusher">
+    {% block body %}
+        <div id="main">
+            <div class="container">
+            {% block navbar %}
+                {% include 'base/navbar.html' %}
+            {% endblock %}
+            </div>
+
+            {% block content %}
+                <div class="ui container" >
+                    {% block container %}
+
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+
+        </div>
+          {% block footer %}
+                {% include 'base/footer.html' %}
+            {% endblock %}
+    {% endblock %}
+
+</div>
+{% block footer_scripts %}
+{% endblock %}
+
+</body>
+</html>

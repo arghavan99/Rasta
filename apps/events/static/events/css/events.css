@@ -75,6 +75,10 @@
     .ui.poster.image {
         position: fixed;
         top: 30%;
-        transition: 1s;
+        transition: 0.7s;
+    }
+
+    .single-bubble {
+        min-height: 600px !important;
     }
 }

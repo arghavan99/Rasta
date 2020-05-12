@@ -7,8 +7,8 @@
 {% endblock %}
 
 {% block container %}
-
-<div class="ui stackable grid" style="margin-top: 140px;margin-bottom: 50px">
+<!--style="min-height: 75vh"-->
+<div class="ui stackable grid" style="margin-top: 140px;margin-bottom: 50px; min-height: 75vh">
 
     <div class="ui five wide column parent" style="height: 100% !important;margin-top: 140px;margin-bottom: 50px">
         <img class="ui centered poster image child" alt="" src="{{ event.poster.url }}">
@@ -37,7 +37,7 @@
 
             {% if docs|length != 0 %}
             <hr class="hline">
-            {% endif %}
+
 
             <div class="ui special cards">
                 {% for doc, type in docs %}
@@ -60,7 +60,7 @@
                             </div>
                         </div>
                         {% static "" as baseUrl %}
-                        <img src="{{ baseUrl }}/images/icons/{{ type }}.png">
+                        <img src="{{ baseUrl }}images/icons/{{ type }}.png">
                     </div>
                     <div class="content">
                         <a class="file-name" style="color: var(--header)"> {{ doc.caption}}</a>
@@ -69,6 +69,7 @@
                 </div>
                 {% endfor %}
             </div>
+            {% endif %}
         </div>
     </div>
 </div>
@@ -82,6 +83,7 @@
                document.getElementById("{{ doc.id }}downloader").submit();
              });
         {% endfor %}
+
 
 
 
