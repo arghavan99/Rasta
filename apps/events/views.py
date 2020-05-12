@@ -45,6 +45,7 @@ def get_photos(request, eve_id):
     photos = EventPhoto.objects.filter(event=event)
     context = {
         'event_name': event.name,
+        'event_id': event.id,
         'photos': list(photos)
     }
     return render(request, 'events/album.html', context)

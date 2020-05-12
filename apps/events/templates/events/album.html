@@ -1,11 +1,11 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block extra_header %}
-    <link rel="stylesheet" href="{% static 'events/css/events.css' %}">
-    <link rel="stylesheet" href="{% static 'events/css/photos.css' %}">
-    <script src="{% static 'scripts/scrollreveal.js' %}"></script>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css'>
+<link rel="stylesheet" href="{% static 'events/css/events.css' %}">
+<link rel="stylesheet" href="{% static 'events/css/photos.css' %}">
+<script src="{% static 'scripts/scrollreveal.js' %}"></script>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css'>
 
 
 {% endblock %}
@@ -17,13 +17,18 @@
     <div class="ui bubble segment" dir="rtl">
 
         <h2 class="ui center aligned dividing header" style="color: var(--header)">
-        {{ event_name }}
+            {{ event_name }}
         </h2>
 
         <div class="ui center aligned stackable grid" align="center">
-        {% block photos %}
+            {% block photos %}
             {% include 'events/photo.html' %}
-        {% endblock %}
+            {% endblock %}
+        </div>
+        <div class="ui container center aligned" style="margin-top:5%;">
+            <a class="ui album button" href="/events/{{ event_id }}/">
+                بازگشت به رویداد {{ event_name }}
+            </a>
         </div>
     </div>
 </div>
@@ -33,6 +38,7 @@
 {% block footer_scripts %}
 <script>
         ScrollReveal().reveal('.fade-reveal', {duration: 800, easing: 'ease-in-out', interval: 200});
+
 
 </script>
 {% endblock %}
