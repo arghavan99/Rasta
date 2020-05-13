@@ -19,8 +19,8 @@
         <h2 class="ui center aligned dividing header" style="color: var(--header)">
             {{ event_name }}
         </h2>
-
-        <div class="ui center aligned stackable grid" align="center">
+        <div style="min-height: 75vh">
+        <div class="ui center aligned stackable grid" align="center" >
             {% block photos %}
             {% include 'events/photo.html' %}
             {% endblock %}
@@ -29,6 +29,7 @@
             <a class="ui album button" href="/events/{{ event_id }}/">
                 بازگشت به رویداد {{ event_name }}
             </a>
+        </div>
         </div>
     </div>
 </div>

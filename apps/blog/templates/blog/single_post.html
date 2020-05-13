@@ -7,29 +7,29 @@
 {% endblock %}
 
 {% block content %}
-    <div style="height: 20%; width: 100%;background-color: var(--primary-light);background-size: cover; margin-top: 140px">
+<div style="height: 20%; width: 100%;background-color: var(--primary-light);background-size: cover; margin-top: 140px">
     <div class="ui container right aligned" style="padding: 50px;">
         <div class="ui stackable grid">
 
-    <div class="ui four wide column center aligned " >
-            <div class="ui small circular image">
-                {% if post.photo %}
-                <img src="{{ post.photo.url }}">
-                {% else %}
-                <img src="{% static 'blog/images/default.png' %}">
-                {% endif %}
+            <div class="ui four wide column center aligned ">
+                <div class="ui small circular image">
+                    {% if post.photo %}
+                    <img src="{{ post.photo.url }}">
+                    {% else %}
+                    <img src="{% static 'blog/images/default.png' %}">
+                    {% endif %}
+                </div>
             </div>
-    </div>
-            <div class="ui twelve wide column left aligned" >
+            <div class="ui twelve wide column left aligned">
                 <div style="margin-top: 20px">
-                     <h1 class="ui  huge header" style="color: var(--header);">
-                {{ post.title}}
-            </h1>
+                    <h1 class="ui  huge header" style="color: var(--header);">
+                        {{ post.title}}
+                    </h1>
 
 
-        <h3 class="ui medium header" style="color: var(--secondary-dark)">
-                {{ day }} {{ month }} {{ year }} -{{ time }}
-            </h3>
+                    <h3 class="ui medium header" style="color: var(--secondary-dark)">
+                        {{ day }} {{ month }} {{ year }} -{{ time }}
+                    </h3>
                     {% for cat in post.categories %}
                     <a href="/blog/{{ cat.url }}">
                         <div class="ui label " style="background-color:var(--primary-pink) !important; color: white">
@@ -37,7 +37,7 @@
                         </div>
                     </a>
                     {% endfor %}
-                     </div>
+                </div>
             </div>
 
 
@@ -46,13 +46,14 @@
 
     </div>
 
-    </div>
+</div>
 
-    <div style="margin-top: 50px">
-    <div class="ui container">
-        <div class="ui segment" style="margin-bottom: 50px; border-radius: 20px !important;background-color: rgba(255,255,255,0.7) !important;padding: 5% !important;">
-        <div class="full-description">{{ post.text|safe }}</div>
-        {% if docs|length != 0 %}
+<div style="margin-top: 50px">
+    <div class="ui single-post container">
+        <div class="ui segment"
+             style="margin-bottom: 50px; border-radius: 20px !important;background-color: rgba(255,255,255,0.7) !important;padding: 5% !important;">
+            <div class="full-description">{{ post.text|safe }}</div>
+            {% if docs|length != 0 %}
             <hr class="hline">
 
 
@@ -63,14 +64,14 @@
                         <div class="ui dimmer">
                             <div class="content">
                                 <div class="center">
-                                    <div class="ui inverted button" id="{{doc.id}}link" >دانلود کن
-                                      <form name="downloader" id="{{doc.id}}downloader"
-                                          action="/download/"
-                                          method="POST">
-                                        {% csrf_token %}
-                                        <input type="hidden" name="original_file_name"
-                                               value="{{ doc.file.name }}"/>
-                                  </form>
+                                    <div class="ui inverted button" id="{{doc.id}}link">دانلود کن
+                                        <form name="downloader" id="{{doc.id}}downloader"
+                                              action="/download/"
+                                              method="POST">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="original_file_name"
+                                                   value="{{ doc.file.name }}"/>
+                                        </form>
 
                                     </div>
                                 </div>
@@ -86,17 +87,16 @@
                 </div>
                 {% endfor %}
             </div>
-        {% endif %}
+            {% endif %}
 
 
-
-    </div></div>
-
-{#        todo add comment here#}
-
-
-
+        </div>
     </div>
+
+    {# todo add comment here#}
+
+
+</div>
 {% endblock %}
 
 {% block footer_scripts %}
@@ -107,6 +107,7 @@
                document.getElementById("{{ doc.id }}downloader").submit();
              });
         {% endfor %}
+
 
 
 </script>
