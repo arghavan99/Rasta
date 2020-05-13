@@ -19,8 +19,7 @@
         <h2 class="ui center aligned dividing header" style="color: var(--header)">
             {{ event_name }}
         </h2>
-        <div style="min-height: 75vh">
-        <div class="ui center aligned stackable grid" align="center" >
+        <div class="ui center aligned stackable grid" align="center">
             {% block photos %}
             {% include 'events/photo.html' %}
             {% endblock %}
@@ -30,7 +29,6 @@
                 بازگشت به رویداد {{ event_name }}
             </a>
         </div>
-        </div>
     </div>
 </div>
 
@@ -39,6 +37,7 @@
 {% block footer_scripts %}
 <script>
         ScrollReveal().reveal('.fade-reveal', {duration: 800, easing: 'ease-in-out', interval: 200});
+
 
 
 </script>

@@ -55,9 +55,3 @@
     font-size: small !important;
     font-weight: normal !important;
 }
-
-@media only screen and (min-width: 768px) {
-    .ui.single-post.container {
-        min-height: 45vh;
-    }
-}
