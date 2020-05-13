@@ -102,7 +102,7 @@
 {% block footer_scripts %}
 <script>
 
-       {% for doc in docs %}
+       {% for doc, ext in docs %}
           document.getElementById("{{doc.id}}link").addEventListener("click", function () {
                document.getElementById("{{ doc.id }}downloader").submit();
              });
