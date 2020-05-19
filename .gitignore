@@ -18,4 +18,4 @@
 *.pyc
 !runtime.txt
 !Procfile
-!.travis.yml
+!*.yml
