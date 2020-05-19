@@ -1,14 +1,14 @@
 install: 
 - "pip install -r requirements.txt"
 env: 
-- "DJANGO=2.2 DB=sqlite"
+- "DJANGO=2.2"
 language: python
 services:
-  - postgresql
+- postgresql
 python: 
 - "3.6"
 before_script:
- - psql -c 'create database test_db;' -U postgres
+- psql -c 'create database test_db;' -U postgres
 - python manage.py makemigrations
 - python manage.py migrate
 - "python manage.py test"
