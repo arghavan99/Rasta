@@ -18,6 +18,7 @@ class EventsTest(TestCase):
 
     @classmethod
     def setUpTestData(cls):
+        print('Im creating model')
         Event.objects.create(name='first event', poster=cls.get_image_file(name='sh_visible', size=(200, 100)),
                              summary='a brief description to tell the story n1',
                              description='a detailed story of event so that everyone get it correctly number one',
