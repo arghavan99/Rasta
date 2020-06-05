@@ -54,3 +54,23 @@ class BlogDocument(models.Model):
     def __str__(self):
         return str(self.post) + ' - ' + str(self.file.name)
 
+
+class Comment(models.Model):
+    text = models.TextField(max_length=500, null=False, blank=False)
+    author_name = models.CharField(max_length=100, null=False, blank=False)
+    email = models.EmailField()
+    date_time = jmodels.jDateTimeField()
+    show = models.BooleanField(null=False, blank=False, default=True)
+    post = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
+
+
+class Reply(models.Model):
+    text = models.TextField(max_length=500, null=False, blank=False)
+    author_name = models.CharField(max_length=100, null=False, blank=False)
+    email = models.EmailField()
+    date_time = jmodels.jDateTimeField()
+    show = models.BooleanField(null=False, blank=False, default=True)
+    is_admin_reply = models.BooleanField(null=False, blank=False)
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+
+

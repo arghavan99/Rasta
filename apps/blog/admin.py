@@ -1,5 +1,5 @@
 from django.contrib import admin
-from apps.blog.models import BlogPost, Category, BlogDocument
+from apps.blog.models import *
 
 
 @admin.register(Category)
@@ -23,3 +23,19 @@ class BlogAdmin(admin.ModelAdmin):
         BlogDocumentInline
     ]
 
+
+@admin.register(Reply)
+class ReplyAdmin(admin.ModelAdmin):
+    fields = ['author_name', 'email', 'text', 'date_time', 'show', 'is_admin_reply', 'comment']
+
+
+class ReplyInline(admin.TabularInline):
+    model = Reply
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    fields = ['author_name', 'email', 'text', 'date_time', 'show', 'post']
+    inlines = [
+        ReplyInline
+    ]
