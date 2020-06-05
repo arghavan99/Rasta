@@ -4,6 +4,9 @@ import os
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseNotFound
 from django.core.exceptions import ValidationError
+from Rasta_Web.settings import bibot_SiteSecretKey
+import requests
+from django.contrib import messages
 
 
 def doc_downloader(request):
@@ -40,6 +43,31 @@ def doc_downloader(request):
         filename_header = 'filename*=%s' % original_filename
     response['Content-Disposition'] = 'attachment; ' + filename_header
     return response
+
+
+def check_bibot_response(request):
+    if request.POST.get('bibot-response') is not None:
+        if request.POST.get('bibot-response') != '':
+            r = requests.post('https://api.bibot.ir/api1/siteverify/', data={
+                'secret': bibot_SiteSecretKey,
+                'response': request.POST['bibot-response']
+            })
+            print(r.json())
+            if r.json()['success']:
+                messages.success(request, 'فرایند تایید هویت شما با موفقیت انجام شد!')
+                return True
+            elif r.json()['error-codes']:
+                for error_code in r.json()['error-codes']:
+                    messages.error(request, error_code)
+                return False
+            else:
+                messages.error(request, 'بی‌بات به درستی حل نشده است!')
+                return False
+        else:
+            messages.error(request, 'بی‌بات به درستی حل نشده است!')
+            return False
+    messages.error(request, 'ارتباط با سرور بی‌بات برقرار نشده است! آیا جاوااسکریپت شما فعال است؟')
+    return False
 
 
 def validate_image_size(image):

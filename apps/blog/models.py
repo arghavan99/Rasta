@@ -4,6 +4,11 @@ from ckeditor.fields import RichTextField
 from Rasta_Web.utils import validate_file_size, validate_image_size
 
 
+def persian_date(obj):
+    translate_table = str.maketrans('1234567890', '۱۲۳۴۵۶۷۸۹۰')
+    return str(obj.strftime("%Y-%m-%d %H:%M")).translate(translate_table)
+
+
 class Category(models.Model):
     title = models.CharField(max_length=100, null=False, blank=False)
     url = models.CharField(max_length=20, null=False, blank=False, unique=True)
@@ -16,7 +21,7 @@ class BlogPost(models.Model):
     objects = jmodels.jManager()
     photo = models.ImageField(upload_to='blog/', null=True, blank=True, validators=[validate_image_size])
     title = models.CharField(max_length=70, null=False, blank=False)
-    publish_date = jmodels.jDateTimeField()
+    publish_date = jmodels.jDateTimeField(auto_now_add=True)
     summary = models.TextField(max_length=100, null=False, blank=False)
     text = RichTextField(null=False, blank=False)
     categories = models.ManyToManyField(Category, related_name='blog_posts')
@@ -25,8 +30,7 @@ class BlogPost(models.Model):
         return self.title
 
     def get_persian_date(self):
-        translate_table = str.maketrans('1234567890', '۱۲۳۴۵۶۷۸۹۰')
-        return str(self.publish_date).translate(translate_table)
+        return persian_date(self.publish_date)
 
     def get_persian_month(self):
         months = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند']
@@ -38,12 +42,11 @@ class BlogPost(models.Model):
 
     def get_persian_time(self):
         translate_table = str.maketrans('1234567890', '۱۲۳۴۵۶۷۸۹۰')
-        return str(self.publish_date.time()).translate(translate_table)
+        return str(self.publish_date.time().strftime(" %H:%M ")).translate(translate_table)
 
     def get_persian_day(self):
         translate_table = str.maketrans('1234567890', '۱۲۳۴۵۶۷۸۹۰')
         return str(self.publish_date.day).translate(translate_table)
-
 
 
 class BlogDocument(models.Model):
@@ -59,18 +62,28 @@ class Comment(models.Model):
     text = models.TextField(max_length=500, null=False, blank=False)
     author_name = models.CharField(max_length=100, null=False, blank=False)
     email = models.EmailField()
-    date_time = jmodels.jDateTimeField()
+    date_time = jmodels.jDateTimeField(auto_now_add=True)
     show = models.BooleanField(null=False, blank=False, default=True)
     post = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return 'post number' + self.post.id + ' -  ' + self.id
+
+    def get_persian_date(self):
+        persian_date(self.date_time)
 
 
 class Reply(models.Model):
     text = models.TextField(max_length=500, null=False, blank=False)
     author_name = models.CharField(max_length=100, null=False, blank=False)
     email = models.EmailField()
-    date_time = jmodels.jDateTimeField()
+    date_time = jmodels.jDateTimeField(auto_now_add=True)
     show = models.BooleanField(null=False, blank=False, default=True)
     is_admin_reply = models.BooleanField(null=False, blank=False)
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return 'post number' + self.comment.post.id + ' - comment ' + self.comment.id + ' - ' + self.id
 
+    def get_persian_date(self):
+        persian_date(self.date_time)

@@ -1,4 +1,8 @@
 from django.shortcuts import render
+
+from Rasta_Web.settings import bibot_SiteKey
+from Rasta_Web.utils import check_bibot_response
+from apps.blog.forms import CommentForm, ReplyForm
 from apps.blog.models import *
 
 
@@ -31,6 +35,28 @@ def single_post_dictionary(post):
         'summary': post.summary,
         'text': post.text,
         'categories': [cat_dictionary(cat) for cat in post.categories.all()]
+    }
+
+
+def reply_dictionary(reply):
+    return {
+        'text': reply.text,
+        'author_name': reply.author_name,
+        'email': reply.email,
+        'date_time': reply.date_time,
+        'show': reply.show,
+        'is_admin': reply.is_admin_reply,
+    }
+
+
+def comment_dictionary(comment):
+    return {
+        'text': comment.text,
+        'author_name': comment.author_name,
+        'email': comment.email,
+        'date_time': comment.date_time,
+        'show': comment.show,
+        'replies': [reply_dictionary(r) for r in Reply.objects.filter(comment=comment)]
     }
 
 
@@ -89,13 +115,26 @@ def get_single_post(request, post_id, rest):
         return response
     context = {
         'post': single_post_dictionary(post),
+        'comments': [comment_dictionary(com) for com in Comment.objects.filter(post_id=post_id)],
         'docs': get_docs(post),
         'year': post.get_persian_year(),
         'month': post.get_persian_month(),
         'day': post.get_persian_day(),
         'time': post.get_persian_time(),
+        'bibot': bibot_SiteKey,
     }
-    return render(request, 'blog/single_post.html', context)
+    if request.method == 'GET':
+        return render(request, 'blog/single_post.html', context)
+    else:
+        if not check_bibot_response(request):
+            return render(request, 'blog/single_post.html', context)
+        if request.POST['comment']:
+            form = CommentForm(request.POST['comment'])
+        else:
+            form = ReplyForm(request.POST['reply'])
+        if form.is_valid():
+            form.save()
+            return render(request, 'blog/single_post.html', context)
 
 
 def get_docs(post):
@@ -110,3 +149,4 @@ def get_doc_type(doc):
     if ext in ['doc', 'docx']:
         return 'doc'
     return 'file'
+

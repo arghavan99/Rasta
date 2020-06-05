@@ -18,7 +18,7 @@ class BlogDocumentInline(admin.TabularInline):
 
 @admin.register(BlogPost)
 class BlogAdmin(admin.ModelAdmin):
-    fields = ['title', 'publish_date', 'photo', 'summary', 'text', 'categories']
+    fields = ['title', 'photo', 'summary', 'text', 'categories']
     inlines = [
         BlogDocumentInline
     ]
@@ -26,7 +26,7 @@ class BlogAdmin(admin.ModelAdmin):
 
 @admin.register(Reply)
 class ReplyAdmin(admin.ModelAdmin):
-    fields = ['author_name', 'email', 'text', 'date_time', 'show', 'is_admin_reply', 'comment']
+    fields = ['author_name', 'email', 'text', 'show', 'is_admin_reply', 'comment']
 
 
 class ReplyInline(admin.TabularInline):
@@ -35,7 +35,7 @@ class ReplyInline(admin.TabularInline):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    fields = ['author_name', 'email', 'text', 'date_time', 'show', 'post']
+    fields = ['author_name', 'email', 'text',  'show', 'post']
     inlines = [
         ReplyInline
     ]
