@@ -128,10 +128,10 @@ def get_single_post(request, post_id, rest):
     else:
         if not check_bibot_response(request):
             return render(request, 'blog/single_post.html', context)
-        if request.POST['comment']:
-            form = CommentForm(request.POST['comment'])
+        if request.POST['is_comment'] == 'True':
+            form = CommentForm(request.POST)
         else:
-            form = ReplyForm(request.POST['reply'])
+            form = ReplyForm(request.POST)
         if form.is_valid():
             form.save()
             return render(request, 'blog/single_post.html', context)
