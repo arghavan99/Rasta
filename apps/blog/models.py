@@ -67,7 +67,7 @@ class Comment(models.Model):
     post = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
 
     def __str__(self):
-        return 'post number' + self.post.id + ' -  ' + self.id
+        return 'post number' + str(self.post.id) + ' -  ' + str(self.id)
 
     def get_persian_date(self):
         persian_date(self.date_time)
@@ -83,7 +83,7 @@ class Reply(models.Model):
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
 
     def __str__(self):
-        return 'post number' + self.comment.post.id + ' - comment ' + self.comment.id + ' - ' + self.id
+        return 'post number' + str(self.comment.post.id) + ' - comment ' + str(self.comment.id) + ' - ' + str(self.id)
 
     def get_persian_date(self):
         persian_date(self.date_time)

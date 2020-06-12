@@ -1,9 +1,11 @@
+Reyhane Dehghan, [12.06.20 21:28]
 {% extends 'base/pattern_base.html' %}
 {% load static %}
 {% block extra_header %}
 <link rel="stylesheet" href="{% static 'blog/css/blogstyle.css' %}">
 <script src="{% static 'scripts/scrollreveal.js' %}"></script>
 <script src="{% static 'blog/scripts/blog_js.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/jdenticon@2.2.0" async></script>
 {% endblock %}
 
 {% block content %}
@@ -84,11 +86,59 @@
                         <a class="file-name" style="color: var(--header)"> {{ doc.caption}}</a>
                     </div>
 
-                </div>
+</div>
                 {% endfor %}
+
+
             </div>
             {% endif %}
+            <div class="ui comments">
+            <h3 class="ui dividing header">نظرات</h3>
+              {% for comment in comments %}
 
+                  <div class="comment">
+                    <a class="avatar">
+                      <svg data-jdenticon-value={{ comment.author_name }}></svg>
+                    </a>
+                    <div class="content">
+                      <a class="author">{{comment.author_name}}</a>
+                      <div class="metadata">
+                        <div class="date">{{comment.date_time}}</div>
+                      </div>
+                      <div class="text">
+                        {{comment.text}}
+                      </div>
+                      <div class="actions">
+                            <a class="reply">Reply</a>
+
+                      </div>
+                        <div class="comments">
+                            {% for reply in comment.replies %}
+                          <div class="comment" {% if reply.is_admin %} style="background-color: lightblue" {% endif %}>
+                            <a class="avatar">
+                              <svg data-jdenticon-value={{ reply.author_name }}></svg>
+                            </a>
+                            <div class="content">
+                              <a class="author">{{ reply.author_name }}</a>
+                              <div class="metadata">
+                                <span class="date">{{reply.date_time}}</span>
+                                  {% if reply.is_admin %}
+                                 <div class="rating">
+                                  <i class="star icon"></i>
+                                </div>
+                                  {% endif %}
+                              </div>
+                              <div class="text">
+                                {{ reply.text }}
+                              </div>
+                            </div>
+                          </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                  </div>
+                {% endfor %}
+            </div>
 
         </div>
     </div>
