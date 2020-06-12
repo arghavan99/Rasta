@@ -31,10 +31,13 @@
 
         <div class="ui segment right aligned" dir="rtl" style="border-radius: 20px !important;background-color: rgba(255,255,255,0.5) !important; padding: 5% !important;">
             <h2>رستایی عزیز سلام! </h2>
-            <p>{{ text }}</p>
+        <hr class="hline">
+            <p style="text-align: justify; font-size: medium;">{{ text }}</p>
+             {% if link %}
               <a class="ui button" href="{{ link }}" style="background-color: #1c5951 ;color: white;font-weight: bolder;margin-top: 20px">
                     {{ link_text }}
                 </a>
+            {% endif %}
 
     </div>
 
