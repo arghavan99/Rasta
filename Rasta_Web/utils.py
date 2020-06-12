@@ -1,9 +1,11 @@
 import mimetypes
 import os
 
+from django.core.mail import EmailMultiAlternatives, EmailMessage, send_mail
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseNotFound
 from django.core.exceptions import ValidationError
+from django.shortcuts import render
 
 
 def doc_downloader(request):
@@ -54,3 +56,15 @@ def validate_file_size(file):
     file_size = file.file.size
     if file_size > limit_mb * 1024 * 1024:
         raise ValidationError("Max size of file is %s MB" % limit_mb)
+
+
+def my_send_mail(request):
+    for u in ['rezvani.arghavan@gmail.com', 'bigverdi.1377@gmail.com']:
+        send_mail(
+            subject='That’s your subject',
+            message='salam eshgham!',
+            from_email='from@yourdjangoapp.com',
+            recipient_list=[u],
+            fail_silently=False,
+        )
+    return render(request, 'apps/intro/index.html')

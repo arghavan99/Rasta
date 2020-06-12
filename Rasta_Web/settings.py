@@ -226,3 +226,10 @@ CKEDITOR_CONFIGS = {
 
 bibot_SiteKey = config('BIBOT_SITE_KEY')
 bibot_SiteSecretKey = config('BIBOT_SITE_SECRET_KEY')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = config('USERNAME')
+EMAIL_HOST_PASSWORD = config('PASSWORD')
+EMAIL_USE_TLS = True
