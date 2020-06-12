@@ -4,6 +4,10 @@ from django.core.mail import EmailMultiAlternatives, EmailMessage, send_mail
 
 
 # Create your models here.
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+
+
 class Subscriber(models.Model):
     email = models.EmailField(unique=True)
     date_joint = models.DateTimeField(default=django.utils.timezone.now)
@@ -23,13 +27,11 @@ class EmailText(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         if self.pk is None:
+            from apps.newsletter.tasks import send_mail_to_subscribers_task
             super(EmailText, self).save(force_insert, force_update, using, update_fields)
-            all_subscribers = list(Subscriber.objects.all())
-            for s in all_subscribers:
-                send_mail(
-                    subject=self.subject,
-                    message=self.text,
-                    from_email='noreply@rastaeiha.ir',
-                    recipient_list=[s.email],
-                    fail_silently=False,
-                )
+            context = {
+                'text': self.text,
+                'link': self.link,
+                'link_text': self.link_text,
+            }
+            send_mail_to_subscribers_task.delay(context, self.subject)

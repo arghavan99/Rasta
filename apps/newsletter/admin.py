@@ -12,7 +12,7 @@ class SubscriberAdmin(admin.ModelAdmin):
 class EmailTextAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
-            'fields':['subject', 'text', 'link'] ,
+            'fields':['subject', 'text', 'link', 'link_text'] ,
             'description': "دقت کنید! پس از اولین بار کلیک بر روی دکمه ذخیره، محتوای این صفحه قابل ویرایش نیست."
         }),
     )
