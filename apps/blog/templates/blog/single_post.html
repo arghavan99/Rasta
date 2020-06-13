@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{% static 'blog/css/blogstyle.css' %}">
 <script src="{% static 'scripts/scrollreveal.js' %}"></script>
 <script src="{% static 'blog/scripts/blog_js.js' %}"></script>
+    <script src="https://bibot.ir/bibot.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jdenticon@2.2.0" async></script>
 {% endblock %}
 
@@ -108,7 +109,7 @@
                             {{comment.text}}
                         </div>
                         <div class="actions">
-                            <a class="reply" onclick="create_reply_form({{ comment.id }});">Reply</a>
+                            <a class="reply" onclick="create_reply_form({{ comment.id }})">Reply</a>
 
                         </div>
                         <div class="comments">
@@ -160,10 +161,69 @@
              });
         {% endfor %}
 
-       function hello(comment_id){
-
-            $('#cm_'+comment_id).load('{blog/comment_form.html}');
+        function create_reply_form(comment_id) {
+           var x = document.getElementById(comment_id);
+           if(x!= null){
+               if (x.style.display === "none") {
+                    x.style.display = "block";
+                  } else {
+                    x.style.display = "none";
+                  }
+           }
+            else{
+        var reply_form = document.createElement('div');
+        reply_form.id = comment_id;
+        var script = document.createElement("script");
+        script.src = "https://bibot.ir/bibot.min.js";
+        document.head.appendChild(script);
+        reply_form.class = 'ui stackable grid';
+        reply_form.innerHTML = '<form id="blog_form" method="post" class="ui form error" style="margin:auto;width: 90%">{% csrf_token %}\n' +
+            '    <input type="hidden" name="is_comment" value="False">\n' +
+            '    <input type="hidden" name="is_admin_reply" value="False">\n' +
+            '    <input type="hidden" name="comment" value="1">\n' +
+            '    <div class="two fields">\n' +
+            '        <div class="field required">\n' +
+            '            <label>نام و نام خانوادگی</label>\n' +
+            '            <input type="text" name="author_name">\n' +
+            '        </div>\n' +
+            '        <div class="field required">\n' +
+            '            <label>ایمیل</label>\n' +
+            '            <input type="email" name="email">\n' +
+            '        </div>\n' +
+            '        {% if form.email.errors %}\n'+
+                '        <div class="ui message error" style="font-weight:bolder;color:#ED1A3A;">\n'+
+                '            <strong>پارامترهای ورودی صحیح نمی‌باشد.</strong>\n'+
+                '        </div>\n'+
+                '        {% endif %}\n' +
+            '    </div>\n' +
+            '\n' +
+            '    <div class="field required">\n' +
+            '        <label>متن نظر</label>\n' +
+            '        <textarea name="text"></textarea>\n' +
+            '    </div>\n' +
+            '    <div class="bibot-captcha" style="" data-sitekey="{{ bibot }}" data-callback="bibot_callback"></div>\n' +
+            '\n' +
+            '    {% if messages %}\n'+
+                '    <ul class="back_messages">\n'+
+                '        {% for message in messages %}\n'+
+                    '        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>\n'+
+                    '        {% endfor %}\n'+
+                '    </ul>\n'+
+                '    {% endif %}\n' +
+            '\n' +
+            '\n' +
+            '    <button type="submit" class="ui button"\n' +
+            '            style="background-color: var(--secondary-dark) ;color: white;font-weight: bolder;margin-top: 20px">\n' +
+            '        ثبت کن !\n' +
+            '    </button>\n' +
+            '\n' +
+            '</form>\n'
+        document.getElementById('cm_' + comment_id).appendChild(reply_form);
         }
+       }
+
+
+
 
 </script>
 {% endblock %}

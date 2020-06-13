@@ -79,7 +79,7 @@ class Reply(models.Model):
     email = models.EmailField()
     date_time = jmodels.jDateTimeField(auto_now_add=True)
     show = models.BooleanField(null=False, blank=False, default=True)
-    is_admin_reply = models.BooleanField(null=False, blank=False)
+    is_admin_reply = models.BooleanField(null=False, blank=False ,default=False)
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
 
     def __str__(self):
