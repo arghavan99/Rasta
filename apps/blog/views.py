@@ -1,3 +1,6 @@
+import json
+
+from django.http import HttpResponse
 from django.shortcuts import render
 
 from Rasta_Web.settings import bibot_SiteKey
@@ -124,18 +127,36 @@ def get_single_post(request, post_id, rest):
         'time': post.get_persian_time(),
         'bibot': bibot_SiteKey,
     }
-    if request.method == 'GET':
-        return render(request, 'blog/single_post.html', context)
+    return render(request, 'blog/single_post.html', context)
+    # if request.method == 'GET':
+    #     return render(request, 'blog/single_post.html', context)
+    # else:
+    #     if not check_bibot_response(request):
+    #         return render(request, 'blog/single_post.html', context)
+    #     if request.POST['is_comment'] == 'True':
+    #         form = CommentForm(request.POST)
+    #     else:
+    #         form = ReplyForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         return render(request, 'blog/single_post.html', context)
+
+
+def submit_comment_reply(request):
+    response = {}
+    if not check_bibot_response(request):
+        response['bibot_err'] = 'error'
+    if request.POST['is_comment'] == 'True':
+        form = CommentForm(request.POST)
     else:
-        if not check_bibot_response(request):
-            return render(request, 'blog/single_post.html', context)
-        if request.POST['is_comment'] == 'True':
-            form = CommentForm(request.POST)
-        else:
-            form = ReplyForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return render(request, 'blog/single_post.html', context)
+        form = ReplyForm(request.POST)
+    response.update(request.POST)
+    if form.is_valid():
+        form.save()
+        return HttpResponse(
+            json.dumps(response),
+            content_type="application/json"
+        )
 
 
 def get_docs(post):
