@@ -1,16 +1,15 @@
 import django
 from django.db import models
-from django.core.mail import EmailMultiAlternatives, EmailMessage, send_mail
-
+import uuid
 
 # Create your models here.
-from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
 
 class Subscriber(models.Model):
     email = models.EmailField(unique=True)
     date_joint = models.DateTimeField(default=django.utils.timezone.now)
+    unique_id = models.CharField(default=str(uuid.uuid4()).replace("-", ""), max_length=200, unique=True)
 
     def __str__(self):
         return str(self.email)

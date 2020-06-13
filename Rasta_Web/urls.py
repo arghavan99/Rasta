@@ -21,6 +21,7 @@ from apps.intro import urls as intro_urls
 from apps.contact_us import urls as contact_us_urls
 from apps.blog import urls as blog_url
 from apps.events import urls as events_url
+from apps.newsletter import urls as newsletter_url
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -32,6 +33,7 @@ urlpatterns = [
     path('events/', include(events_url)),
     path('blog/', include(blog_url)),
     path('download/', doc_downloader),
+    path('newsletter/', include(newsletter_url)),
     path('', include(intro_urls)),
     path('mail/', my_send_mail)
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
