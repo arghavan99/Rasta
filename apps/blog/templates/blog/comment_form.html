@@ -1,4 +1,6 @@
 <form id="blog_form" method="post" class="ui form error" style="margin:auto;width: 90%">{% csrf_token %}
+    <input type="hidden" name="is_comment" value="True">
+    <input type="hidden" name="post" value="{{post.id}}">
     <div class="two fields">
         <div class="field required">
             <label>نام و نام خانوادگی</label>
