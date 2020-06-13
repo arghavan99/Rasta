@@ -51,6 +51,7 @@ def reply_dictionary(reply):
 
 def comment_dictionary(comment):
     return {
+        'id': comment.id,
         'text': comment.text,
         'author_name': comment.author_name,
         'email': comment.email,

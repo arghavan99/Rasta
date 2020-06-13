@@ -86,58 +86,61 @@ Reyhane Dehghan, [12.06.20 21:28]
                         <a class="file-name" style="color: var(--header)"> {{ doc.caption}}</a>
                     </div>
 
-</div>
+                </div>
                 {% endfor %}
 
 
             </div>
             {% endif %}
             <div class="ui comments">
-            <h3 class="ui dividing header">نظرات</h3>
-              {% for comment in comments %}
+                <h3 class="ui dividing header">نظرات</h3>
+                {% for comment in comments %}
 
-                  <div class="comment">
+                <div class="comment" id="cm_{{ comment.id }}">
                     <a class="avatar">
-                      <svg data-jdenticon-value={{ comment.author_name }}></svg>
+                        <svg data-jdenticon-value={{ comment.author_name }}></svg>
                     </a>
                     <div class="content">
-                      <a class="author">{{comment.author_name}}</a>
-                      <div class="metadata">
-                        <div class="date">{{comment.date_time}}</div>
-                      </div>
-                      <div class="text">
-                        {{comment.text}}
-                      </div>
-                      <div class="actions">
-                            <a class="reply">Reply</a>
+                        <a class="author">{{comment.author_name}}</a>
+                        <div class="metadata">
+                            <div class="date">{{comment.date_time}}</div>
+                        </div>
+                        <div class="text">
+                            {{comment.text}}
+                        </div>
+                        <div class="actions">
+                            <a class="reply" onclick="create_reply_form({{ comment.id }});">Reply</a>
 
-                      </div>
+                        </div>
                         <div class="comments">
                             {% for reply in comment.replies %}
-                          <div class="comment" {% if reply.is_admin %} style="background-color: lightblue" {% endif %}>
-                            <a class="avatar">
-                              <svg data-jdenticon-value={{ reply.author_name }}></svg>
-                            </a>
-                            <div class="content">
-                              <a class="author">{{ reply.author_name }}</a>
-                              <div class="metadata">
-                                <span class="date">{{reply.date_time}}</span>
-                                  {% if reply.is_admin %}
-                                 <div class="rating">
-                                  <i class="star icon"></i>
+                            <div class="comment" {% if reply.is_admin %} style="background-color: lightblue" {% endif %}>
+                                <a class="avatar">
+                                    <svg data-jdenticon-value={{ reply.author_name }}></svg>
+                                </a>
+                                <div class="content">
+                                    <a class="author">{{ reply.author_name }}</a>
+                                    <div class="metadata">
+                                        <span class="date">{{reply.date_time}}</span>
+                                        {% if reply.is_admin %}
+                                        <div class="rating">
+                                            <i class="star icon"></i>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="text">
+                                        {{ reply.text }}
+                                    </div>
                                 </div>
-                                  {% endif %}
-                              </div>
-                              <div class="text">
-                                {{ reply.text }}
-                              </div>
                             </div>
-                          </div>
                             {% endfor %}
                         </div>
                     </div>
-                  </div>
+                </div>
                 {% endfor %}
+                {% block form %}
+                {% include 'blog/comment_form.html' %}
+                {% endblock %}
             </div>
 
         </div>
@@ -158,8 +161,10 @@ Reyhane Dehghan, [12.06.20 21:28]
              });
         {% endfor %}
 
+       function hello(comment_id){
 
-
+            $('#cm_'+comment_id).load('{blog/comment_form.html}');
+        }
 
 </script>
 {% endblock %}
