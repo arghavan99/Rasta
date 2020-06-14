@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{% static 'blog/css/blogstyle.css' %}">
 <script src="{% static 'scripts/scrollreveal.js' %}"></script>
 <script src="{% static 'blog/scripts/blog_js.js' %}"></script>
-    <script src="https://bibot.ir/bibot.min.js"></script>
+<script src="https://bibot.ir/bibot.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jdenticon@2.2.0" async></script>
 {% endblock %}
 
@@ -92,8 +92,8 @@
 
             </div>
             {% endif %}
-            <div class="ui comments">
-                <h3 class="ui dividing header">نظرات</h3>
+            <h3 class="ui dividing header">نظرات</h3>
+            <div class="ui comments" id="all_comments">
                 {% for comment in comments %}
 
 
@@ -109,11 +109,10 @@
                         <div class="text">
                             {{comment.text}}
                         </div>
-                        <div class="actions">
+                        <div class="actions" id="reply_button_{{ comment.id }}">
                             <a class="reply" onclick="create_reply_form({{ comment.id }})">Reply</a>
-
                         </div>
-                        <div class="comments">
+                        <div class="comments" id="replies_{{ comment.id }}">
                             {% for reply in comment.replies %}
                             <div class="comment" {% if reply.is_admin %} style="background-color: lightblue" {% endif %}>
                                 <a class="avatar">
@@ -139,10 +138,10 @@
                     </div>
                 </div>
                 {% endfor %}
-                {% block form %}
-                {% include 'blog/comment_form.html' %}
-                {% endblock %}
             </div>
+            {% block form %}
+            {% include 'blog/comment_form.html' %}
+            {% endblock %}
 
         </div>
     </div>
@@ -162,26 +161,31 @@
              });
         {% endfor %}
 
+       var remove_form = -1;
+
         function create_reply_form(comment_id) {
-           var x = document.getElementById(comment_id);
+
+           var x = document.getElementById('reply_form_div'+comment_id);
+            if(comment_id!=remove_form && remove_form != -1){
+                var junk = document.getElementById('reply_form_div'+remove_form);
+                junk.parentElement.removeChild(junk);
+                $('#reply_button_' + remove_form).show();
+            }
            if(x!= null){
-               if (x.style.display === "none") {
-                    x.style.display = "block";
-                  } else {
-                    x.style.display = "none";
-                  }
+               x.parentElement.removeChild(x);
+               remove_form = -1
            }
             else{
+            $('#reply_button_' + comment_id).hide();
         var reply_form = document.createElement('div');
-        reply_form.id = comment_id;
-        var script = document.createElement("script");
-        script.src = "https://bibot.ir/bibot.min.js";
-        document.head.appendChild(script);
+
+        reply_form.id = 'reply_form_div' + comment_id;
         reply_form.class = 'ui stackable grid';
-        reply_form.innerHTML = '<form id="blog_form" method="post" class="ui form error" style="margin:auto;width: 90%">{% csrf_token %}\n' +
+        reply_form.innerHTML = '<form id="reply_form_' + comment_id + '" method="post" ' +
+        'class="ui form error" style="margin:auto;width: 90%">{% csrf_token %}\n' +
             '    <input type="hidden" name="is_comment" value="False">\n' +
             '    <input type="hidden" name="is_admin_reply" value="False">\n' +
-            '    <input type="hidden" name="comment" value="1">\n' +
+            '    <input type="hidden" name="comment" value="' + comment_id +'">\n' +
             '    <div class="two fields">\n' +
             '        <div class="field required">\n' +
             '            <label>نام و نام خانوادگی</label>\n' +
@@ -219,12 +223,26 @@
             '    </button>\n' +
             '\n' +
             '</form>\n'
+
+                    var c=document.getElementsByTagName('script');
+                    //console.log(document.head.innerHTML);
+                    c[c.length-1].parentElement.removeChild(c[c.length-1]);
+                   var script = document.createElement("script");
+                   script.src = "https://bibot.ir/bibot.min.js";
+                   document.head.appendChild(script);
+
+        remove_form = comment_id;
         document.getElementById('cm_' + comment_id).appendChild(reply_form);
+        var remove_captcha = document.getElementById("bibot-captcha");
+           remove_captcha.firstChild.removeChild(remove_captcha.firstChild.lastChild)
+           remove_captcha.firstChild.removeChild(remove_captcha.firstChild.lastChild)
+               remove_captcha.removeChild(remove_captcha.lastChild);
+
         }
+        $(document).on('submit', '#reply_form_' + comment_id, function (e) {
+        e.preventDefault();
+        submit_reply(comment_id);})
        }
-
-
-
 
 </script>
 {% endblock %}
