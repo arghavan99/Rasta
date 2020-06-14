@@ -38,14 +38,14 @@ class Event(models.Model):
         translate_table = str.maketrans('1234567890', '۱۲۳۴۵۶۷۸۹۰')
         return str(self.date.year).translate(translate_table)
 
-
-class Document(models.Model):
-    caption = models.CharField(max_length=200, null=False, blank=False)
-    file = models.FileField(null=False, blank=False, upload_to='event_documents/', validators=[validate_file_size])
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return str(self.event) + ' - ' + str(self.file.name)
+#
+# class Document(models.Model):
+#     caption = models.CharField(max_length=200, null=False, blank=False)
+#     file = models.FileField(null=False, blank=False, upload_to='event_documents/', validators=[validate_file_size])
+#     event = models.ForeignKey(Event, on_delete=models.CASCADE)
+#
+#     def __str__(self):
+#         return str(self.event) + ' - ' + str(self.file.name)
 
 
 class EventPhoto(models.Model):
