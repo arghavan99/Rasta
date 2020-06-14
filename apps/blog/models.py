@@ -1,7 +1,7 @@
 from django.db import models
 from django_jalali.db import models as jmodels
 from ckeditor.fields import RichTextField
-from Rasta_Web.utils import validate_file_size, validate_image_size
+from Rasta_Web.utils import validate_file_size, validate_image_size,validate_square_image
 
 
 def persian_date(obj):
@@ -19,7 +19,7 @@ class Category(models.Model):
 
 class BlogPost(models.Model):
     objects = jmodels.jManager()
-    photo = models.ImageField(upload_to='blog/', null=True, blank=True, validators=[validate_image_size])
+    photo = models.ImageField(upload_to='blog/', null=True, blank=True,help_text="این تصویر باید مربعی باشد", validators=[validate_image_size,validate_square_image])
     title = models.CharField(max_length=70, null=False, blank=False)
     publish_date = jmodels.jDateTimeField(auto_now_add=True)
     summary = models.TextField(max_length=100, null=False, blank=False)
@@ -70,7 +70,7 @@ class Comment(models.Model):
         return 'post number' + str(self.post.id) + ' -  ' + str(self.id)
 
     def get_persian_date(self):
-        persian_date(self.date_time)
+        return persian_date(self.date_time)
 
 
 class Reply(models.Model):
@@ -86,4 +86,4 @@ class Reply(models.Model):
         return 'post number' + str(self.comment.post.id) + ' - comment ' + str(self.comment.id) + ' - ' + str(self.id)
 
     def get_persian_date(self):
-        persian_date(self.date_time)
+        return persian_date(self.date_time)

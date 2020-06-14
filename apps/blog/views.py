@@ -43,7 +43,7 @@ def reply_dictionary(reply):
         'text': reply.text,
         'author_name': reply.author_name,
         'email': reply.email,
-        'date_time': reply.date_time,
+        'date_time': reply.get_persian_date(),
         'show': reply.show,
         'is_admin': reply.is_admin_reply,
     }
@@ -55,7 +55,7 @@ def comment_dictionary(comment):
         'text': comment.text,
         'author_name': comment.author_name,
         'email': comment.email,
-        'date_time': comment.date_time,
+        'date_time': comment.get_persian_date(),
         'show': comment.show,
         'replies': [reply_dictionary(r) for r in Reply.objects.filter(comment=comment)]
     }
