@@ -46,7 +46,7 @@ def reply_dictionary(reply):
         'text': reply.text,
         'author_name': reply.author_name,
         'email': reply.email,
-        'date_time': reply.date_time,
+        'date_time': str(reply.date_time),
         'show': reply.show,
         'is_admin': reply.is_admin_reply,
     }
@@ -58,7 +58,7 @@ def comment_dictionary(comment):
         'text': comment.text,
         'author_name': comment.author_name,
         'email': comment.email,
-        'date_time': comment.date_time,
+        'date_time': str(comment.date_time),
         'show': comment.show,
         'replies': [reply_dictionary(r) for r in Reply.objects.filter(comment=comment)]
     }
@@ -152,7 +152,11 @@ def submit_comment_reply(request):
         form = ReplyForm(request.POST)
     response.update(request.POST)
     if form.is_valid():
-        form.save()
+        m = form.save()
+        if request.POST['is_comment'] == 'True':
+            response['comment'] = comment_dictionary(m)
+        else:
+            response['reply'] = reply_dictionary(m)
         return HttpResponse(
             json.dumps(response),
             content_type="application/json"
