@@ -85,28 +85,29 @@
                     <div class="content">
                         <a class="file-name" style="color: var(--header)"> {{ doc.caption}}</a>
                     </div>
-
                 </div>
                 {% endfor %}
-
-
             </div>
             {% endif %}
         </div>
 
         <div class="ui segment"
              style="margin-bottom: 50px; border-radius: 20px !important;background-color: rgba(255,255,255,0.7) !important;padding: 5% !important;">
+            <h3 class="ui dividing header">ارسال نظر</h3>
+        <br>
+            {% block form %}
+                {% include 'blog/comment_form.html' %}
+            {% endblock %}
+        <br>
             <h3 class="ui dividing header">نظرات</h3>
-            <div class="ui comments" id="all_comments">
+            <div class="ui comments" id="all_comments" style="font-size: 15px">
                 {% for comment in comments %}
-
-
                 <div class="comment" id="cm_{{ comment.id }}">
                     <a class="avatar">
                         <svg data-jdenticon-value={{ comment.author_name }}></svg>
                     </a>
                     <div class="content">
-                        <a class="author">{{comment.author_name}}</a>
+                        <a class="author" style="font-size: 16px">{{comment.author_name}}</a>
                         <div class="metadata">
                             <div class="date">{{comment.date_time}}</div>
                         </div>
@@ -115,7 +116,7 @@
                         </div>
                         <div class="actions">
                             <a class="reply" id="reply_button_{{ comment.id }}"
-                               onclick="create_reply_form({{ comment.id }})">پاسخ</a>
+                               onclick="create_reply_form({{ comment.id }})" style="font-size: 14px">پاسخ</a>
                         </div>
                         <div class="comments" id="replies_{{ comment.id }}">
                             {% for reply in comment.replies %}
@@ -144,9 +145,7 @@
                 </div>
                 {% endfor %}
             </div>
-            {% block form %}
-            {% include 'blog/comment_form.html' %}
-            {% endblock %}
+
         </div>
     </div>
 </div>
