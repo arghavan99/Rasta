@@ -136,6 +136,10 @@ def submit_comment_reply(request):
     response = {}
     if not check_bibot_response(request):
         response['bibot_err'] = 'error'
+        return HttpResponse(
+            json.dumps(response),
+            content_type="application/json"
+        )
     if request.POST['is_comment'] == 'True':
         form = CommentForm(request.POST)
     else:
