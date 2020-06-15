@@ -35,8 +35,9 @@ $(document).on('submit', '#comment_form', function (e) {
                                           '<div class="actions">' +
                                           '<a class="reply" id="reply_button_' + res.comment.id +
                                           '" onclick="create_reply_form(' + res.comment.id + ')">پاسخ</a>' +
-                                          '<div class="comments" id="replies_"' + res.comment.id + '></div>' +
-                                          '</div></div></div>');
+                                          '</div>'+
+                                          '<div class="comments" id="replies_' + res.comment.id + '"></div>' +
+                                          '</div></div>');
                 jdenticon.update('#cm_' + res.comment.id + '_svg', res.comment.author_name);
                 }
            }
@@ -54,8 +55,9 @@ function submit_reply(comment_id) {
             success: function (res) {
                 if (res.bibot_err == 'error')
                     return;
-                form.remove();
+                $('#reply_form_div' + comment_id).remove();
                 remove_form = -1;
+                alert('replies_' + comment_id)
                 $('#replies_' + comment_id).append('<div class="comment" id="reply_' + res.reply.id + '">' +
                                           '<a class="avatar"><svg id="reply_' + res.reply.id +'_svg"></svg></a>' +
                                           '<div class="content">' +
@@ -93,6 +95,7 @@ function create_reply_form(comment_id) {
         x.parentElement.removeChild(x);
         remove_form = -1
     } else {
+        document.getElementById('reply_button_'+comment_id).innerText= "لغو پاسخ";
         var reply_form = document.createElement('div');
         reply_form.id = 'reply_form_div' + comment_id;
         reply_form.class = 'ui stackable grid';
