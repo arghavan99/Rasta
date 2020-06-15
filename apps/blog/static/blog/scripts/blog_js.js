@@ -19,11 +19,13 @@ $(document).on('submit', '#comment_form', function (e) {
             data: $(form).serialize(),
             dataType: 'json',
             success: function (res) {
-                if (res.bibot_err == 'error')
+                if (res.bibot_err == 'error') {
+                    $('#cm_form_err')[0].innerHTML = '<li class="error">احراز هویت ناموق</li>';
                     return;
+                }
                 BibotCaptcha.reload_bibot('bibot-captcha');
                 $("#comment_form")[0].reset();
-
+                $('#cm_form_err')[0].innerHTML = '';
                 $('#all_comments').append('<div class="comment" id="cm_' + res.comment.id + '">' +
                                           '<a class="avatar"><svg id="cm_' + res.comment.id +'_svg"></svg></a>' +
                                           '<div class="content">' +
@@ -53,11 +55,12 @@ function submit_reply(comment_id) {
             data: $(form).serialize(),
             dataType: 'json',
             success: function (res) {
-                if (res.bibot_err == 'error')
+                if (res.bibot_err == 'error') {
+                    $('#reply_form_err')[0].innerHTML = '<li class="error">احراز هویت ناموق</li>';
                     return;
+                }
                 $('#reply_form_div' + comment_id).remove();
                 remove_form = -1;
-                alert('replies_' + comment_id)
                 $('#replies_' + comment_id).append('<div class="comment" id="reply_' + res.reply.id + '">' +
                                           '<a class="avatar"><svg id="reply_' + res.reply.id +'_svg"></svg></a>' +
                                           '<div class="content">' +
