@@ -7,6 +7,7 @@ from Rasta_Web.settings import bibot_SiteKey
 from Rasta_Web.utils import check_bibot_response
 from apps.blog.forms import CommentForm, ReplyForm
 from apps.blog.models import *
+from django.template.loader import render_to_string
 
 
 def cat_dictionary(cat):
@@ -126,20 +127,9 @@ def get_single_post(request, post_id, rest):
         'day': post.get_persian_day(),
         'time': post.get_persian_time(),
         'bibot': bibot_SiteKey,
+        'reply_form': render_to_string('blog/reply_form.html', {'bibot': bibot_SiteKey}, request),
     }
     return render(request, 'blog/single_post.html', context)
-    # if request.method == 'GET':
-    #     return render(request, 'blog/single_post.html', context)
-    # else:
-    #     if not check_bibot_response(request):
-    #         return render(request, 'blog/single_post.html', context)
-    #     if request.POST['is_comment'] == 'True':
-    #         form = CommentForm(request.POST)
-    #     else:
-    #         form = ReplyForm(request.POST)
-    #     if form.is_valid():
-    #         form.save()
-    #         return render(request, 'blog/single_post.html', context)
 
 
 def submit_comment_reply(request):

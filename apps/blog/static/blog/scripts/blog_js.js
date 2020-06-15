@@ -10,14 +10,6 @@ $(window).load(function () {
 });
 });
 
-function create_reply_form(comment_id) {
-    var reply_form = document.createElement('div');
-    reply_form.class = 'ui stackable grid';
-//    reply_form.innerHTML = '<p>hii</p>';
-    reply_form.innerHTML = '<form id="blog_form" method="post" class="ui form error" style="margin:auto;width: 90%"><input type="text" name="author_name"></form>'
-    document.getElementById('cm_' + comment_id).appendChild(reply_form);
-}
-
 $(document).on('submit', '#comment_form', function (e) {
         e.preventDefault();
         var form = document.getElementById('comment_form');
@@ -29,7 +21,9 @@ $(document).on('submit', '#comment_form', function (e) {
             success: function (res) {
                 if (res.bibot_err == 'error')
                     return;
+                refresh_bibots();
                 $("#comment_form")[0].reset();
+
                 $('#all_comments').append('<div class="comment" id="cm_' + res.comment.id + '">' +
                                           '<a class="avatar"><svg id="cm_' + res.comment.id +'_svg"></svg></a>' +
                                           '<div class="content">' +
@@ -39,7 +33,8 @@ $(document).on('submit', '#comment_form', function (e) {
                                           '</div>' +
                                           '<div class="text">' + res.comment.text + '</div>' +
                                           '<div class="actions">' +
-                                          '<a class="reply" onclick="create_reply_form(' + res.comment.id + ')">Reply</a>' +
+                                          '<a class="reply" id="reply_button_' + res.comment.id +
+                                          '" onclick="create_reply_form(' + res.comment.id + ')">پاسخ</a>' +
                                           '<div class="comments" id="replies_"' + res.comment.id + '></div>' +
                                           '</div></div></div>');
                 jdenticon.update('#cm_' + res.comment.id + '_svg', res.comment.author_name);
@@ -51,7 +46,6 @@ $(document).on('submit', '#comment_form', function (e) {
 
 function submit_reply(comment_id) {
     var form = $('#reply_form_' + comment_id);
-    console.log($(form))
     $.ajax(
             {type: 'POST',
             url: '/blog/submit_c_r/',
@@ -61,6 +55,7 @@ function submit_reply(comment_id) {
                 if (res.bibot_err == 'error')
                     return;
                 form.remove();
+                refresh_bibots();
                 $('#replies_' + comment_id).append('<div class="comment" id="reply_' + res.reply.id + '">' +
                                           '<a class="avatar"><svg id="reply_' + res.reply.id +'_svg"></svg></a>' +
                                           '<div class="content">' +
@@ -71,8 +66,18 @@ function submit_reply(comment_id) {
                                           '<div class="text">' + res.reply.text + '</div>' +
                                           '</div></div></div>');
                 jdenticon.update('#reply_' + res.reply.id + '_svg', res.reply.author_name);
-                $('#reply_button_' + comment_id).show();
+                document.getElementById('reply_button_' + comment_id).innerText = "پاسخ";
                 }
            }
         )
 }
+
+function remove_prev_form(comment_id) {
+    if(comment_id!=remove_form && remove_form != -1) {
+        var junk = document.getElementById('reply_form_div'+remove_form);
+        junk.parentElement.removeChild(junk);
+        if(document.getElementById('reply_button_'+remove_form).innerText =="لغو پاسخ")
+            document.getElementById('reply_button_'+remove_form).innerText = "پاسخ";
+    }
+}
+
