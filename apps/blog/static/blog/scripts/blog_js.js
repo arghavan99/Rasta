@@ -21,7 +21,7 @@ $(document).on('submit', '#comment_form', function (e) {
             success: function (res) {
                 if (res.bibot_err == 'error')
                     return;
-                refresh_bibots();
+                BibotCaptcha.reload_bibot('bibot-captcha');
                 $("#comment_form")[0].reset();
 
                 $('#all_comments').append('<div class="comment" id="cm_' + res.comment.id + '">' +
@@ -55,7 +55,7 @@ function submit_reply(comment_id) {
                 if (res.bibot_err == 'error')
                     return;
                 form.remove();
-                refresh_bibots();
+                remove_form = -1;
                 $('#replies_' + comment_id).append('<div class="comment" id="reply_' + res.reply.id + '">' +
                                           '<a class="avatar"><svg id="reply_' + res.reply.id +'_svg"></svg></a>' +
                                           '<div class="content">' +
@@ -81,3 +81,29 @@ function remove_prev_form(comment_id) {
     }
 }
 
+var remove_form = -1;
+
+function create_reply_form(comment_id) {
+    var x = document.getElementById('reply_form_div'+comment_id);
+    remove_prev_form(comment_id);
+    if(x!= null) {
+        if(document.getElementById('reply_button_'+comment_id).innerText =="لغو پاسخ")
+            document.getElementById('reply_button_'+comment_id).innerText = "پاسخ";
+
+        x.parentElement.removeChild(x);
+        remove_form = -1
+    } else {
+        var reply_form = document.createElement('div');
+        reply_form.id = 'reply_form_div' + comment_id;
+        reply_form.class = 'ui stackable grid';
+        reply_form.innerHTML = get_form_template(comment_id);
+
+        remove_form = comment_id;
+        document.getElementById('cm_' + comment_id).appendChild(reply_form);
+        BibotCaptcha.reload_bibots();
+    }
+
+    $(document).on('submit', '#reply_form_' + comment_id, function (e) {
+        e.preventDefault();
+        submit_reply(comment_id);})
+}

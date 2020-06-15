@@ -22,7 +22,7 @@
             '        <label>متن نظر</label>' +
             '        <textarea name="text"></textarea>' +
             '    </div>' +
-            '    <div class="bibot-captcha" style="" data-sitekey="{{ bibot }}" data-callback="bibot_callback"></div>' +
+            '    <div id="bibot_'+comment_id+'"class="bibot-captcha" style="" data-sitekey="{{ bibot }}" data-callback="bibot_callback"></div>' +
             '    {% if messages %}'+
                 '    <ul class="back_messages">'+
                 '        {% for message in messages %}'+

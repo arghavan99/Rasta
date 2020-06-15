@@ -166,41 +166,10 @@
              });
         {% endfor %}
 
-var remove_form = -1;
+        function get_form_template(comment_id) {
+            return {{ reply_form }}
+        }
 
-        function create_reply_form(comment_id) {
-
-           var x = document.getElementById('reply_form_div'+comment_id);
-           remove_prev_form(comment_id);
-           if(x!= null){
-               if(document.getElementById('reply_button_'+comment_id).innerText =="لغو پاسخ")
-                   document.getElementById('reply_button_'+comment_id).innerText = "پاسخ";
-
-               x.parentElement.removeChild(x);
-               remove_form = -1
-           }
-            else {
-
-                document.getElementById('reply_button_'+comment_id).innerText= "لغو پاسخ";
-                var reply_form = document.createElement('div');
-
-        reply_form.id = 'reply_form_div' + comment_id;
-        reply_form.class = 'ui stackable grid';
-        reply_form.innerHTML = {{ reply_form }};
-
-
-        remove_form = comment_id;
-        document.getElementById('cm_' + comment_id).appendChild(reply_form);
-        run_bibot();
-        var remove_captcha = document.getElementById("bibot-captcha");
-           remove_captcha.firstChild.removeChild(remove_captcha.firstChild.lastChild)
-           remove_captcha.firstChild.removeChild(remove_captcha.firstChild.lastChild)
-               remove_captcha.removeChild(remove_captcha.lastChild);
-    }
-    $(document).on('submit', '#reply_form_' + comment_id, function (e) {
-        e.preventDefault();
-        submit_reply(comment_id);})
-    }
 
 
 </script>
