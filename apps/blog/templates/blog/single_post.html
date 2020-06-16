@@ -144,7 +144,13 @@
     </div>
 </div>
 
-{# todo add comment here#}
+{% endblock %}
 
+{% block footer_scripts %}
+<script>
 
-</div>
+        function get_form_template(comment_id) {
+            return {{ reply_form }}
+        }
+</script>
+{% endblock %}

@@ -56,7 +56,8 @@ function submit_reply(comment_id) {
             dataType: 'json',
             success: function (res) {
                 if (res.bibot_err == 'error') {
-                    $('#reply_form_err')[0].innerHTML = '<li class="error">احراز هویت ناموق</li>';
+                    if ($('#reply_form_err'))
+                        $('#reply_form_err')[0].innerHTML = '<li class="error">احراز هویت ناموق</li>';
                     return;
                 }
                 $('#reply_form_div' + comment_id).remove();
