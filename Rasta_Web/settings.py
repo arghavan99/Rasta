@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'apps.blog',
     'apps.events',
     'apps.newsletter',
+    'apps.doc',
 
     'ckeditor',
     'ckeditor_uploader',

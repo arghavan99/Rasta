@@ -66,16 +66,10 @@
                         <div class="ui dimmer">
                             <div class="content">
                                 <div class="center">
-                                    <div class="ui inverted button" id="{{doc.id}}link">دانلود کن
-                                        <form name="downloader" id="{{doc.id}}downloader"
-                                              action="/download/"
-                                              method="POST">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="original_file_name"
-                                                   value="{{ doc.file.name }}"/>
-                                        </form>
-
+                                    <a href="/doc/download/{{doc.id}}">
+                                    <div class="ui inverted button" id="{{doc.id}}link" >دانلود کن
                                     </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -154,22 +148,3 @@
 
 
 </div>
-{% endblock %}
-
-{% block footer_scripts %}
-<script>
-
-       {% for doc, ext in docs %}
-          document.getElementById("{{doc.id}}link").addEventListener("click", function () {
-               document.getElementById("{{ doc.id }}downloader").submit();
-             });
-        {% endfor %}
-
-        function get_form_template(comment_id) {
-            return {{ reply_form }}
-        }
-
-
-
-</script>
-{% endblock %}

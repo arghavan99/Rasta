@@ -1,6 +1,7 @@
 import json
 
 from django.http import HttpResponse
+from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import render
 
 from Rasta_Web.settings import bibot_SiteKey
@@ -8,6 +9,7 @@ from Rasta_Web.utils import check_bibot_response
 from apps.blog.forms import CommentForm, ReplyForm
 from apps.blog.models import *
 from django.template.loader import render_to_string
+from apps.doc.models import Document
 
 
 def cat_dictionary(cat):
@@ -158,7 +160,7 @@ def submit_comment_reply(request):
 
 
 def get_docs(post):
-    docs = BlogDocument.objects.filter(post=post)
+    docs = Document.objects.filter(content_type=ContentType.objects.get_for_model(BlogPost).id, object_id=post.id)
     return [(doc, get_doc_type(doc)) for doc in docs]
 
 

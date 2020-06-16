@@ -49,14 +49,6 @@ class BlogPost(models.Model):
         return str(self.publish_date.day).translate(translate_table)
 
 
-class BlogDocument(models.Model):
-    caption = models.CharField(max_length=200, null=False, blank=False)
-    file = models.FileField(null=False, blank=False, upload_to='blog_documents/', validators=[validate_file_size])
-    post = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return str(self.post) + ' - ' + str(self.file.name)
-
 
 class Comment(models.Model):
     text = models.TextField(max_length=500, null=False, blank=False)

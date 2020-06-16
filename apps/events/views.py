@@ -1,4 +1,7 @@
+from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import render
+
+from apps.doc.models import Document
 from apps.events.models import *
 
 
@@ -52,7 +55,7 @@ def get_photos(request, eve_id):
 
 
 def get_docs(event):
-    docs = Document.objects.filter(event=event)
+    docs = Document.objects.filter(content_type=ContentType.objects.get_for_model(Event).id, object_id=event.id)
     return [(doc, get_doc_type(doc)) for doc in docs]
 
 
