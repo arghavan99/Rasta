@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from Rasta_Web.utils import doc_downloader, my_send_mail
+from Rasta_Web.utils import doc_downloader
 from apps.intro import urls as intro_urls
 from apps.contact_us import urls as contact_us_urls
 from apps.blog import urls as blog_url
@@ -35,7 +35,6 @@ urlpatterns = [
     path('download/', doc_downloader),
     path('newsletter/', include(newsletter_url)),
     path('', include(intro_urls)),
-    path('mail/', my_send_mail)
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
