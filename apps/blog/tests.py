@@ -22,8 +22,7 @@ class CategoryTest(TestCase):
         cat3 = Category.objects.create(title='politics', url='politics')
 
         post1 = BlogPost.objects.create(title='first post', photo=cls.get_image_file('photo1'),
-                                        summary='summary of first post in blog', text='text of first post in blog',
-                                        publish_date='1399-1-26')
+                                        summary='summary of first post in blog', text='text of first post in blog')
 
         post2 = BlogPost.objects.create(title='second post', photo=cls.get_image_file('photo2'),
                                         summary='summary of second post in blog', text='text of second post in blog',
@@ -58,10 +57,10 @@ class CategoryTest(TestCase):
         cat_numbers = post.categories.count()
         self.assertEqual(cat_numbers, 2)
 
-    def test_post_date_before_today(self):
+    def test_post_date_is_today(self):
         post = BlogPost.objects.get(id=1)
         post_date = post.publish_date
-        self.assertGreater(jdatetime.date.today(),post_date.date())
+        self.assertEqual(jdatetime.date.today(),post_date.date())
 
     def test_not_null_field(self):
         try:
