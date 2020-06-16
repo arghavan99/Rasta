@@ -93,13 +93,13 @@
 
         <div class="ui segment"
              style="margin-bottom: 50px; border-radius: 20px !important;background-color: rgba(255,255,255,0.7) !important;padding: 5% !important;">
-            <h3 class="ui dividing header">ارسال نظر</h3>
+            <h3 class="ui dividing header"><i class="paper plane icon"></i>ارسال نظر</h3>
         <br>
             {% block form %}
                 {% include 'blog/comment_form.html' %}
             {% endblock %}
         <br>
-            <h3 class="ui dividing header">نظرات</h3>
+            <h3 class="ui dividing header"><i class="comments icon"></i>نظرات</h3>
             <div class="ui comments" id="all_comments" style="font-size: 15px">
                 {% for comment in comments %}
                 <div class="comment" id="cm_{{ comment.id }}">
