@@ -1,0 +1,57 @@
+
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Rasta</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet'>
+      <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+            type="text/css"
+    />
+
+
+</head>
+<body dir="rtl" style="height: 100%; background-color: #37bba0">
+
+<div class="pusher">
+    <div id="main">
+
+
+        <div class="ui center aligned stackable grid" style="padding: 5%" >
+
+
+    <div class="ui twelve wide column" >
+
+        <div class="ui segment right aligned" dir="rtl" style="border-radius: 20px !important;background-color: rgba(255,255,255,0.5) !important; padding: 5% !important;">
+            <h2>رستایی عزیز سلام! </h2>
+        <hr class="hline">
+            <p style="text-align: justify; font-size: medium;">{{ text }}</p>
+             {% if link %}
+              <a class="ui button" href="{{ link }}" style="background-color: #1c5951 ;color: white;font-weight: bolder;margin-top: 20px">
+                    {{ link_text }}
+                </a>
+            {% endif %}
+        <h4>اگر نمی خواهید در آینده ایمیلی از خبرنامه رستا دریافت کنید، لطفاً <a style="color: #1e70bf" href="{{ unsubscribe }}"> اینجا</a> را کلیک کنید. </h4>
+
+    </div>
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+</div>
+
+
+</body>
+</html>

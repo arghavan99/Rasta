@@ -3,7 +3,10 @@ from django.shortcuts import render
 from apps.blog.models import BlogPost
 from apps.intro.models import *
 from apps.events.models import Event
-
+from django import forms
+from django.db import IntegrityError
+from apps.newsletter.models import Subscriber
+from django.http import JsonResponse
 
 def homepage(req):
     get_last_events()
@@ -47,3 +50,17 @@ def get_last_blog_posts():
             'summary': post.summary,
         } for post in posts
     ]
+def notify(request):
+    if request.POST:
+        valid = True
+        try:
+            forms.EmailField().clean(request.POST['email'])
+        except Exception as e:
+            valid = False
+        if valid:
+            try:
+                Subscriber.objects.create(email=request.POST['email'])
+            except IntegrityError:
+                return JsonResponse({'success': False})
+            return JsonResponse({'success': True})
+    return JsonResponse({'success': False})

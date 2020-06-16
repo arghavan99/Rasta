@@ -4,6 +4,7 @@ import os
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseNotFound
 from django.core.exceptions import ValidationError
+
 from Rasta_Web.settings import bibot_SiteSecretKey
 import requests
 from django.contrib import messages
@@ -89,3 +90,4 @@ def validate_file_size(file):
     file_size = file.file.size
     if file_size > limit_mb * 1024 * 1024:
         raise ValidationError("Max size of file is %s MB" % limit_mb)
+

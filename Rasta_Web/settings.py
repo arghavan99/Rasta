@@ -45,9 +45,11 @@ INSTALLED_APPS = [
     'apps.contact_us',
     'apps.blog',
     'apps.events',
+    'apps.newsletter',
 
     'ckeditor',
     'ckeditor_uploader',
+    # 'djcelery',
 
 ]
 
@@ -149,6 +151,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 SITE_ROOT = os.path.dirname(os.path.realpath(__name__))
+SITE_URL = 'http://127.0.0.1:8000'
 LOCALE_PATHS = (os.path.join(SITE_ROOT, 'locale'),)
 
 CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/'
@@ -226,3 +229,19 @@ CKEDITOR_CONFIGS = {
 
 bibot_SiteKey = config('BIBOT_SITE_KEY')
 bibot_SiteSecretKey = config('BIBOT_SITE_SECRET_KEY')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = config('USERNAME')
+DEFAULT_FROM_EMAIL = config('USERNAME')
+EMAIL_HOST_PASSWORD = config('PASSWORD')
+EMAIL_USE_TLS = True
+
+
+BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'IRAN'
