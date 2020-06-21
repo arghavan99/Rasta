@@ -2,17 +2,17 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
-from Rasta_Web import settings
+from Rasta_Web.settings import base
 from apps.newsletter.models import Subscriber
 
 
 def send_mail_to_subscribers(context, subject):
     all_subscribers = list(Subscriber.objects.all())
     for s in all_subscribers:
-        print('{}/newsletter/unsubscribe/{}/'.format(settings.SITE_URL, s.unique_id))
+        print('{}/newsletter/unsubscribe/{}/'.format(base.SITE_URL, s.unique_id))
         unique_context = context.copy()
         unique_context.update({
-            'unsubscribe': '{}/newsletter/unsubscribe/{}/'.format(settings.SITE_URL, s.unique_id),
+            'unsubscribe': '{}/newsletter/unsubscribe/{}/'.format(base.SITE_URL, s.unique_id),
         })
         html_message = render_to_string('newsletter/content.html', unique_context)
         plain_message = strip_tags(html_message)

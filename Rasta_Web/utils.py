@@ -1,6 +1,6 @@
 from django.core.exceptions import ValidationError
 
-from Rasta_Web.settings import bibot_SiteSecretKey
+from Rasta_Web.settings.settings import bibot_SiteSecretKey
 import requests
 from django.contrib import messages
 

@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import render
 
-from Rasta_Web.settings import bibot_SiteKey
+from Rasta_Web.settings.base import bibot_SiteKey
 from Rasta_Web.utils import check_bibot_response
 from apps.blog.forms import CommentForm, ReplyForm
 from apps.blog.models import *

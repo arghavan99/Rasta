@@ -1,4 +1,4 @@
-from Rasta_Web.settings import bibot_SiteKey
+from Rasta_Web.settings.base import bibot_SiteKey
 from Rasta_Web.utils import check_bibot_response
 from apps.contact_us.models import *
 from apps.contact_us.forms import ContactUsForm
