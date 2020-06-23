@@ -8,11 +8,19 @@ WORKDIR /usr/src/app
 RUN apk update \
     && apk add --virtual build-deps gcc python3-dev musl-dev \
     && apk add postgresql-dev
-
-RUN apt-get install -yq redis-server
+RUN pip install psycopg2
 
 RUN pip install --upgrade pip
-RUN pip install -r /user/src/app/requirements.txt
+
+RUN apk --update add \
+    build-base \
+    jpeg-dev \
+    zlib-dev
+
+RUN pip install gunicorn
+
+COPY ./requirements.txt /usr/src/app/requirements.txt
+RUN pip install -r /usr/src/app/requirements.txt
 
 # copy entrypoint-prod.sh
 COPY ./entrypoint.prod.sh /usr/src/app/entrypoint.prod.sh

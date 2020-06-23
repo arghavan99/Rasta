@@ -15,7 +15,7 @@ import os
 
 def get_environment_var(var_name, default, prefixed=True):
     if prefixed:
-        var_name = 'RASTA_WEB%s' % var_name
+        var_name = 'RASTA_WEB_%s' % var_name
     return os.getenv(var_name, default)
 
 
@@ -101,6 +101,61 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+LOG_PATH = os.path.join(BASE_DIR, 'log')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'filters': {
+        'special': {
+            '()': 'project.logging.SpecialFilter',
+            'foo': 'bar',
+        },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'filters': ['special']
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        'myproject.custom': {
+            'handlers': ['console', 'mail_admins'],
+            'level': 'INFO',
+            'filters': ['special']
+        }
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/

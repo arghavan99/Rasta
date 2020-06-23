@@ -48,20 +48,20 @@ LOGGING = {
     },
     'loggers': {
         '': {
-            'handlers': ['file'],
+            'handlers': ['file', 'console'],
             'level': LOG_LEVEL,
             'propagate': True
         },
         'django': {
-            'handlers': ['file'],
+            'handlers': ['file', 'console'],
             'level': LOG_LEVEL,
             'propagate': True,
         },
-        'Rasta_web': {
-            'handlers': ['file'],
-            'level': LOG_LEVEL,
-            'propagate': True,
-        },
+        # 'Rasta_web': {
+        #     'handlers': ['file'],
+        #     'level': LOG_LEVEL,
+        #     'propagate': True,
+        # },
     },
 }
 

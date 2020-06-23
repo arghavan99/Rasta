@@ -17,11 +17,12 @@ def homepage(req):
     else:
         context = {}
     homepage_data = HomepageData.objects.last()
-    link = homepage_data.video_url.split('/')
-    url = 'https://www.aparat.com/video/video/embed/videohash/' + str(link[-1]) + '/vt/frame'
-    context.update({'intro': homepage_data.intro,
-                    'aparat_url': url,
-                    'events': get_last_events(),
+    if homepage_data is not None:
+        link = homepage_data.video_url.split('/')
+        url = 'https://www.aparat.com/video/video/embed/videohash/' + str(link[-1]) + '/vt/frame'
+        context.update({'aparat_url': url,
+                        'intro': homepage_data.intro})
+    context.update({'events': get_last_events(),
                     'posts': get_last_blog_posts()})
     return render(req, 'intro/index.html', context)
 
