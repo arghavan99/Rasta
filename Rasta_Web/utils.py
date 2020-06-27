@@ -1,6 +1,6 @@
 from django.core.exceptions import ValidationError
 
-from Rasta_Web.settings.settings import bibot_SiteSecretKey
+from django.conf import settings
 import requests
 from django.contrib import messages
 
@@ -9,7 +9,7 @@ def check_bibot_response(request):
     if request.POST.get('bibot-response') is not None:
         if request.POST.get('bibot-response') != '':
             r = requests.post('https://api.bibot.ir/api1/siteverify/', data={
-                'secret': bibot_SiteSecretKey,
+                'secret': settings.bibot_SiteSecretKey,
                 'response': request.POST['bibot-response']
             })
             print(r.json())
