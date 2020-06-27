@@ -184,7 +184,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 SITE_ROOT = os.path.dirname(os.path.realpath(__name__))
-SITE_URL = 'http://127.0.0.1:8000'
+SITE_URL = get_environment_var('SITE_URL','http://127.0.0.1:8000')
 LOCALE_PATHS = (os.path.join(SITE_ROOT, 'locale'),)
 
 CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/'
