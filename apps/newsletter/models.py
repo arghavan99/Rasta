@@ -9,7 +9,7 @@ from django.utils.html import strip_tags
 class Subscriber(models.Model):
     email = models.EmailField(unique=True)
     date_joint = models.DateTimeField(default=django.utils.timezone.now)
-    unique_id = models.CharField(default=str(uuid.uuid4()).replace("-", ""), max_length=200, unique=True)
+    unique_id = models.UUIDField(primary_key=False, default=uuid.uuid4, editable=False)
 
     def __str__(self):
         return str(self.email)
