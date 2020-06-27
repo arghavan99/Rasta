@@ -1,0 +1,38 @@
+<div class="ui stackable grid">
+    <div class="ui twelve wide column">
+<form class="ui form error" id="comment_form" method="post" style="margin:auto;width: 90%">{% csrf_token %}
+    <input type="hidden" name="is_comment" value="True">
+    <input type="hidden" name="post" value="{{post.id}}">
+    <div class="two fields">
+        <div class="field required">
+            <label>نام و نام خانوادگی</label>
+            <input type="text" name="author_name">
+        </div>
+        <div class="field required">
+            <label>ایمیل</label>
+            <input type="email" name="email">
+        </div>
+        {% if form.email.errors %}
+        <div class="ui message error" style="font-weight:bolder;color:#ED1A3A;">
+            <strong>پارامترهای ورودی صحیح نمی‌باشد.</strong>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="field required">
+        <label>متن نظر</label>
+        <textarea name="text"></textarea>
+    </div>
+    <div id="bibot-captcha" class="bibot-captcha" style="" data-sitekey="{{ bibot }}" data-callback="bibot_callback"></div>
+
+    <ul id="cm_form_err" class="back_messages"></ul>
+
+    <button type="submit" class="ui button"
+            style="background-color: var(--secondary-dark) ;color: white;font-weight: bolder;margin-top: 20px">
+        ثبت کن !
+    </button>
+
+</form>
+
+    </div>
+</div>

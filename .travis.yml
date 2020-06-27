@@ -1,0 +1,10 @@
+install: 
+- "pip install -r requirements.txt"
+env:
+- "DJANGO=2.2 DB=sqlite"
+language: python
+python: 
+- "3.6"
+script:
+- python manage.py migrate
+- "python manage.py test"

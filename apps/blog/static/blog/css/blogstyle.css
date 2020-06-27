@@ -25,3 +25,33 @@
     border: 0 !important;
     width: 10% !important;
 }
+
+.full-description {
+    text-align: justify;
+    font-size: medium;
+}
+.bubble {
+    border-radius: 20px !important;
+    background-color: var(--bubble) !important;
+    padding: 5% !important;
+}
+
+.hline {
+    color: rgba(34,36,38,.15);
+    height: 0px;
+    display: block;
+    margin: 5% auto;
+    overflow: hidden;
+    border-style: solid;
+    border-width: 0.25px;
+}
+
+.file-card {
+    width: 90px !important;
+}
+
+.file-name {
+    overflow-wrap: break-word !important;
+    font-size: small !important;
+    font-weight: normal !important;
+}

@@ -1,9 +1,11 @@
+from django.shortcuts import redirect
 from django.test import TestCase
 from django.core.files import File
 from PIL import Image
 from io import BytesIO
 from apps.events.models import Event
-
+from apps.events import views
+from django.urls import reverse
 
 class EventsTest(TestCase):
     @staticmethod
@@ -16,6 +18,7 @@ class EventsTest(TestCase):
 
     @classmethod
     def setUpTestData(cls):
+        print('Im creating model')
         Event.objects.create(name='first event', poster=cls.get_image_file(name='sh_visible', size=(200, 100)),
                              summary='a brief description to tell the story n1',
                              description='a detailed story of event so that everyone get it correctly number one',
@@ -58,3 +61,18 @@ class EventsTest(TestCase):
         response = self.client.get('/events/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['events']), 3)
+
+    def test_singleEvent_url_and_template(self):
+        response = self.client.get('/events/1/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'events/single_event.html')
+
+    def test_AlbumOfSingleEvent_url_and_template(self):
+        response = self.client.get('/events/1/album/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'events/album.html')
+
+    def test_wrong_path_view_uses_correct_template(self):
+        response = views.get_single_event(print(),5)
+        self.assertEqual(response.status_code, 404)
+

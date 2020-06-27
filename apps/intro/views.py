@@ -3,7 +3,10 @@ from django.shortcuts import render
 from apps.blog.models import BlogPost
 from apps.intro.models import *
 from apps.events.models import Event
-
+from django import forms
+from django.db import IntegrityError
+from apps.newsletter.models import Subscriber
+from django.http import JsonResponse
 
 def homepage(req):
     get_last_events()
@@ -14,11 +17,12 @@ def homepage(req):
     else:
         context = {}
     homepage_data = HomepageData.objects.last()
-    link = homepage_data.video_url.split('/')
-    url = 'https://www.aparat.com/video/video/embed/videohash/' + str(link[-1]) + '/vt/frame'
-    context.update({'intro': homepage_data.intro,
-                    'aparat_url': url,
-                    'events': get_last_events(),
+    if homepage_data is not None:
+        link = homepage_data.video_url.split('/')
+        url = 'https://www.aparat.com/video/video/embed/videohash/' + str(link[-1]) + '/vt/frame'
+        context.update({'aparat_url': url,
+                        'intro': homepage_data.intro})
+    context.update({'events': get_last_events(),
                     'posts': get_last_blog_posts()})
     return render(req, 'intro/index.html', context)
 
@@ -47,3 +51,17 @@ def get_last_blog_posts():
             'summary': post.summary,
         } for post in posts
     ]
+def notify(request):
+    if request.POST:
+        valid = True
+        try:
+            forms.EmailField().clean(request.POST['email'])
+        except Exception as e:
+            valid = False
+        if valid:
+            try:
+                Subscriber.objects.create(email=request.POST['email'])
+            except IntegrityError:
+                return JsonResponse({'success': False})
+            return JsonResponse({'success': True})
+    return JsonResponse({'success': False})

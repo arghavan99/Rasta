@@ -1,0 +1,70 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block extra_header %}
+<link rel="stylesheet" href="{% static 'events/css/events.css' %}">
+<script src="{% static 'scripts/scrollreveal.js' %}"></script>
+<script src="{% static 'events/scripts/single_event_js.js' %}"></script>
+{% endblock %}
+
+{% block container %}
+<div class="ui stackable grid" style="margin-top: 140px;margin-bottom: 50px; min-height: 75vh">
+
+    <div class="ui five wide column parent" style="height: 100% !important;margin-top: 140px;margin-bottom: 50px">
+        <img class="ui centered poster image child" alt="" src="{{ event.poster.url }}">
+    </div>
+
+    <div class="ui eleven wide column">
+        <div class="ui single-bubble segment" dir="rtl">
+
+            <h1 class="ui center aligned huge header" style="color: var(--header)">
+                {{ event.name }}
+            </h1>
+
+            <h3 class="ui center aligned medium header" style="color: var(--secondary-dark)">
+                {{ event.location }} - {{ month }} {{ year }}
+            </h3>
+
+            <hr class="hline">
+
+            <div class="full-description">{{ event.description|safe }}</div>
+
+            <div class="ui container center aligned">
+                <a class="ui album button" href="/events/{{ event.id }}/album">
+                    آلبوم تصاویر
+                </a>
+            </div>
+
+            {% if docs|length != 0 %}
+            <hr class="hline">
+
+
+            <div class="ui special cards">
+                {% for doc, type in docs %}
+                <div class="card file-card" style="opacity:95%!important;">
+                    <div class="blurring dimmable image">
+                        <div class="ui dimmer">
+                            <div class="content">
+                                <div class="center">
+                                    <a href="/doc/download/{{doc.id}}">
+                                    <div class="ui inverted button" id="{{doc.id}}link">دانلود کن
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% static "" as baseUrl %}
+                        <img src="{{ baseUrl }}images/icons/{{ type }}.png">
+                    </div>
+                    <div class="content">
+                        <a class="file-name" style="color: var(--header)"> {{ doc.caption}}</a>
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
