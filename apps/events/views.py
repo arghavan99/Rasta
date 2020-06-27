@@ -54,6 +54,8 @@ def get_photos(request, eve_id):
     return render(request, 'events/album.html', context)
 
 
+
+
 def get_docs(event):
     docs = Document.objects.filter(content_type=ContentType.objects.get_for_model(Event).id, object_id=event.id)
     return [(doc, get_doc_type(doc)) for doc in docs]
