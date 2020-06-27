@@ -20,4 +20,5 @@
 !Procfile
 !*.yml
 !dockerfile
+!dockerfile_worker
 !*.sh
