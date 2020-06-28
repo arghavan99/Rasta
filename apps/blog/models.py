@@ -19,7 +19,7 @@ class Category(models.Model):
 
 class BlogPost(models.Model):
     objects = jmodels.jManager()
-    photo = models.ImageField(upload_to='blog/', null=True, blank=True,help_text="این تصویر باید مربعی باشد", validators=[validate_image_size,validate_square_image])
+    photo = models.ImageField(upload_to='blog/', null=True, blank=True,help_text="برای نمایش بهتر در سایت، باید نسبت ابعاد تصویر بین ۰.۸ تا ۱.۲ باشد.", validators=[validate_image_size,validate_square_image])
     title = models.CharField(max_length=70, null=False, blank=False)
     publish_date = jmodels.jDateTimeField(auto_now_add=True)
     summary = models.TextField(max_length=100, null=False, blank=False)
