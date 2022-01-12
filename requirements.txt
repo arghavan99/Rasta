@@ -23,7 +23,7 @@ importlib-resources==1.4.0
 jdatetime==3.6.2
 kombu==4.6.10
 Pillow==7.0.0
-pipenv==2018.11.26
+pipenv==2022.1.8
 python-decouple==3.3
 pytz==2019.3
 redis==3.5.3
