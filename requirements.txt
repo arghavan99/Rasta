@@ -3,7 +3,7 @@ anyjson==0.3.3
 appdirs==1.4.3
 billiard==3.6.3.0
 celery==4.4.5
-certifi==2019.11.28
+certifi==2022.12.7
 chardet==3.0.4
 distlib==0.3.0
 dj-database-url==0.5.0
